@@ -8,7 +8,7 @@ use App\Models\staff_prints;
 
 class Svg extends Component
 {
-    public $staff;
+    public $staff, $staff_img;
  
     public function mount($id)
     {
