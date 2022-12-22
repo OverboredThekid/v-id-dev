@@ -80,6 +80,7 @@ class StaffResource extends Resource
     {
         return [
             'index' => Pages\ListStaff::route('/'),
+            'Create' => Pages\CreateStaff::route('/Create'),
         ];
     }
 }
