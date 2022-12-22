@@ -9,6 +9,9 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\IconColumn;
+use App\Models\staff_prints;
+use Filament\Tables\Actions\Action;
 
 
 class StaffPrintsRelationManager extends RelationManager
@@ -21,11 +24,7 @@ class StaffPrintsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('staff_id')
-                    ->required()
-                    ->maxLength(255),
-                    SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints'),
-
+                    SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints')->label("Staff Photo"),
             ]);
     }
 
@@ -34,7 +33,13 @@ class StaffPrintsRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('staff_id'),
+                IconColumn::make('is_active')
+                ->boolean()
+                ->trueIcon('heroicon-o-badge-check')
+                ->falseIcon('heroicon-o-x-circle')
+                ->label('Printed'),
                 SpatieMediaLibraryImageColumn::make('staff_img')->collection('staff_print'),
+                Tables\Columns\TextColumn::make('created_at'),
             ])
             ->filters([
                 //
@@ -44,6 +49,7 @@ class StaffPrintsRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('Print')->label('Print')->url(fn (staff_prints $record): string => route('svg', $record))->openUrlInNewTab()->icon('heroicon-o-printer')->color('danger'),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
