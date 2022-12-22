@@ -87,7 +87,7 @@
                         <tspan x="0" y="18">{{$staff->staff->name}}</tspan>
 
                     </text>
-                    <image style="overflow:visible;" width="377" height="379" id="WORKER-IMG" xlink:href="{{$staff->getFullUrl()}}" transform="matrix(0.2535 0 0 0.2535 56.6439 30.8369)"></image>
+                    <image style="overflow:visible;" width="377" height="379" id="WORKER-IMG" xlink:href="{{$staff->getFirstMedia('staff_prints')->getUrl()}}" transform="matrix(0.2535 0 0 0.2535 56.6439 30.8369)"></image>
 
                     <rect id="Background_Color" class="cls-5" width="54.17" height="240.5" />
                     <image id="GAV_Small_Logo" width="681" height="228" transform="translate(2.61 190.46) rotate(-90) scale(.21)" xlink:href="{{ asset('assets/img/gav-small-white.png') }}" />
