@@ -11,7 +11,7 @@ return [
         'show_model_path' => true,
     ],
 
-    'nav.group' => 'System',
+    'navigation.group' => 'System',
 
     'auth_provider_model' => [
         'fqcn' => 'App\\Models\\User',
@@ -77,7 +77,5 @@ return [
     'register_role_policy' => [
         'enabled' => true,
     ],
-
-    'nav.group' => 'System',
 
 ];

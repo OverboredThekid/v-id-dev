@@ -9,6 +9,9 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+
 
 class StaffPrintsRelationManager extends RelationManager
 {
@@ -23,6 +26,8 @@ class StaffPrintsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('staff_id')
                     ->required()
                     ->maxLength(255),
+                    SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints'),
+
             ]);
     }
 
@@ -31,6 +36,7 @@ class StaffPrintsRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('staff_id'),
+                SpatieMediaLibraryImageColumn::make('staff_img')->collection('staff_print'),
             ])
             ->filters([
                 //
