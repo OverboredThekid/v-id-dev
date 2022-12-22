@@ -39,7 +39,8 @@ class StaffPrintsRelationManager extends RelationManager
                 ->falseIcon('heroicon-o-x-circle')
                 ->label('Printed'),
                 SpatieMediaLibraryImageColumn::make('staff_img')->collection('staff_print'),
-                Tables\Columns\TextColumn::make('created_at'),
+                Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                Tables\Columns\TextColumn::make('created_at')->since(),
             ])
             ->filters([
                 //

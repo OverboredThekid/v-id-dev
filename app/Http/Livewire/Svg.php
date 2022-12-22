@@ -14,7 +14,7 @@ class Svg extends Component
     {
         $media = staff_prints::findOrFail($id);
         $this->staff = $media;
-        $this->staff_img = $media->getMedia('staff_img');
+        $this->staff_img = $media->getMedia('staff_print');
     }
 
 
