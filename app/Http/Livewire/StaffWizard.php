@@ -38,16 +38,13 @@ class StaffWizard extends Component
         $validatedData['name'] = $this->file->store('files', 'public');
         session()->flash('message', 'File successfully Uploaded.');
 
-        $name_split = explode(" ", $this->name);
-        $first_name = $name_split[0];
-        $last_name = !empty($name_split[1]) ? $name_split[1] : '';
-
         $this->currentStep = 3;
     }
 
 
     public function submitForm()
     {
+        $staffing = request()->file('file')->store('temp');
         $staff_prints = new staff_prints;
         $staff_prints->is_active = '0';
         $staff_prints->addMedia($this->file)->toMediaCollection('staff_print');
