@@ -129,7 +129,7 @@
                 <g id="Front_ID"><text class="back-4" transform="translate(27.7 227.98)">
                         <tspan x="0" y="0">888-812-2757</tspan>
                     </text>
-                    <image xmlns="http://www.w3.org/2000/svg" id="QR_Code_generationsav.com_stafflinks_" width="2255" height="2255" transform="translate(35.55 115.26) scale(.04)" xlink:href="data:image/png;base64,{{ base64_encode($qrCode) }}" />
+                    <image xmlns="http://www.w3.org/2000/svg" id="QR_Code_generationsav.com_stafflinks_" width="2255" height="2255" transform="translate(35.55 115.26) scale(.04)" xlink:href="data:image/png;base64,{{ base64_decode($qrCode) }}" />
                     <line id="Red_Deviding_Line" class="back-2" x1="36.06" y1="204.36" x2="119.46" y2="203.56" />
                     <rect id="Background_Color_333333_" class="back-3" width="155.52" height="114.26" />
                     <line id="White_Dash" class="back-1" x1="31.06" y1="108.64" x2="125" y2="108.64" />
