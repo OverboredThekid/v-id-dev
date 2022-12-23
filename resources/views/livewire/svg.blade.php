@@ -82,7 +82,7 @@
                     </text><text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
 
 
-                        <tspan class="cls-8" x="0" y="0">{{$staf_first}}</tspan>
+                        <tspan class="cls-8" x="0" y="0">{{$staff_first}}</tspan>
 
                         <tspan x="0" y="18">{{$staff_last}}</tspan>
 
