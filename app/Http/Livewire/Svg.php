@@ -9,7 +9,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first, $qr_code;
+    public $staff, $staff_img, $staff_last, $staff_first;
  
     public function mount($id)
     {
@@ -20,7 +20,6 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
-        $this->qr_code = QrCode::size(200)->generate("http://example.com/stafflinks/$staff_info->staff->uuid");
 
 
     }
