@@ -142,4 +142,5 @@
                 //setTimeout(window.close, 0);
             }
         </script>
+        {{$qrCode}}
 </div>
