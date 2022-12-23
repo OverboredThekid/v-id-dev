@@ -15,7 +15,7 @@ class Svg extends Component
     public function mount($id)
     {
         Auth::check()?:abort(403);
-        $staff_info = staff_prints::findOrFail($id)->update(['is_active' => 1]);
+        $staff_info = staff_prints::findOrFail($id);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
         $last = Str::after($staff_info->staff->name, ' ');
@@ -23,6 +23,8 @@ class Svg extends Component
         $this->staff_last = $last;
         $this->staff_first = $first;
         $this->generateQrCode();
+        $staff_info = $staff_info->update(['is_active' => 1]);
+
     }
     public function generateQrCode()
     {
