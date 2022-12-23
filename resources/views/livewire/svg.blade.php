@@ -1,4 +1,5 @@
 <div>
+
     <body onload="printpart()">
         <div id="svg-card">
             <style class="table">
@@ -79,14 +80,13 @@
                         <tspan x="0" y="0">EXP 03.2023</tspan>
                     </text><text class="cls-2" transform="translate(78.03 211.66)">
                         <tspan x="0" y="0">STAFF</tspan>
-                    </text><text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
-
-
-                        <tspan class="cls-8" x="0" y="0">{{$staff_first}}</tspan>
-
-                        <tspan x="0" y="18">{{$staff_last}}</tspan>
-
                     </text>
+
+                    <text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
+                        <tspan class="cls-8" x="0" y="0">{{$staff_first}}</tspan>
+                        <tspan x="0" y="18">{{$staff_last}}</tspan>
+                    </text>
+
                     <image style="overflow:visible;" width="377" height="379" id="WORKER-IMG" xlink:href="{{$staff_img}}" transform="matrix(0.2535 0 0 0.2535 56.6439 30.8369)"></image>
 
                     <rect id="Background_Color" class="cls-5" width="54.17" height="240.5" />
@@ -133,7 +133,8 @@
                     <line id="Red_Deviding_Line" class="back-2" x1="30" y1="210" x2="130" y2="210" />
                     <rect id="Background_Color_333333_" class="back-3" width="155.52" height="114.26" />
                     <line id="White_Dash" class="back-1" x1="30" y1="108.64" x2="130" y2="108.64" />
-                    <image id="GAV_Big_Logo" width="1340" height="538" transform="translate(3.71 30.74) scale(.11)" xlink:href="{{ asset('assets/img/gav-big-white.png') }}" /></g>
+                    <image id="GAV_Big_Logo" width="1340" height="538" transform="translate(3.71 30.74) scale(.11)" xlink:href="{{ asset('assets/img/gav-big-white.png') }}" />
+                </g>
             </svg>
         </div>
         <script>
