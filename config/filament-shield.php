@@ -6,13 +6,11 @@ return [
         'slug' => 'shield/roles',
         'navigation_sort' => -1,
         'navigation_badge' => true,
-        'navigation_group' => true,
+        'navigation_group' => "System",
         'is_globally_searchable' => false,
         'show_model_path' => true,
     ],
 
-    'navigation.group' => 'System',
-    'group' => 'System',
 
     'auth_provider_model' => [
         'fqcn' => 'App\\Models\\User',
