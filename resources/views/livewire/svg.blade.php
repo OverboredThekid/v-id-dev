@@ -133,9 +133,7 @@
                     <line id="Red_Deviding_Line" class="back-2" x1="36.06" y1="204.36" x2="119.46" y2="203.56" />
                     <rect id="Background_Color_333333_" class="back-3" width="155.52" height="114.26" />
                     <line id="White_Dash" class="back-1" x1="31.06" y1="108.64" x2="125" y2="108.64" />
-                    <image id="GAV_Big_Logo" width="1340" height="538" transform="translate(3.71 30.74) scale(.11)" xlink:href="{{ asset('assets/img/gav-big-white.png') }}" />
-                    {{$qr_code}}
-                </g>
+                    <image id="GAV_Big_Logo" width="1340" height="538" transform="translate(3.71 30.74) scale(.11)" xlink:href="{{ asset('assets/img/gav-big-white.png') }}" />                </g>
             </svg>
         </div>
         <script>
