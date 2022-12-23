@@ -82,9 +82,9 @@
                     </text><text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
 
 
-                        <tspan class="cls-8" x="0" y="0">{{$staff->staff->name}}</tspan>
+                        <tspan class="cls-8" x="0" y="0">{{$staf_first}}</tspan>
 
-                        <tspan x="0" y="18">{{$staff->staff->name}}</tspan>
+                        <tspan x="0" y="18">{{$staff_last}}</tspan>
 
                     </text>
                     <image style="overflow:visible;" width="377" height="379" id="WORKER-IMG" xlink:href="{{$staff_img}}" transform="matrix(0.2535 0 0 0.2535 56.6439 30.8369)"></image>
