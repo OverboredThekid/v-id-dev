@@ -16,8 +16,8 @@ class Svg extends Component
         $staff_info = staff_prints::findOrFail($id);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
-        $last = Str::after($staff_info->name, ' ');
-        $first = Str::before($staff_info->name, ' ');
+        $last = Str::after($staff_info->staff->name, ' ');
+        $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
 
