@@ -82,7 +82,6 @@ class StaffResource extends Resource
             'index' => Pages\ListStaff::route('/'),
             'create' => Pages\CreateStaff::route('/create'),
             'edit' => Pages\EditStaff::route('/{record}/edit'),
-            
         ];
     }
 }
