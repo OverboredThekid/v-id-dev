@@ -9,7 +9,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first;
+    public $staff, $staff_img, $staff_last, $staff_first, $qr_code;
  
     public function mount($id)
     {
