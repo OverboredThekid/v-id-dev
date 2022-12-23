@@ -32,7 +32,7 @@ class Svg extends Component
     public function render()
     {
         return view('livewire.svg', [
-            'qrCode' => $this->qrCode->__toString(),
+            'qrCode' => $this->qrCode,
         ])->layout('layouts.svg');
     }
 }
