@@ -22,6 +22,7 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
+        $this->generateQrCode();
     }
     public function generateQrCode()
     {
