@@ -81,7 +81,7 @@ return [
             | you should rather change the translation files.
             |
             */
-            'group' => 'content',
+            'group' => 'System',
             /*
             |--------------------------------------------------------------------------
             | Filament: Navigation Group

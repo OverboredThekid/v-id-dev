@@ -12,6 +12,7 @@ return [
     ],
 
     'navigation.group' => 'System',
+    'group' => 'System',
 
     'auth_provider_model' => [
         'fqcn' => 'App\\Models\\User',
