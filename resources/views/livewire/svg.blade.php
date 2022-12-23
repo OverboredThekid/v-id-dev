@@ -76,7 +76,7 @@
                 </defs>
                 <g id="Back_ID">
                     <line id="Red_Dash_Linw" class="cls-9" x1="61.68" y1="188.25" x2="145.09" y2="187.45" /><text class="cls-3" transform="translate(60.24 230.96)">
-                        <tspan x="0" y="0">EXP 12.2022</tspan>
+                        <tspan x="0" y="0">EXP 03.2023</tspan>
                     </text><text class="cls-2" transform="translate(78.03 211.66)">
                         <tspan x="0" y="0">STAFF</tspan>
                     </text><text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
@@ -139,7 +139,7 @@
         <script>
             function printpart() {
                 window.print();
-                //setTimeout(window.close, 0);
+                setTimeout(window.close, 0);
             }
         </script>
 </div>
