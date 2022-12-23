@@ -20,7 +20,7 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
-        $this->qr_code = QrCode::size(95)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-9');
+        $this->qr_code = QrCode::size(200)->generate("http://example.com/stafflinks/$staff_info->staff->uuid");
 
 
     }
