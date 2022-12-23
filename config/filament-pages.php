@@ -107,6 +107,7 @@ return [
     */
     'templates' => [
         \App\Filament\FilamentPageTemplates\Template::class,
+        \App\Filament\FilamentPageTemplates\TemplateEditor::class,
     ],
 
     /*
