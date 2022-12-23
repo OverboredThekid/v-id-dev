@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first, $qr_code;
+    public $staff, $staff_img, $staff_last, $staff_first;
  
     public function mount($id)
     {
