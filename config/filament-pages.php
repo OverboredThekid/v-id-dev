@@ -106,7 +106,7 @@ return [
     |
     */
     'templates' => [
-        DefaultTemplate::class,
+        \App\Filament\FilamentPageTemplates\Template::class,
     ],
 
     /*
