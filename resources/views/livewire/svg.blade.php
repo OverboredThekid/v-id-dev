@@ -28,6 +28,8 @@
                     <style>
                         .cls-1 {
                             font-size: 15px;
+                            min-font-size: 12px;
+                            max-font-size: 18px;
                         }
 
                         .cls-1,
@@ -82,7 +84,7 @@
                         <tspan x="0" y="0">STAFF</tspan>
                     </text>
 
-                    <text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)" lengthAdjust="spacing" textLength="65">
+                    <text class="cls-1" transform="translate(55.22 150.66) scale(1.48 1)">
                         <tspan class="cls-8" x="0" y="0">{{$staff_first}}</tspan>
                         <tspan x="0" y="18">{{$staff_last}}</tspan>
                     </text>
