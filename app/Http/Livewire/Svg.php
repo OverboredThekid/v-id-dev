@@ -26,13 +26,13 @@ class Svg extends Component
     }
     public function generateQrCode()
     {
-        $this->qrCode = base64_encode(QrCode::size(250)->format('svg')->generate("Test Data"));
+        $this->qrCode = base64_encode(QrCode::size(250)->format('svg')->generate("http://generationsav.com/stafflinks/"));
     }
 
     public function render()
     {
         return view('livewire.svg', [
-            'qrCode' => $this->qrCode,
+            'qrCode' => $this->qrCode->__toString(),
         ])->layout('layouts.svg');
     }
 }
