@@ -26,7 +26,7 @@ class Svg extends Component
     }
     public function generateQrCode()
     {
-        $this->qrCode = QrCode::size(250)->generate("Hello This is a test");
+        $this->qrCode = QrCode::size(250)->generate("Hello This is a test")->toHtml();
     }
 
     public function render()
