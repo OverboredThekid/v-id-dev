@@ -6,13 +6,15 @@ use Livewire\Component;
 use App\Models\staff_prints;
 use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Auth;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first;
+    public $staff, $staff_img, $staff_last, $staff_first, $qr_code;
  
     public function mount($id)
     {
+        Auth::check()?:abort(403);
         $staff_info = staff_prints::findOrFail($id);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
@@ -20,6 +22,7 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
+        $this->qr_code = QrCode::size(200)->generate("http://example.com/stafflinks/$staff_info->staff->uuid");
 
 
     }
