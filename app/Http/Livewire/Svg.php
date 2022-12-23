@@ -26,7 +26,7 @@ class Svg extends Component
     }
     public function generateQrCode()
     {
-        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 255, 255, 255, 0, 0, 0)->style('square')->format('svg')->generate("http://generationsav.com/stafflinks/"));
+        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->style('square')->format('svg')->generate("http://generationsav.com/stafflinks/"));
     }
 
     public function render()
