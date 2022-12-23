@@ -98,6 +98,10 @@ class StaffWizard extends Component
         $this->clearForm();
 
         $this->currentStep = 1;
+
+        // Open the new DB entry in a new tab
+        $url = route('svg', $staff_prints->id);
+        echo "<script>window.open('$url', '_blank');</script>";
     }
 
     /**
