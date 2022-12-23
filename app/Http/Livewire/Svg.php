@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first;
+    public $staff, $staff_img, $staff_last, $staff_first, $qrCode;
  
     public function mount($id)
     {
@@ -22,12 +22,11 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
-        $this->qr_code = QrCode::generate('Make me into a QrCode!');
-
-
-
     }
-
+    public function generateQrCode()
+    {
+        $this->qrCode = QrCode::size(250)->generate($this->data);
+    }
 
     public function render()
     {
