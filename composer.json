@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.0.2",
         "3x1io/filament-user": "^1.1",
-        "amvisor/filament-failed-jobs": "^0.6.1",
         "beier/filament-pages": "^0.2.0",
         "bezhansalleh/filament-shield": "^2.3",
         "camya/filament-title-with-slug": "^0.5.3",
