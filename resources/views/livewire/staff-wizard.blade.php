@@ -63,9 +63,6 @@
                             <div class="mt-2" x-show="isUploading">
                                 <progress max="100" x-bind:value="progress"></progress>
                             </div>
-                            @isset($file)
-                            <strong><img src="{{$file->temporaryUrl()}}" wire:ignore class='file-url' alt="Image of worker"></strong>
-                            @endif
                             @error('file') <span class="error">{{ $message }}</span> @enderror
                         </div>
                     </div>

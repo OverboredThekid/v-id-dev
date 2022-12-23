@@ -44,7 +44,6 @@ class StaffWizard extends Component
 
     public function submitForm()
     {
-        $staffing = request()->file('file')->store('temp');
         $staff_prints = new staff_prints;
         $staff_prints->is_active = '0';
         $staff_prints->addMedia($this->file)->toMediaCollection('staff_print');
