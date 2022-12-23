@@ -15,7 +15,7 @@ class Svg extends Component
     public function mount($id)
     {
         Auth::check()?:abort(403);
-        $staff_info = staff_prints::findOrFail($id);
+        $staff_info = staff_prints::findOrFail($id)->update(['is_active' => 1]);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
         $last = Str::after($staff_info->staff->name, ' ');
@@ -27,7 +27,7 @@ class Svg extends Component
     public function generateQrCode()
     {
         $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("http://generationsav.com/stafflinks/"));
-    }
+    } 
 
     public function render()
     {
