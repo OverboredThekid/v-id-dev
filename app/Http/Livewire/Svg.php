@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\staff_prints;
 use Illuminate\Support\Str;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Svg extends Component
 {
