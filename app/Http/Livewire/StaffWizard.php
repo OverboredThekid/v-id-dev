@@ -6,7 +6,6 @@ use App\Models\staff;
 use App\Models\staff_prints;
 use Livewire\WithFileUploads;
 use Livewire\Component;
-use Route;
 
 class StaffWizard extends Component
 {
@@ -89,15 +88,15 @@ class StaffWizard extends Component
             'is_active' => '1',
         ])->staff_prints()->save($staff_prints);
 
-        // Open the new DB entry in a new tab
-        $url = url(route('svg', $staff_prints->id));
-        echo "<script>window.open('$url', '_blank');</script>";
-
         $this->successMessage = 'ID Created Successfully and Printed.';
 
         $this->clearForm();
 
         $this->currentStep = 1;
+
+        // Open the new DB entry in a new tab
+        $url = route('svg', $staff_prints->id);
+        return redirect()->to($url)->with('_blank', true);
     }
 
     /**
