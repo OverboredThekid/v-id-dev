@@ -4,8 +4,6 @@ use Beier\FilamentPages\Filament\FilamentPageTemplates\DefaultTemplate;
 use Beier\FilamentPages\Filament\Resources\FilamentPageResource;
 use Beier\FilamentPages\Models\FilamentPage;
 use Beier\FilamentPages\Renderer\SimplePageRenderer;
-use App\Filament\Page\extra;
-
 return [
     'filament' => [
         /*
@@ -18,7 +16,6 @@ return [
         |
         */
         'resource' => FilamentPageResource::class,
-        'resource' => extra::class,
         /*
         |--------------------------------------------------------------------------
         | Filament: Custom Filament Model
