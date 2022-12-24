@@ -96,7 +96,7 @@ class StaffWizard extends Component
 
         // Open the new DB entry in a new tab
         $url = route('svg', $staff_prints->id);
-        return redirect()->to($url)->with('_blank', true);
+        return "<script>window.open('$url', '_blank');</script>";
     }
 
     /**
