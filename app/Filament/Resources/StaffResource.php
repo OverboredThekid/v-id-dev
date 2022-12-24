@@ -63,7 +63,7 @@ class StaffResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-printer')->color('danger'), 
+                Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'), 
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
