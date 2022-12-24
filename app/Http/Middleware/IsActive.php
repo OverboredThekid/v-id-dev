@@ -28,11 +28,11 @@ class IsActive
                 return $next($request);
             } else {
                 // If the employee is not active, redirect the user to a 404 error page
-                return abort(403);
+                return abort(403, 'This Staff Member Is Not Active.');
             }
         } else {
             // If the employee record was not found, redirect the user to a 404 error page
-            return abort(404);
+            return abort(404, 'This Staff Member Was Not Found');
         }
     }
 }
