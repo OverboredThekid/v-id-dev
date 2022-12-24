@@ -22,15 +22,8 @@ Route::get('staff/{slug}', function () {
         'slug' => $slug,
         'layout' => 'layouts.linkTree',
     ]);
-})->middleware('is.active');
+})->middleware('is.active')->name('staff');
 
-
-//Image Landing Page
-Route::get('media/{slug?}', function (MediaLibrary $slug) {
-    //return redirect($slug->getMedia('Media'));
-    return $slug;
-
-});
 
 // Custom Pages Route
 Route::get('{slug}', function (FilamentPage $slug) {
