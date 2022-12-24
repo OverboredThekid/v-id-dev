@@ -93,7 +93,7 @@
                 </div>
                 <div id='end-buttons'>
                     @if(Auth::user())
-                    <button class="btn btn-info btn-lg pull-right" type="button" wire:click="is_loggedin" onclick="openNewTab(event)">Print</button>
+                    <button class="btn btn-info btn-lg pull-right" type="button" wire:click="is_loggedin">Print</button>
                     @endif
                     <button class="btn btn-danger nextBtn btn-lg pull-right " type="button" wire:click="back(2)">Back</button>
                     <button class="btn btn-success btn-lg pull-right " wire:click="submitForm" type="button">Finish!</button>
