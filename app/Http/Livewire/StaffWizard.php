@@ -15,6 +15,7 @@ class StaffWizard extends Component
     public $currentStep = 1;
     public $name, $email, $phone, $file, $is_active;
     public $successMessage = '';
+    public $url;
 
 
     public function firstStepSubmit()
@@ -96,7 +97,7 @@ class StaffWizard extends Component
 
         // Open the new DB entry in a new tab
         $url = route('svg', $staff_prints->id);
-        return "<script>window.open('$url', '_blank');</script>";
+        return $url;
     }
 
     /**
