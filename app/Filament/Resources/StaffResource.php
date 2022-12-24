@@ -17,7 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
-use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Filters\Filter;
 use Filament\Navigation\NavigationItem;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\EditAction;
@@ -59,7 +59,7 @@ class StaffResource extends Resource
                 ToggleColumn::make('is_active')
             ])
             ->filters([
-                TernaryFilter::make('is_active')->label('Active')->toggle()
+                Filter::make('is_active')->label('Active')->toggle()
             ])
             ->actions([
                 Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'), 
