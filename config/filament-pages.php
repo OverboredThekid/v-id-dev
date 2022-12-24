@@ -15,7 +15,7 @@ return [
         | below to fully customize every aspect of it.
         |
         */
-        'resource' => FilamentPageResource::class,
+        'resource' => \App\Filament\Resources\PageResource::class,
         /*
         |--------------------------------------------------------------------------
         | Filament: Custom Filament Model
@@ -143,10 +143,4 @@ return [
     |
     */
     'default_layout' => 'layouts.app',
-];
-
-return [
-    'filament' => [
-         'resource' => \App\Filament\Resources\PageResource::class,
-    ],
 ];
