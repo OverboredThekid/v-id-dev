@@ -97,10 +97,14 @@
                     <script>
                         function openNewTab(event) {
                             event.preventDefault(); // prevent the button from submitting the form
-                            let url = Livewire.resolveComponent(event.target).call('is_loggedin'); // call the is_loggedin method and get the URL to open
+
+                            let component = window.Livewire.find(event.target); // find the component that the button belongs to
+                            let url = window.Livewire.directive(component, 'is_loggedin'); // call the is_loggedin method and get the URL to open
+
                             window.open(url, '_blank'); // open the URL in a new tab
                         }
                     </script>
+
                     @endif
                     <button class="btn btn-danger nextBtn btn-lg pull-right " type="button" wire:click="back(2)">Back</button>
                     <button class="btn btn-success btn-lg pull-right " wire:click="submitForm" type="button">Finish!</button>
