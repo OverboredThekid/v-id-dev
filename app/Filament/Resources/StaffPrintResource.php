@@ -20,7 +20,6 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 use FilamentCurator\Forms\Components\MediaUpload;
 use FilamentCurator\Tables\Columns\CuratorColumn;
-use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class StaffPrintResource extends Resource
@@ -33,7 +32,7 @@ class StaffPrintResource extends Resource
 
     protected static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return static::getModel()::count('is_active', '0');
     }
 
     public static function form(Form $form): Form
@@ -41,7 +40,6 @@ class StaffPrintResource extends Resource
         return $form
             ->schema([
                 SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints'),
-                Toggle::make('is_active')
             ]);
     }
 
@@ -62,7 +60,6 @@ class StaffPrintResource extends Resource
             ])   
             ->actions([
                 Action::make('Print')->label('Print')->url(fn (staff_prints $record): string => route('svg', $record))->openUrlInNewTab()->icon('heroicon-o-printer')->color('danger'),
-                // Action::make('Print')->label('Print')->url(fn (Post $record): string => route('posts.edit', $record))
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
