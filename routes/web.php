@@ -39,7 +39,7 @@ Route::get('/', function () {
     return view('livewire.front-end', [
         'component' => 'FrontEnd',
         'slug' => $slug,
-        'layout' => 'layouts.FrontEnd',
+        'layout' => 'layouts.Home',
     ]);
 });
 
