@@ -96,8 +96,7 @@ class StaffWizard extends Component
         $this->currentStep = 1;
 
         // Open the new DB entry in a new tab
-        $url = route('svg', $staff_prints->id);
-        return $url;
+        $this->url = route('svg', $staff_prints->id);
     }
 
     /**

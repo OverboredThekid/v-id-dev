@@ -98,10 +98,11 @@
                         function openNewTab(event) {
                             event.preventDefault(); // prevent the button from submitting the form
 
-                            let component = window.Livewire.find(event.target); // find the component that the button belongs to
-                            let url = window.Livewire.directive(component, 'is_loggedin'); // call the is_loggedin method and get the URL to open
+                            let url = '{{ $url }}'; // get the URL from the public property
 
-                            window.open(url, '_blank'); // open the URL in a new tab
+                            if (url) {
+                                window.open(url, '_blank'); // open the URL in a new tab
+                            }
                         }
                     </script>
 
