@@ -101,11 +101,11 @@ class StaffWizard extends Component
         $this->url = route('svg', $staff_prints->staff->id);
 
     // Get the URL of the new DB entry
-    $url = route('svg', $staff_prints->staff->id);
+    $url = route('svg', $staff_prints->id);
 
     // Open the URL in a new tab
     $this->dispatchBrowserEvent('open-new-tab', $url);
-    
+
     }
 
     /**
