@@ -28,7 +28,7 @@
                     <style>
                         .cls-1 {
                             font-size: 15px;
-                            min-font-size: 12px;
+                            min-font-size: 10px;
                             max-font-size: 18px;
                         }
 

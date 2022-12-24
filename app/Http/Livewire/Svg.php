@@ -15,20 +15,18 @@ class Svg extends Component
     public function mount($id)
     {
         Auth::check()?:abort(403);
-        $staff_info = staff_prints::findOrFail($id);
+        $staff_info = staff_prints::firstOrFail(['id' => $id]);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
-        $last = Str::after($staff_info->staff->name, ' ');
-        $first = Str::before($staff_info->staff->name, ' ');
-        $this->staff_last = $last;
-        $this->staff_first = $first;
+        $name_parts = explode(' ', $staff_info->staff->name);
+        $this->staff_last = end($name_parts);
+        $this->staff_first = reset($name_parts);
         $this->generateQrCode();
-        $staff_info = $staff_info->update(['is_active' => 1]);
-
+        $staff_info->update(['is_active' => 1]);
     }
     public function generateQrCode()
     {
-        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("http://generationsav.com/stafflinks/"));
+        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("http://generationsav.com/staff/{$this->staff->id}"));
     } 
 
     public function render()
