@@ -10,8 +10,8 @@ class PageResource extends FilamentPageResource
     public static function insertAfterSecondaryColumnSchema(): array
     {
         return [
-            Toggle::make('is_index'),
-            Toggle::make('is_QrPage'),
+            Toggle::make('is_index')->label("Home Page"),
+            Toggle::make('is_QrPage')->label("QR Page"),
 
         ];
     }

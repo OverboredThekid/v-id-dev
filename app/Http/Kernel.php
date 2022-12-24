@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
+        'is.active' => \App\Http\Middleware\IsActive::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \JamesHarley\FilamentRedirects\Middleware\RedirectMiddleware::class,
     ];
