@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Beier\FilamentPages\Filament\Resources\FilamentPageResource;
 use Filament\Forms\Components\Toggle;
 
-class PageResource extends FilamentPageResource
+class extra extends FilamentPageResource
 {
     /**
      * Recommended: Insert Fields at the end of the secondary column. (sidebar)
