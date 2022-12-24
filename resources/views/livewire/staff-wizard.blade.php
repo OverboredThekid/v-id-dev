@@ -94,18 +94,6 @@
                 <div id='end-buttons'>
                     @if(Auth::user())
                     <button class="btn btn-info btn-lg pull-right" type="button" wire:click="is_loggedin" onclick="openNewTab(event)">Print</button>
-                    <script>
-                        function openNewTab(event) {
-                            event.preventDefault(); // prevent the button from submitting the form
-
-                            let url = '{{ $url }}'; // get the URL from the public property
-
-                            if (url) {
-                                window.open(url, '_blank'); // open the URL in a new tab
-                            }
-                        }
-                    </script>
-
                     @endif
                     <button class="btn btn-danger nextBtn btn-lg pull-right " type="button" wire:click="back(2)">Back</button>
                     <button class="btn btn-success btn-lg pull-right " wire:click="submitForm" type="button">Finish!</button>
