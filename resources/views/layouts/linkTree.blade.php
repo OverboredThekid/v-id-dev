@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Bull shit</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
 
 </head>

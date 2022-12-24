@@ -21,6 +21,7 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Navigation\NavigationItem;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\Action;
 
 
 class StaffResource extends Resource
@@ -62,6 +63,7 @@ class StaffResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-printer')->color('danger'), 
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
