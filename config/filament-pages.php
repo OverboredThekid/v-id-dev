@@ -144,3 +144,9 @@ return [
     */
     'default_layout' => 'layouts.app',
 ];
+
+return [
+    'filament' => [
+         'resource' => \App\Filament\Resources\PageResource::class,
+    ],
+];
