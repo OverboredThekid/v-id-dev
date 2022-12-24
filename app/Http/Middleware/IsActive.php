@@ -21,12 +21,13 @@ class IsActive
         $staff = staff::where('id', $request->slug)->first();
 
         // Check if the employee is active
-        if ($staff->is_active) {
-            // If the employee is active, allow the request to proceed
-            return $next($request);
-        } else {
+        if (!$staff->is_active || $staff->is_active == null) {
             // If the employee is not active, redirect the user to a 404 error page
             return response()->view('errors.404', [], 404);
+           
+        } else {
+             // If the employee is active, allow the request to proceed
+             return $next($request);
         }
     }
 }
