@@ -19,15 +19,20 @@ class IsActive
     {
         // Retrieve the employee record using the slug passed in the route
         $staff = staff::where('id', $request->slug)->first();
-
-        // Check if the employee is active
-        if (!$staff->is_active || $staff->is_active == null) {
-            // If the employee is not active, redirect the user to a 404 error page
-            return response()->view('errors.404', [], 404);
-           
+    
+        // Check if the employee record was found
+        if ($staff) {
+            // If the employee record was found, check if the employee is active
+            if ($staff->is_active) {
+                // If the employee is active, allow the request to proceed
+                return $next($request);
+            } else {
+                // If the employee is not active, redirect the user to a 404 error page
+                return response()->view('errors.404', [], 404);
+            }
         } else {
-             // If the employee is active, allow the request to proceed
-             return $next($request);
+            // If the employee record was not found, redirect the user to a 404 error page
+            return response()->view('errors.404', [], 404);
         }
     }
 }
