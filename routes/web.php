@@ -20,7 +20,7 @@ Route::get('staff/{slug}', function () {
     return view('livewire.front-end', [
         'component' => 'FrontEnd',
         'slug' => $slug,
-        'layout' => 'layouts.FrontEnd',
+        'layout' => 'layouts.linkTree',
     ]);
 })->middleware('is.active');
 
