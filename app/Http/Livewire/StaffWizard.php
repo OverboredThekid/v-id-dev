@@ -98,11 +98,11 @@ class StaffWizard extends Component
         // Open the new DB entry in a new tab
         $this->url = route('svg', $staff_prints->staff->id);
 
-        // Get the URL of the new DB entry
-        $url = route('svg', $staff_prints->staff->id);
+    // Get the URL of the new DB entry
+    $url = route('svg', $staff_prints->staff->id);
 
-        // Open the URL in a new tab
-        echo '<script>window.open("' . $url . '", "_blank");</script>';
+    // Open the URL in a new tab
+    $this->call('window.open', [$url, '_blank']);
     }
 
     /**
