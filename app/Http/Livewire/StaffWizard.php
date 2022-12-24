@@ -6,6 +6,8 @@ use App\Models\staff;
 use App\Models\staff_prints;
 use Livewire\WithFileUploads;
 use Livewire\Component;
+use Livewire\Commands\Concerns\ManagesScripts;
+
 
 class StaffWizard extends Component
 {
