@@ -94,6 +94,11 @@
                 <div id='end-buttons'>
                     @if(Auth::user())
                     <button class="btn btn-info btn-lg pull-right" type="button" wire:click="is_loggedin">Print</button>
+                    <script>
+                        window.addEventListener('open-new-tab', event => {
+                            window.open(event.detail, '_blank');
+                        });
+                    </script>
                     @endif
                     <button class="btn btn-danger nextBtn btn-lg pull-right " type="button" wire:click="back(2)">Back</button>
                     <button class="btn btn-success btn-lg pull-right " wire:click="submitForm" type="button">Finish!</button>

@@ -104,7 +104,8 @@ class StaffWizard extends Component
     $url = route('svg', $staff_prints->staff->id);
 
     // Open the URL in a new tab
-    $this->call('window.open', [$url, '_blank']);
+    $this->dispatchBrowserEvent('open-new-tab', $url);
+    
     }
 
     /**
