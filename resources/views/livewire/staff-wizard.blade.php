@@ -58,7 +58,7 @@
                     <div class="form-group img-upload">
                         <label for="description">Image Upload</label>
                         <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                            <input type="file" wire:model="file" :wire:key='file' class="form-control" id="file" x-show="!isUploading" />
+                            <input type="file" wire:model="file" :wire:key='file' class="form-control" id="file" x-show="!isUploading" accept="image/*" />
                             <input type="hidden" wire:model="is_active" value="1">
                             <div class="mt-2" x-show="isUploading">
                                 <progress max="100" x-bind:value="progress"></progress>

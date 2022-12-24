@@ -62,8 +62,8 @@ class StaffResource extends Resource
                 TernaryFilter::make('is_active')
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'), 
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([

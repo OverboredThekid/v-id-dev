@@ -20,7 +20,7 @@ class StaffWizard extends Component
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'name' => 'required|unique:staff',
+            'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
         ]);
