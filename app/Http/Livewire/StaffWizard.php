@@ -90,7 +90,7 @@ class StaffWizard extends Component
         ])->staff_prints()->save($staff_prints);
 
         // Open the new DB entry in a new tab
-        $url = route('svg', $staff_prints->id);
+        $url = url(route('svg', $staff_prints->id));
         echo "<script>window.open('$url', '_blank');</script>";
 
         $this->successMessage = 'ID Created Successfully and Printed.';
