@@ -18,7 +18,7 @@ class IsActive
     public function handle(Request $request, Closure $next)
     {
         // Retrieve the employee record using the slug passed in the route
-        $staff = staff::where('slug', $request->slug)->first();
+        $staff = staff::where('id', $request->slug)->first();
 
         // Check if the employee is active
         if ($staff->is_active) {
