@@ -49,7 +49,7 @@ class StaffWizard extends Component
         $staff_prints->is_active = '0';
         $staff_prints->addMedia($this->file)->toMediaCollection('staff_print');
 
-        staff::create([
+        staff::firstOrCreate([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -81,7 +81,7 @@ class StaffWizard extends Component
         $staff_prints->is_active = '1';
         $staff_prints->addMedia($this->file)->toMediaCollection('staff_print');
 
-        staff::create([
+        staff::firstOrCreate([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
