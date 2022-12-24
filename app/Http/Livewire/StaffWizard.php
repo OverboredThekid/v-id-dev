@@ -26,6 +26,7 @@ class StaffWizard extends Component
         ]);
 
         $this->currentStep = 2;
+        $this->successMessage = '';
     }
 
 
@@ -86,8 +87,6 @@ class StaffWizard extends Component
             'phone' => $this->phone,
             'is_active' => '1',
         ])->staff_prints()->save($staff_prints);
-
-
 
         $this->successMessage = 'ID Created Successfully and Printed.';
 
