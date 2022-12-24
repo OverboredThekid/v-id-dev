@@ -59,7 +59,7 @@ class StaffResource extends Resource
                 ToggleColumn::make('is_active')
             ])
             ->filters([
-                TernaryFilter::make('is_active')
+                TernaryFilter::make('is_active')->label('Active')->toggle()
             ])
             ->actions([
                 Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'), 

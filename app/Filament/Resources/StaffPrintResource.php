@@ -56,7 +56,7 @@ class StaffPrintResource extends Resource
                 SpatieMediaLibraryImageColumn::make('staff_img')->collection('staff_print'),
                 ])
             ->filters([
-                TernaryFilter::make('is_active')->label('Has Printed')
+                TernaryFilter::make('is_active')->label('Has Printed')->toggle()
             ])   
             ->actions([
                 Action::make('Print')->label('Print')->url(fn (staff_prints $record): string => route('svg', $record))->openUrlInNewTab()->icon('heroicon-o-printer')->color('danger'),
