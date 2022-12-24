@@ -15,14 +15,16 @@ class Svg extends Component
     public function mount($id)
     {
         Auth::check()?:abort(403);
-        $staff_info = staff_prints::firstOrFail(['id' => $id]);
+        $staff_info = staff_prints::findOrFail($id);
         $this->staff = $staff_info;
         $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
-        $name_parts = explode(' ', $staff_info->staff->name);
-        $this->staff_last = end($name_parts);
-        $this->staff_first = reset($name_parts);
+        $last = Str::after($staff_info->staff->name, ' ');
+        $first = Str::before($staff_info->staff->name, ' ');
+        $this->staff_last = $last;
+        $this->staff_first = $first;
         $this->generateQrCode();
-        $staff_info->update(['is_active' => 1]);
+        $staff_info = $staff_info->update(['is_active' => 1]);
+
     }
     public function generateQrCode()
     {
