@@ -7,7 +7,7 @@ return [
      *      \Filament\Forms\Components\RichEditor::class
      *      \Filament\Forms\Components\MarkdownEditor::class
      */
-    'editor'  => \Filament\Forms\Components\RichEditor::class,
+    'editor'  => FilamentEditorJs\Forms\Components\EditorJs::class,
 
     /**
      * Buttons for text editor toolbar.
