@@ -14,8 +14,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->longText('data')->nullable();
-            $table->boolean('is_index');
-            $table->boolean('is_QrPage');
+            $table->boolean('is_index')->nullable();
+            $table->boolean('is_QrPage')->nullable();
             $table->dateTime('published_at');
             $table->dateTime('published_until')->nullable();
 
