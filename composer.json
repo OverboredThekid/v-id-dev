@@ -20,9 +20,11 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "marjose123/filament-no-connection": "^1.0",
         "rahmanramsi/filament-editorjs": "^1.0",
         "ramnzys/filament-email-log": "^0.2.2",
-        "simplesoftwareio/simple-qrcode": "^4.2"
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "stephenjude/filament-blog": "^0.1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
