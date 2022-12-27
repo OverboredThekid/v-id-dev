@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
@@ -20,11 +21,9 @@
         animation: Gradient 15s ease infinite;
     }
 </style>
+
 <body>
-    @yield('content')
-
-    {!! $slug->data['content']['content'] !!}
-
+    {{ $slot }}
 </body>
 <footer>
     @livewireScripts

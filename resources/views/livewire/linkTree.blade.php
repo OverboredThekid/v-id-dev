@@ -28,5 +28,8 @@
             </div>
         </div>
     </div>
+
+    @extends($layout)
+
 {!! $slug->data['content']['content'] !!}
 </div>
