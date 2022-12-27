@@ -53,19 +53,19 @@
         <div class="col-xs-12">
             <div class="text-center">
                 <div class="py-5">
-                    <button onclick="location.href='#'" class="text-red-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
+                    <button onclick="location.href='#'" class="text-white-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 py-3 font-semibold hover:bg-sky-700">Guide: Increasing Your Engagement</button>
+                    <button onclick="location.href='#'" class="text-white-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">View My YouTube Channel</button>
+                    <button onclick="location.href='#'" class="text-white-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">Connect On LinkedIn</button>
+                    <button onclick="location.href='#'" class="text-white-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">My Personal Website</button>
+                    <button onclick="location.href='#'" class="text-white-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase w-1/2 px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Staff Links</button>
                 </div>
             </div>
         </div>
