@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400">
+<body>
     {{ $slot }}
 </body>
 <footer>
