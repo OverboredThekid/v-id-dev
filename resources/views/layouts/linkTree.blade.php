@@ -22,6 +22,9 @@
 </style>
 <body>
     @yield('content')
+
+    {!! $slug->data['content']['content'] !!}
+
 </body>
 <footer>
     @livewireScripts
