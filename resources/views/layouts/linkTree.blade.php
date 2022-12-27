@@ -7,7 +7,7 @@
     <title>{{ config('app.name', 'Company Links') }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.css" rel="stylesheet">
 </head>
 <style>
     body {
