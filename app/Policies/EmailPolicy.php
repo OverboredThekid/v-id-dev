@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Beier\FilamentPages\Models\FilamentPage;
+use Ramnzys\FilamentEmailLog\Models\Email;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FilamentPagePolicy
+class EmailPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class FilamentPagePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_page');
+        return $user->can('view_any_email');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, FilamentPage $filamentPage)
+    public function view(User $user, Email $email)
     {
-        return $user->can('view_page');
+        return $user->can('view_email');
     }
 
     /**
@@ -41,31 +41,31 @@ class FilamentPagePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_page');
+        return $user->can('create_email');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, FilamentPage $filamentPage)
+    public function update(User $user, Email $email)
     {
-        return $user->can('update_page');
+        return $user->can('update_email');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, FilamentPage $filamentPage)
+    public function delete(User $user, Email $email)
     {
-        return $user->can('delete_page');
+        return $user->can('delete_email');
     }
 
     /**
@@ -76,19 +76,19 @@ class FilamentPagePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_page');
+        return $user->can('delete_any_email');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, FilamentPage $filamentPage)
+    public function forceDelete(User $user, Email $email)
     {
-        return $user->can('force_delete_page');
+        return $user->can('force_delete_email');
     }
 
     /**
@@ -99,19 +99,19 @@ class FilamentPagePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_page');
+        return $user->can('force_delete_any_email');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, FilamentPage $filamentPage)
+    public function restore(User $user, Email $email)
     {
-        return $user->can('restore_page');
+        return $user->can('restore_email');
     }
 
     /**
@@ -122,19 +122,19 @@ class FilamentPagePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_page');
+        return $user->can('restore_any_email');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \Ramnzys\FilamentEmailLog\Models\Email  $email
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, FilamentPage $filamentPage)
+    public function replicate(User $user, Email $email)
     {
-        return $user->can('replicate_page');
+        return $user->can('replicate_email');
     }
 
     /**
@@ -145,7 +145,7 @@ class FilamentPagePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_page');
+        return $user->can('reorder_email');
     }
 
 }

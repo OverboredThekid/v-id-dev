@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Beier\FilamentPages\Models\FilamentPage;
+use JamesHarley\FilamentRedirects\Models\Redirect;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FilamentPagePolicy
+class RedirectPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class FilamentPagePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_page');
+        return $user->can('view_any_redirect');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, FilamentPage $filamentPage)
+    public function view(User $user, Redirect $redirect)
     {
-        return $user->can('view_page');
+        return $user->can('view_redirect');
     }
 
     /**
@@ -41,31 +41,31 @@ class FilamentPagePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_page');
+        return $user->can('create_redirect');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, FilamentPage $filamentPage)
+    public function update(User $user, Redirect $redirect)
     {
-        return $user->can('update_page');
+        return $user->can('update_redirect');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, FilamentPage $filamentPage)
+    public function delete(User $user, Redirect $redirect)
     {
-        return $user->can('delete_page');
+        return $user->can('delete_redirect');
     }
 
     /**
@@ -76,19 +76,19 @@ class FilamentPagePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_page');
+        return $user->can('delete_any_redirect');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, FilamentPage $filamentPage)
+    public function forceDelete(User $user, Redirect $redirect)
     {
-        return $user->can('force_delete_page');
+        return $user->can('force_delete_redirect');
     }
 
     /**
@@ -99,19 +99,19 @@ class FilamentPagePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_page');
+        return $user->can('force_delete_any_redirect');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, FilamentPage $filamentPage)
+    public function restore(User $user, Redirect $redirect)
     {
-        return $user->can('restore_page');
+        return $user->can('restore_redirect');
     }
 
     /**
@@ -122,19 +122,19 @@ class FilamentPagePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_page');
+        return $user->can('restore_any_redirect');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Beier\FilamentPages\Models\FilamentPage  $filamentPage
+     * @param  \JamesHarley\FilamentRedirects\Models\Redirect  $redirect
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, FilamentPage $filamentPage)
+    public function replicate(User $user, Redirect $redirect)
     {
-        return $user->can('replicate_page');
+        return $user->can('replicate_redirect');
     }
 
     /**
@@ -145,7 +145,7 @@ class FilamentPagePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_page');
+        return $user->can('reorder_redirect');
     }
 
 }
