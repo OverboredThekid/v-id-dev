@@ -15,7 +15,9 @@ class LinkTree extends Component
     public function mount($id)
     {
         $staff_info = staff::findOrFail($id);
+        $page = FilamentPage::where('is_QrPage', '=', 1)->firstOrFail();
         $this->staff = $staff_info;
+        $this->slug = $page;
 
     }
 
