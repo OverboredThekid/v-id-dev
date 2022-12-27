@@ -18,7 +18,7 @@ class FilamentPagePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_page');
+        return $user->can('view_any_filament::page');
     }
 
     /**
@@ -30,7 +30,7 @@ class FilamentPagePolicy
      */
     public function view(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('view_page');
+        return $user->can('view_filament::page');
     }
 
     /**
@@ -41,7 +41,7 @@ class FilamentPagePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_page');
+        return $user->can('create_filament::page');
     }
 
     /**
@@ -53,7 +53,7 @@ class FilamentPagePolicy
      */
     public function update(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('update_page');
+        return $user->can('update_filament::page');
     }
 
     /**
@@ -65,7 +65,7 @@ class FilamentPagePolicy
      */
     public function delete(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('delete_page');
+        return $user->can('delete_filament::page');
     }
 
     /**
@@ -76,7 +76,7 @@ class FilamentPagePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_page');
+        return $user->can('delete_any_filament::page');
     }
 
     /**
@@ -88,7 +88,7 @@ class FilamentPagePolicy
      */
     public function forceDelete(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('force_delete_page');
+        return $user->can('force_delete_filament::page');
     }
 
     /**
@@ -99,7 +99,7 @@ class FilamentPagePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_page');
+        return $user->can('force_delete_any_filament::page');
     }
 
     /**
@@ -111,7 +111,7 @@ class FilamentPagePolicy
      */
     public function restore(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('restore_page');
+        return $user->can('restore_filament::page');
     }
 
     /**
@@ -122,7 +122,7 @@ class FilamentPagePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_page');
+        return $user->can('restore_any_filament::page');
     }
 
     /**
@@ -134,7 +134,7 @@ class FilamentPagePolicy
      */
     public function replicate(User $user, FilamentPage $filamentPage)
     {
-        return $user->can('replicate_page');
+        return $user->can('replicate_filament::page');
     }
 
     /**
@@ -145,7 +145,7 @@ class FilamentPagePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_page');
+        return $user->can('reorder_filament::page');
     }
 
 }
