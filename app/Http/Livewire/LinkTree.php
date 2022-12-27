@@ -11,6 +11,6 @@ class LinkTree extends Component
 {
     public function render()
     {
-        return view('livewire.link-tree');
+        return view('livewire.link-tree')->layout('layouts.linktree');
     }
 }
