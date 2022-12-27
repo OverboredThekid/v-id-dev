@@ -70,10 +70,6 @@
             </div>
         </div>
     </div>
-
-    <div class="text-center py-5">
-        <a href="https://www.Back-lit.co/" class="text-gray-700" target="_blank">Powered by Back-Lit</a>
-    </div>
     @yield('content')
 </body>
 <footer>
