@@ -1,4 +1,5 @@
 <div>
+    <body class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
     <div id='wizard' class='wizard-body'>
 
         @if(!empty($successMessage))
