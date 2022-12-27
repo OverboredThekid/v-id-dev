@@ -44,7 +44,7 @@
     <div class="container mx-auto">
         <div class="col-xs-12">
             <div class="text-center py-10">
-                <img class="backdrop linktree w-24 h-24 rounded-full mx-auto">
+                <img class="backdrop linktree">
                 <h2 class="text-white py-5">{{ config('app.name', 'Company Links') }}</h2>
             </div>
         </div>
@@ -53,19 +53,19 @@
         <div class="col-xs-12">
             <div class="text-center">
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="bg-gray-300 w-1/2 py-3 font-semibold">15% OFF Instagram Growth</button>
+                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">15% OFF Instagram Growth</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="bg-gray-300 w-1/2 py-3 font-semibold">Guide: Increasing Your Engagement</button>
+                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">Guide: Increasing Your Engagement</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="bg-gray-300 w-1/2 py-3 font-semibold">View My YouTube Channel</button>
+                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">View My YouTube Channel</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="bg-gray-300 w-1/2 py-3 font-semibold">Connect On LinkedIn</button>
+                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">Connect On LinkedIn</button>
                 </div>
                 <div class="py-5">
-                    <button onclick="location.href='#'" type="button" class="bg-gray-300 w-1/2 py-3 font-semibold">My Personal Website</button>
+                    <button onclick="location.href='#'" type="button" class="outline outline-offset-2 outline-2 w-1/2 py-3 font-semibold hover:bg-sky-700">My Personal Website</button>
                 </div>
             </div>
         </div>
