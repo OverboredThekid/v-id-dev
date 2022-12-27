@@ -20,24 +20,6 @@
         -moz-animation: Gradient 15s ease infinite;
         animation: Gradient 15s ease infinite;
     }
-
-    h1,
-    h6 {
-        font-family: 'Open Sans';
-        font-weight: 300;
-        text-align: center;
-        position: absolute;
-        top: 45%;
-        right: 0;
-        left: 0;
-    }
-
-    .element {
-        margin: 0 auto;
-        width: 150px;
-        height: 150px;
-        background: red;
-    }
 </style>
 
 <body>
