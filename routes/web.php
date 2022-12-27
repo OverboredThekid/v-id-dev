@@ -14,17 +14,6 @@ Route::get('staff/wizard', StaffWizard::class)->name('wizard');
 //Staff ID Route ~Livewire
 Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
-//Staff Qr Landing Page
-Route::get('staff/{id}', function () {
-    $slug = FilamentPage::where('is_QrPage', '=', 1)->firstOrFail();
-    return view('livewire.link-tree', [
-        'component' => 'LinkTree',
-        'slug' => $slug,
-        'layout' => 'layouts.linkTree',
-    ]);
-})->name('staff');
-
-
 // Custom Pages Route
 Route::get('{slug}', function (FilamentPage $slug) {
     return view('livewire.front-end', [
