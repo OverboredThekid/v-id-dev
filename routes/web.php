@@ -15,14 +15,14 @@ Route::get('staff/wizard', StaffWizard::class)->name('wizard');
 Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
 //Staff Qr Landing Page
-Route::get('staff/{slug}', function () {
+Route::get('staff/{id}', function () {
     $slug = FilamentPage::where('is_QrPage', '=', 1)->firstOrFail();
     return view('livewire.link-tree', [
         'component' => 'LinkTree',
         'slug' => $slug,
         'layout' => 'layouts.linkTree',
     ]);
-})->middleware('is.active')->name('staff');
+})->name('staff');
 
 
 // Custom Pages Route
