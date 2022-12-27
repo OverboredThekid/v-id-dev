@@ -17,8 +17,8 @@ Route::get('staff/svg/{id}', Svg::class)->name('svg');
 //Staff Qr Landing Page
 Route::get('staff/{slug}', function () {
     $slug = FilamentPage::where('is_QrPage', '=', 1)->firstOrFail();
-    return view('livewire.front-end', [
-        'component' => 'FrontEnd',
+    return view('livewire.link-tree', [
+        'component' => 'LinkTree',
         'slug' => $slug,
         'layout' => 'layouts.linkTree',
     ]);

@@ -3,25 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Beier\FilamentPages\Models\FilamentPage as DB;
+use App\Models\staff as DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class FrontEnd extends Component
+class LinkTree extends Component
 {
 
-    public $page;
+    public $staff;
 
-    public function mount($slug)
+    public function mount($id)
     {
         // Will return a ModelNotFoundException if no user with that id
         try {
-            $Data = DB::findorfail($slug);
-            if($Data['is_QrCode' == '0']){
-                $this->page = DB::findorfail($slug);
-            }else{
-                return redirect('/');
-            }
-           
+            $this->staff = DB::findorfail($id);
         }
         // catch(Exception $e) catch any exception
         catch (ModelNotFoundException $e) {
@@ -32,6 +26,6 @@ class FrontEnd extends Component
 
     public function render()
     {
-        return view('livewire.front-end')->layout('layouts.FrontEnd');
+        return view('livewire.link-tree');
     }
 }
