@@ -48,6 +48,23 @@
         </a><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
             <div class="text-lg text-center p-4">Service Title</div>
         </a></div>
+
+        <div class="grid grid-cols-3 bg-black">
+		<a href="#" class="bg-black relative block flex items-center justify-center h-72 font-heading text-white uppercase tracking-widest hover:opacity-75">
+			<div class="relative z-10">Forest Trails</div>
+			<img src="https://images.unsplash.com/photo-1449495169669-7b118f960251?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+		</a>
+		<a href="#" class="bg-black relative block flex items-center justify-center h-72 font-heading text-white uppercase tracking-widest hover:opacity-75">
+			<div class="relative z-10">City Streets</div>
+			<img src="https://images.unsplash.com/uploads/1411070807173e4d6762d/f84a3a01?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+		</a>
+		<a href="#" class="bg-black relative block flex items-center justify-center h-72 font-heading text-white uppercase tracking-widest hover:opacity-75">
+			<div class="relative z-10">Sandy Beaches</div>
+			<img src="https://images.unsplash.com/photo-1528855275993-0f4a23fedd62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+		</a>
+	</div>
+
+
     <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 py-24">
         <div class="hidden lg:grid relative grid-cols-2">
             <div class="pt-24">
@@ -64,6 +81,9 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="bg-black text-white text-center p-12">
         <div class="text-2xl">Join the club</div>
         <form class="max-w-sm mx-auto relative h-12 mt-6 border-b border-white" name="subscribe" method="POST" netlify>
