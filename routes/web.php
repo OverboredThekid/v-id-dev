@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\StaffWizard;
 use App\Http\Livewire\Svg;
+use App\Http\Livewire\Home;
 use App\Http\Livewire\LinkTree;
 use Beier\FilamentPages\Models\FilamentPage;
 use App\Models\MediaLibrary;
@@ -26,15 +27,20 @@ Route::get('{slug}', function (FilamentPage $slug) {
         'layout' => 'layouts.FrontEnd',
     ]);
 });
+
+
 //Index Page Custom Page Route
-Route::get('/', function () {
-    $slug = FilamentPage::where('is_index', '=', 1)->firstOrFail();
-    return view('livewire.front-end', [
-        'component' => 'FrontEnd',
-        'slug' => $slug,
-        'layout' => 'layouts.Home',
-    ]);
-});
+// Route::get('/', function () {
+//     $slug = FilamentPage::where('is_index', '=', 1)->firstOrFail();
+//     return view('livewire.front-end', [
+//         'component' => 'FrontEnd',
+//         'slug' => $slug,
+//         'layout' => 'layouts.Home',
+//     ]);
+// });
+ 
+//Basic Index ~Livewire
+Route::get('/', Home::class)->name('staff');
 
 //Fallback ~Redirects
 Route::fallback(function () {
