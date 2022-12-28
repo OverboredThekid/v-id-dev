@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    @yield('content')
+{{ $slot }}
 </body>
 <footer>
     @livewireScripts
