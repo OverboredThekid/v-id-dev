@@ -18,9 +18,8 @@
         <div class="lg:px-32 lg:py-32 flex items-center justify-center">
             <div>
                 <h2 class="text-5xl mb-6 font-bold uppercase italic">Contractors you can trust</h2>
-                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p><a href="/about" class="mt-8 inline-block rounded-full border-2 border-gray-900 text-lg px-8 py-3 hover:bg-black hover:text-white">Our
-                    Promise</a>
+                <p class="text-lg">Unwavering in our commitment to excellence, customer service, and innovation, Generations A/V is a Premier Audio/Visual production services company in Houston</p>
+                <a href="/about" class="mt-8 inline-block rounded-full border-2 border-gray-900 text-lg px-8 py-3 hover:bg-black hover:text-white">What is GAV?</a>
             </div>
         </div>
         <div class="hidden lg:grid relative grid-cols-2">
@@ -36,6 +35,8 @@
                 out more</a>
         </div><img src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2547&q=80" class="w-full h-full absolute inset-0 object-cover opacity-75">
     </div>
+
+
     <div class="mx-auto max-w-lg text-center py-15">
         <h2 class="text-5xl mb-6 font-bold uppercase italic">Our Services</h2>
         <p class="text-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -45,9 +46,10 @@
             <div class="text-lg text-center p-4">Service Title</div>
         </a><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
             <div class="text-lg text-center p-4">Service Title</div>
-        </a><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
-            <div class="text-lg text-center p-4">Service Title</div>
-        </a></div>
+        </a>
+    </div>
+
+
 
         <div class="grid grid-cols-3 bg-black">
 		<a href="#" class="bg-black relative block flex items-center justify-center h-72 font-heading text-white uppercase tracking-widest hover:opacity-75">
