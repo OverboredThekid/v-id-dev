@@ -40,7 +40,7 @@ Route::get('{slug}', function (FilamentPage $slug) {
 // });
  
 //Basic Index ~Livewire
-Route::get('/', Home::class)->name('staff');
+Route::get('/', Home::class);
 
 //Fallback ~Redirects
 Route::fallback(function () {

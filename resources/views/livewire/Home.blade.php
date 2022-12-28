@@ -18,7 +18,7 @@
         <div class="lg:px-32 lg:py-32 flex items-center justify-center">
             <div>
                 <h2 class="text-5xl mb-6 font-bold uppercase italic">Contractors you can trust</h2>
-                <p class="text-lg">Unwavering in our commitment to excellence, customer service, and innovation, Generations A/V is a Premier Audio/Visual production services company in Houston</p>
+                <p class="text-lg">Unwavering in our commitment to excellence, customer service, and innovation, Generations A/V is a Premier Audio/Visual production services company in Houston.</p>
                 <a href="/about" class="mt-8 inline-block rounded-full border-2 border-gray-900 text-lg px-8 py-3 hover:bg-black hover:text-white">What is GAV?</a>
             </div>
         </div>
