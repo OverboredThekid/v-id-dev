@@ -1,180 +1,91 @@
 <div>
-
-		<!-- HEADER / -->
-		<div class="relative z-10 w-full h-24 px-12 bg-white flex justify-between">
-
-			<a href="#" class="block h-full w-12 flex items-center text-lg md:text-2xl font-bold tracking-widest text-gray-700 uppercase hover:text-gray-400">skyscraper</a>
-			
-			<a href="#" class="relative block px-3 h-32 bg-blue-900 text-white text-center tracking-widest uppercase text-xs font-bold pt-8 pb-6 flex flex-col items-center justify-between hover:bg-gray-900">
-				<span>menu</span>
-				<div class="flex items-end justify-center">
-					<span class="block h-5 w-1 bg-yellow-600"></span>
-					<span class="block h-8 w-1 bg-yellow-600 mx-1"></span>
-					<span class="block h-5 w-1 bg-yellow-600"></span>
-				</div>
-			</a>
-
-		</div>
-		<!-- / HEADER -->
-
-		<div class="-mt-24 pt-24 w-full h-screen bg-white flex flex-wrap">
-			
-			<div class="px-12 md:-px-0 w-full md:w-4/12 bg-white flex items-center justify-start md:justify-end">
-				<div class="shadow-xl md:shadow-none px-12 py-12 md:pl-0 md:pr-24 bg-white md:-mr-64 relative z-10">
-					<h1 class="mb-8 text-3xl md:text-5xl text-gray-800 text-bold uppercase font-bold tracking-widest leading-tight">
-						Luxury<br />house<br />shares
-					</h1>
-					<h2 class="text-lg md:text-2xl font-serif text-gray-500">Exceptional Contemporary Living</h2>
-
-					<span class="hidden md:block absolute top-0 right-0 w-48 h-4 bg-blue-900 -mr-24 mt-56"></span>
-				</div>
-			</div>
-			
-			<div class="-mt-64 md:mt-0 w-full md:flex-1">
-				<img src="https://images.unsplash.com/photo-1545022388-43a762e088b0?w=1400" class="w-full h-full object-cover" />
-			</div>
-
-		</div>
-
-
-		<div class="bg-gray-800 px-12 py-24 flex items-center">
-
-			<div class="hidden md:block w-3/12"></div>
-
-			<div class="flex-1 relative">
-				<h2 class="mb-8 uppercase text-white text-2xl font-bold tracking-widest">Our Expertise</h2>
-				<p class="font-serif text-gray-500 text-base md:text-xl max-w-2xl leading-loose">RJ Investments brings luxury living to the rental market through bespoke renovations, at affordable prices with quality property management.</p>
-
-				<span class="absolute top-0 left-0 w-4 h-full bg-gray-300 -ml-20"></span>
-			</div>
-
-		</div>
-
-
-		<!-- SPACER / -->
-		<div class="w-full h-24 border-black bg-white flex justify-end">
-			<div class="w-64 bg-gray-800"></div>
-		</div>
-		<!-- / SPACER -->
-
-		<div class="w-full flex items-center justify-start relative">
-			<div class="w-auto md:w-3/12"></div>
-
-			<div class="w-full md:w-8/12 bg-gray-100 py-12 relative flex">
-
-				<a href="#" class="block relative z-10 bg-white h-full w-full px-12 md:px-0 md:w-6/12 py-24 md:-ml-24">
-					<h3 class="mb-2 uppercase text-gray-800 text-3xl font-bold tracking-widest">The Portfolio</h3>
-					<p class="text-lg md:text-xl font-serif text-gray-400">Completed Builds</p>
-				</a>
-
-				<img src="https://images.unsplash.com/photo-1489171078254-c3365d6e359f?w=1200" class="absolute top-0 left-0 block w-full h-full object-cover" />
-
-			</div>
-
-			<div class="w-1/12 absolute top-0 right-0 h-full bg-gray-800"></div>
-		</div>
-
-
-		<!-- SPACER / -->
-		<div class="w-full h-12 border-black bg-white flex justify-end">
-			<div class="w-64 bg-gray-800"></div>
-		</div>
-		<!-- / SPACER -->
-
-
-		<div class="w-full flex items-center justify-start relative">
-			<div class="w-auto md:w-3/12"></div>
-
-			<div class="w-full md:w-8/12 bg-gray-100 py-12 relative flex">
-
-				<a href="#" class="block relative z-10 bg-white h-full w-full px-12 md:px-0 md:w-6/12 py-24 md:-ml-24">
-					<h3 class="mb-2 uppercase text-gray-800 text-3xl font-bold tracking-widest">The Projects</h3>
-					<p class="text-lg md:text-xl font-serif text-gray-400">Current Developments</p>
-				</a>
-
-				<img src="https://images.unsplash.com/photo-1537726235470-8504e3beef77?w=1200" class="absolute top-0 left-0 block w-full h-full object-cover" />
-
-			</div>
-
-			<div class="w-1/12 absolute top-0 right-0 h-full bg-gray-800"></div>
-		</div>
-
-
-		<!-- SPACER / -->
-		<div class="w-full h-12 border-black bg-white flex justify-end">
-			<div class="w-64 bg-gray-800"></div>
-		</div>
-		<!-- / SPACER -->
-
-
-		<div class="w-full flex items-center justify-start relative">
-			<div class="w-auto md:w-3/12"></div>
-
-			<div class="w-full md:w-8/12 bg-gray-100 py-12 relative flex">
-
-				<a href="#" class="block relative z-10 bg-white h-full w-full px-12 md:px-0 md:w-6/12 py-24 md:-ml-24">
-					<h3 class="mb-2 uppercase text-gray-800 text-3xl font-bold tracking-widest">Our Properies</h3>
-					<p class="text-lg md:text-xl font-serif text-gray-400">Complete Collection</p>
-				</a>
-
-				<img src="https://images.unsplash.com/photo-1545060894-7b45236d00b3?w=1200" class="absolute top-0 left-0 block w-full h-full object-cover" />
-
-			</div>
-
-			<div class="w-1/12 absolute top-0 right-0 h-full bg-gray-800"></div>
-		</div>
-
-
-		<!-- SPACER / -->
-		<div class="w-full h-24 border-black bg-white flex justify-end">
-			<div class="w-64 bg-gray-800"></div>
-		</div>
-		<!-- / SPACER -->
-
-
-		<div class="bg-gray-800">
-			
-			<div class="mx-auto max-w-5xl flex flex-wrap justify-center items-center text-center py-20">
-				
-				<a href="#" class="w-full md:w-1/3 px-12">
-					<h4 class="mb-2 uppercase text-gray-100 text-lg font-bold tracking-widest">Investment Options</h4>
-					<p class="text-sm md:text-lg font-serif text-gray-400">Get More</p>
-				</a>
-				
-				<a href="#" class="w-full md:w-1/3 py-12 px-12 md:border-l-4 md:border-r-4 md:border-gray-700">
-					<h4 class="mb-2 uppercase text-gray-100 text-lg font-bold tracking-widest">Accomodation</h4>
-					<p class="text-sm md:text-lg font-serif text-gray-400">Future Tenants</p>
-				</a>
-				
-				<a href="#" class="w-full md:w-1/3 px-12">
-					<h4 class="mb-2 uppercase text-gray-100 text-lg font-bold tracking-widest">Land Development</h4>
-					<p class="text-sm md:text-lg font-serif text-gray-400">The Homes</p>
-				</a>
-
-			</div>
-
-		</div>
-
-		
-		<!-- FOOTER / -->
-		<div class="bg-gray-800 pb-24">
-			<div class="bg-white max-w-6xl mx-auto py-12">
-				<div class="px-12 md:px-24">
-					<a href="#" class="block mb-2 uppercase text-gray-800 text-lg font-bold tracking-widest hover:text-yellow-600">0800 123 456</a>
-					<a href="#" class="block uppercase text-gray-800 text-lg font-bold tracking-widest hover:text-yellow-600">hello@digizu.co.uk</a>
-				</div>
-
-				<div class="flex py-12">
-					<div class="flex-1 border-b-8 border-gray-200"></div>
-					<div class="w-32"></div>
-					<div class="flex-1 border-b-8 border-gray-200"></div>
-				</div>
-
-				<div class="flex flex-wrap justify-between px-24 text-sm font-serif text-gray-500">
-					<div class="w-full md:flex-1">&copy; 2019 copyright</div>
-					<div class="w-full md:flex-1 md:text-right">Powered by Tailwind</div>
-				</div>
-			</div>
-		</div>
-		<!-- / FOOTER -->
+    <div class="w-full h-screen relative text-white"><img src="https://images.unsplash.com/photo-1438109491414-7198515b166b?w=1800" class="absolute top-0 left-0 w-full h-full object-cover" />
+        <header class="z-10 relative mx-auto max-w-6xl px-6 py-8 flex justify-between items-center"><a href="#" class="text-xl tracking-wider">fullscreen</a>
+            <ul class="hidden md:flex uppercase text-sm text-gray-500">
+                <li><a href="#" class="text-white">Home</a></li>
+                <li class="ml-6"><a href="#">About</a></li>
+                <li class="ml-6"><a href="#">Blog</a></li>
+                <li class="ml-6"><a href="#">Contact</a></li>
+            </ul>
+        </header>
+        <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center text-center px-12">
+            <div>
+                <h1 class="text-3xl md:text-6xl leading-tight mb-16">Duis aute irure dolor, <br class="hidden md:block" />reprehenderit in voluptate.</h1><a href="#" class="border border-white py-4 px-8 hover:bg-white hover:text-black">Get started</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 py-24">
+        <div class="lg:px-32 lg:py-32 flex items-center justify-center">
+            <div>
+                <h2 class="text-5xl mb-6 font-bold uppercase italic">Contractors you can trust</h2>
+                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p><a href="/about" class="mt-8 inline-block rounded-full border-2 border-gray-900 text-lg px-8 py-3 hover:bg-black hover:text-white">Our
+                    Promise</a>
+            </div>
+        </div>
+        <div class="hidden lg:grid relative grid-cols-2">
+            <div class="pt-24">
+                <div class="relative w-full h-full"><img src="https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" class="absolute inset-0 w-full h-full object-cover -mt-6 z-10"></div>
+            </div>
+            <div class="relative"><img src="https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover -ml-12"></div>
+        </div>
+    </div>
+    <div class="relative w-full bg-black py-32 my-12 lg:my-24">
+        <div class="relative z-10 text-center text-white text-center mx-auto max-w-xl">
+            <h1 class="text-3xl lg:text-7xl mb-4 font-bold uppercase italic">Property Development</h1><a href="#" class="inline-block rounded-full border-2 border-white text-lg px-8 py-3 hover:bg-white hover:text-gray-900">Find
+                out more</a>
+        </div><img src="https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2547&q=80" class="w-full h-full absolute inset-0 object-cover opacity-75">
+    </div>
+    <div class="mx-auto max-w-lg text-center py-15">
+        <h2 class="text-5xl mb-6 font-bold uppercase italic">Our Services</h2>
+        <p class="text-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua.</p>
+    </div>
+    <div class="flex flex-wrap md:space-x-12 justify-center px-4"><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
+            <div class="text-lg text-center p-4">Service Title</div>
+        </a><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
+            <div class="text-lg text-center p-4">Service Title</div>
+        </a><a href="/service" class="block w-full md:flex-1 max-w-xs mb-12"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" class="w-full h-96 object-cover">
+            <div class="text-lg text-center p-4">Service Title</div>
+        </a></div>
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 py-24">
+        <div class="hidden lg:grid relative grid-cols-2">
+            <div class="pt-24">
+                <div class="relative w-full h-full"><img src="https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" class="absolute inset-0 w-full h-full object-cover -mt-6 z-10"></div>
+            </div>
+            <div class="relative"><img src="https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover -ml-12"></div>
+        </div>
+        <div class="lg:px-32 lg:py-32 flex items-center justify-center">
+            <div>
+                <h2 class="text-5xl mb-6 font-bold uppercase italic">Contractors you can trust</h2>
+                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p><a href="/about" class="mt-8 inline-block rounded-full border-2 border-gray-900 text-lg px-8 py-3 hover:bg-black hover:text-white">Our
+                    Promise</a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-black text-white text-center p-12">
+        <div class="text-2xl">Join the club</div>
+        <form class="max-w-sm mx-auto relative h-12 mt-6 border-b border-white" name="subscribe" method="POST" netlify>
+            <input type="text" name="email" class="w-full h-full bg-transparent border-none pr-12" placeholder="Enter your email"><button class="w-12 h-12 flex items-center justify-center absolute top-0 right-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                </svg></button>
+        </form>
+    </div>
+    <div>
+        <div class="flex items-center justify-center my-12"><a href="#" class="mx-4"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg></a><a href="#" class="mx-4"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg></a><a href="#" class="mx-4"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                </svg></a><a href="#" class="mx-4"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+                </svg></a></div>
+    </div>
+    <div class="container mx-auto text-center py-12 mt-12 border-t border-gray-200 text-xs uppercase">
+        <div>Copyright &copy; 2022 Back-Lit</div>
+        <div class="text-gray-400 mt-2">Images by Unsplash</div>
+    </div>
 </div>
