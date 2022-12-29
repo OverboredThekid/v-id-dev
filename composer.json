@@ -20,7 +20,6 @@
         "laravel/tinker": "^2.7",
         "marjose123/filament-no-connection": "^1.0",
         "rahmanramsi/filament-editorjs": "^1.0",
-        "ramnzys/filament-email-log": "^0.2.2",
         "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
