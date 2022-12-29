@@ -4,7 +4,7 @@ return [
     'title' => 'Settings',
     'navigation' => [
         'label' => 'Settings',
-        'group' => 'Settings',
+        'group' => 'System',
         'sort' => '1',
         'icon' => 'heroicon-o-cog'
     ],
@@ -12,7 +12,7 @@ return [
         'Settings',
     ],
     'tool' => [
-        "enable" => true
+        "enable" => false
     ],
     'permission' => [
         'enable' => false,
