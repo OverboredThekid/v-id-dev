@@ -5,14 +5,14 @@ return [
     'navigation' => [
         'label' => 'Settings',
         'group' => 'System',
-        'sort' => '1',
+        'sort' => '5',
         'icon' => 'heroicon-o-cog'
     ],
     'breadcrumbs' => [
         'Settings',
     ],
     'tool' => [
-        "enable" => false
+        "enable" => true
     ],
     'permission' => [
         'enable' => false,
