@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f24060a35be863b5977a22e762e89f16",
+    "content-hash": "c85873796c9d5ef435628a680ef494ff",
     "packages": [
         {
             "name": "3x1io/filament-user",
@@ -188,80 +188,6 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.8"
             },
             "time": "2022-12-07T17:46:57+00:00"
-        },
-        {
-            "name": "beier/filament-pages",
-            "version": "v0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PascaleBeier/filament-pages.git",
-                "reference": "f3dd94131d0dd779b2c5103bdc761a165e18d27f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PascaleBeier/filament-pages/zipball/f3dd94131d0dd779b2c5103bdc761a165e18d27f",
-                "reference": "f3dd94131d0dd779b2c5103bdc761a165e18d27f",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^2.0",
-                "illuminate/contracts": "^9.0 || ^10.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.13.5"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.2",
-                "nunomaduro/collision": "^6.0",
-                "orchestra/testbench": "^7.0",
-                "pestphp/pest": "^1.21",
-                "pestphp/pest-plugin-laravel": "^1.1",
-                "pestphp/pest-plugin-livewire": "^1.0",
-                "pestphp/pest-plugin-parallel": "^0.3",
-                "phpunit/phpunit": "^9.5",
-                "spatie/laravel-ray": "^1.26"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Beier\\FilamentPages\\FilamentPagesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Beier\\FilamentPages\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pascale Beier",
-                    "email": "mail@pascalebeier.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Highly opinionated Pages for filament",
-            "homepage": "https://github.com/pascalebeier/filament-pages",
-            "keywords": [
-                "filament",
-                "filament-pages",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/pascalebeier/filament-pages/issues",
-                "source": "https://github.com/pascalebeier/filament-pages"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/PascaleBeier",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-11-14T23:13:14+00:00"
         },
         {
             "name": "bezhansalleh/filament-shield",
@@ -2236,58 +2162,6 @@
                 }
             ],
             "time": "2022-05-21T17:30:32+00:00"
-        },
-        {
-            "name": "jkharley/filament-redirects",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JKHarley/filament-redirects.git",
-                "reference": "24d5652ff1817533a8cb311cf151d6a2cfb71796"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JKHarley/filament-redirects/zipball/24d5652ff1817533a8cb311cf151d6a2cfb71796",
-                "reference": "24d5652ff1817533a8cb311cf151d6a2cfb71796",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^2.10",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.8"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JamesHarley\\FilamentRedirects\\FilamentRedirectsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JamesHarley\\FilamentRedirects\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "James Harley",
-                    "email": "hello@jamesharley.dev"
-                }
-            ],
-            "description": "A Filament resource to create and maintain page redirects for your website.",
-            "homepage": "https://jamesharley.dev",
-            "support": {
-                "issues": "https://github.com/JKHarley/filament-redirects/issues",
-                "source": "https://github.com/JKHarley/filament-redirects/tree/1.0.0"
-            },
-            "time": "2022-04-22T11:09:06+00:00"
         },
         {
             "name": "lab404/laravel-impersonate",

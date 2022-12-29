@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.0.2",
         "3x1io/filament-user": "^1.1",
-        "beier/filament-pages": "^0.2.0",
         "bezhansalleh/filament-shield": "^2.3",
         "camya/filament-title-with-slug": "^0.5.3",
         "cms-multi/filament-clear-cache": "^1.0",
@@ -16,7 +15,6 @@
         "filament/spatie-laravel-media-library-plugin": "^2.16",
         "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
-        "jkharley/filament-redirects": "^1.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
