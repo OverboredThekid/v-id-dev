@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f24060a35be863b5977a22e762e89f16",
+    "content-hash": "01a444ab493f4e6cdd2095e96fcec162",
     "packages": [
         {
             "name": "3x1io/filament-user",
@@ -2152,6 +2152,59 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "ibrahim-bedir/filament-dynamic-settings-page",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ibrahim-bedir/filament-dynamic-settings-page.git",
+                "reference": "299c39199930dc7d4c3e3d62476668a4f7cee54e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ibrahim-bedir/filament-dynamic-settings-page/zipball/299c39199930dc7d4c3e3d62476668a4f7cee54e",
+                "reference": "299c39199930dc7d4c3e3d62476668a4f7cee54e",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.12",
+                "laravel/framework": "^9.1",
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "IbrahimBedir\\FilamentDynamicSettingsPage\\DynamicSettingsPageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IbrahimBedir\\FilamentDynamicSettingsPage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "İbrahim Bedir",
+                    "email": "ibrahimbedir43@gmail.com"
+                }
+            ],
+            "keywords": [
+                "filament",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ibrahim-bedir/filament-dynamic-settings-page/issues",
+                "source": "https://github.com/ibrahim-bedir/filament-dynamic-settings-page/tree/main"
+            },
+            "time": "2022-12-23T12:28:37+00:00"
         },
         {
             "name": "intervention/image",
@@ -10667,7 +10720,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "ekremogul/filament-grapesjs": 20,
-        "filament/filament": 20
+        "filament/filament": 20,
+        "ibrahim-bedir/filament-dynamic-settings-page": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
