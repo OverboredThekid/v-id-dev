@@ -1,12 +1,12 @@
 <div>
 <div class="photo-section">
     <div class="webcam-container" x-data="{ open: false }">
-        <button x-on:click="open = true">
+        <button x-on:click="open = true; startWebcam">
             Take a Photo
         </button>
         <div x-show="open" x-transition:enter="ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-            <div class="overlay" x-on:click.away="open = false"></div>
-            <div class="modal" x-on:click.away="open = false">
+            <div class="overlay" x-on:click.away="open = false; stopWebcam"></div>
+            <div class="modal" x-on:click.away="open = false; stopWebcam">
                 <div id="webcam"></div>
                 <button class="btn btn-primary" x-on:click="takeSnapshot">
                     Take Photo
@@ -38,8 +38,10 @@
         </button>
     @endif
 </div>
+@push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js" defer></script>
     <script>
         function startWebcam() {
             Webcam.set({
@@ -83,4 +85,6 @@
             });
         }
     </script>
+@endpush
+
 </div>
