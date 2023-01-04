@@ -13,9 +13,6 @@
     </div>
   </div>
 </div>
-
-<script src="/path/to/alpine.js"></script>
-<script src="/path/to/cropper.js"></script>
 <script>
   function capture() {
     const video = this.$refs.video;
