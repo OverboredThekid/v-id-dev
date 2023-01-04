@@ -42,6 +42,8 @@
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js" defer></script>
     <script>
+        window.Webcam.attach('#webcam');
+
         function startWebcam() {
             Webcam.set({
                 width: 320,
