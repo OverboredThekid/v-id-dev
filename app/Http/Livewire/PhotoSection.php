@@ -4,10 +4,9 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-
 class PhotoSection extends Component
 {
-    public $photo;
+    public $photo = null;
     public $showWebcam = false;
 
     public function openFileInput()
@@ -32,6 +31,21 @@ class PhotoSection extends Component
         $canvas->getContext('2d')->drawImage($video, 0, 0, $canvas->width, $canvas->height);
         $this->photo = $image->src;
         $this->emit('photoSelected');
+    }
+
+    public function initCropper()
+    {
+        $cropper = $this->get('cropper');
+        $image = $this->get('image');
+
+        $cropper->cropper([
+            'aspectRatio' => 1,
+            'viewMode' => 2,
+            'preview' => '.img-preview',
+        ]);
+        
+
+        $image->src = $this->photo;
     }
 
     public function crop()
