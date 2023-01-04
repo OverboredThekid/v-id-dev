@@ -1,6 +1,6 @@
 <div>
 <div x-data="{ photo: null }">
-  <video x-ref="video" autoplay muted playsinline width="100%"></video>
+  <video x-ref="video" x-init="$refs.video.muted = true; $refs.video.playsinline = true;" autoplay width="100%"></video>
   <canvas x-ref="canvas" width="480" height="360"></canvas>
   <button x-on:click="capture()">Capture</button>
   <input type="file" x-ref="fileInput" accept="image/*" class="hidden">
@@ -13,6 +13,7 @@
     </div>
   </div>
 </div>
+
 <script>
   function capture() {
     const video = this.$refs.video;
