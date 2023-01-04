@@ -38,50 +38,51 @@
         </button>
     @endif
 </div>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js" defer></script>
     <script>
-        function startWebcam() {
-            window.Webcam.set({
-                width: 320,
-                height: 240,
-                image_format: 'jpeg',
-                jpeg_quality: 90
-            });
-            window.Webcam.attach('#webcam');
-        }
+        Webcam.on('load', function() {
+            function startWebcam() {
+                window.Webcam.set({
+                    width: 320,
+                    height: 240,
+                    image_format: 'jpeg',
+                    jpeg_quality: 90
+                });
+                window.Webcam.attach('#webcam');
+            }
 
-        function stopWebcam() {
-            window.Webcam.reset();
-        }
+            function stopWebcam() {
+                window.Webcam.reset();
+            }
 
-        function takeSnapshot() {
-            window.Webcam.snap(function(dataUri) {
-                document.getElementById('photo').src = dataUri;
-            });
-        }
+            function takeSnapshot() {
+                window.Webcam.snap(function(dataUri) {
+                    document.getElementById('photo').src = dataUri;
+                });
+            }
 
-        function cropPhoto() {
-            var image = document.getElementById('photo');
-            var cropper = new Cropper(image, {
-                aspectRatio: 1,
-                crop: function(event) {
-                    console.log(event.detail.x);
-                    console.log(event.detail.y);
-                    console.log(event.detail.width);
-                    console.log(event.detail.height);
-                    console.log(event.detail.rotate);
-                    console.log(event.detail.scaleX);
-                    console.log(event.detail.scaleY);
-                }
-            });
+            function cropPhoto() {
+                var image = document.getElementById('photo');
+                var cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    crop: function(event) {
+                        console.log(event.detail.x);
+                        console.log(event.detail.y);
+                        console.log(event.detail.width);
+                        console.log(event.detail.height);
+                        console.log(event.detail.rotate);
+                        console.log(event.detail.scaleX);
+                        console.log(event.detail.scaleY);
+                    }
+                });
 
-            cropper.getCroppedCanvas().toBlob((blob) => {
-                const formData = new FormData();
-                formData.append('cropped_photo', blob);
-                @this.call('cropPhoto', formData);
-            });
-        }
-    </script>
+                cropper.getCroppedCanvas().toBlob((blob) => {
+                    const formData = new FormData();
+                    formData.append('cropped_photo', blob);
+                    @this.call('cropPhoto', formData);
+                });
+            }});
+            </script>
 </div>
