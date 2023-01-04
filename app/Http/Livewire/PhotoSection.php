@@ -3,9 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class PhotoSection extends Component
 {
+    use WithFileUploads;
     public $photo = null;
     public $showWebcam = false;
 
