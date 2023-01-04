@@ -8,7 +8,7 @@
             <div class="overlay" x-on:click.away="open = false"></div>
             <div class="modal" x-on:click.away="open = false">
                 <div id="webcam"></div>
-                <button class="btn btn-primary" x-on:click="open = false">
+                <button class="btn btn-primary" x-on:click="takeSnapshot">
                     Take Photo
                 </button>
             </div>
