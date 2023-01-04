@@ -1,8 +1,10 @@
 <head>
     <title>{{ config('app.name') }} ~ photo</title>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js']) 
+<!-- Include alpine.js -->
+<script src="{{ asset('vendor/alpine.js') }}"></script>
+<!-- Include cropper.js -->
+<link rel="stylesheet" href="{{ asset('vendor/cropper.js/cropper.css') }}">
+<script src="{{ asset('vendor/cropper.js/cropper.js') }}"></script> 
     @livewireStyles
 </head>
 <body>
