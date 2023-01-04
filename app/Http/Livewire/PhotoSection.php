@@ -8,7 +8,8 @@ use Livewire\Component;
 class PhotoSection extends Component
 {
     public $photo;
-
+    public $showWebcam = false;
+    
     public function openFileInput()
     {
         $this->photo = null;
