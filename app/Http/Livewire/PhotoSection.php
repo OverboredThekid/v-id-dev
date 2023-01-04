@@ -18,9 +18,9 @@ class PhotoSection extends Component
 
         session()->flash('message', 'Photo saved successfully.');
     }
-    
+
     public function render()
     {
-        return view('livewire.photo-section');
+        return view('livewire.photo-section')->layout('layouts.photo');
     }
 }
