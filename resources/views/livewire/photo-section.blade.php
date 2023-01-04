@@ -38,28 +38,26 @@
         </button>
     @endif
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js" defer></script>
     <script>
-        window.Webcam.attach('#webcam');
-
         function startWebcam() {
-            Webcam.set({
+            window.Webcam.set({
                 width: 320,
                 height: 240,
                 image_format: 'jpeg',
                 jpeg_quality: 90
             });
-            Webcam.attach('#webcam');
+            window.Webcam.attach('#webcam');
         }
 
         function stopWebcam() {
-            Webcam.reset();
+            window.Webcam.reset();
         }
 
         function takeSnapshot() {
-            Webcam.snap(function(dataUri) {
+            window.Webcam.snap(function(dataUri) {
                 document.getElementById('photo').src = dataUri;
             });
         }
