@@ -40,7 +40,7 @@
 <script>
 window.livewire.on('captureSuccess', () => {
 const video = document.getElementById('webcam');
-let canvas = document.createElement('canvas');
+const canvas = document.createElement('canvas');
 canvas.width = video.videoWidth;
 canvas.height = video.videoHeight;
 canvas.getContext('2d').drawImage(video, 0, 0);
