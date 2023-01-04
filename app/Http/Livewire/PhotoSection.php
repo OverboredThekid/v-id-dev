@@ -4,77 +4,51 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
+
 class PhotoSection extends Component
 {
-    public $capturing = false;
-    public $uploading = false;
-    public $cropping = false;
-    public $submitting = false;
-    public $croppedImage;
-    
-    public function capturePhoto()
+    public $photo;
+
+    public function openFileInput()
     {
-        $this->capturing = true;
+        $this->photo = null;
+        $this->emit('openFileInput');
     }
-    
-    public function submitPhoto()
+
+    public function upload($event)
     {
-        if($this->capturing) {
-            $video = document.getElementById('webcam');
-            let canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0);
-            let data = canvas.toDataURL('image/png');
-            this->emit('captureSuccess');
-            this->cropping = true;
-        } else if($this->uploading) {
-            let file = document.getElementById('photoUpload').files[0];
-            let reader = new FileReader();
-            reader.onloadend = () => {
-                this->croppedImage = reader.result;
-                this->cropping = true;
-            }
-            reader.readAsDataURL(file);
-        } else {
-            this->submitting = true;
-        }
+        $this->photo = $event->target->files[0];
+        $this->emit('photoSelected');
     }
-    
-    public function uploadPhoto()
+
+    public function capture()
     {
-        this->uploading = true;
+        $video = $this->get('video');
+        $image = $this->get('image');
+        $canvas = $this->get('canvas');
+
+        $image->src = $canvas->toDataURL('image/png');
+        $canvas->getContext('2d')->drawImage($video, 0, 0, $canvas->width, $canvas->height);
+        $this->photo = $image->src;
+        $this->emit('photoSelected');
     }
-    
-    public function cancelCapture()
+
+    public function crop()
     {
-        this->capturing = false;
+        $cropper = $this->get('cropper');
+        $image = $this->get('image');
+
+        $croppedData = $cropper->cropper('getData');
+
+        $canvas = $this->get('canvas');
+        $canvas->getContext('2d')->drawImage($image, $croppedData['x'], $croppedData['y'], $croppedData['width'], $croppedData['height'], 0, 0, $canvas->width, $canvas->height);
+
+        $this->photo = $canvas->toDataURL('image/png');
+        $this->emit('photoCropped');
     }
-    
-    public function cancelUpload()
+
+    public function render()
     {
-        this->uploading = false;
+        return view('livewire.photo-section');
     }
-    
-    public function cancelCrop()
-    {
-        this->cropping = false;
-    }
-    
-    public function confirmSubmit()
-    {
-        // code to submit photo to server or store it locally
-        this->submitting = false;
-    }
-    
-    public function cancelSubmit()
-    {
-        this->submitting = false;
-    }
-    
-    public function croppedImage($dataUrl)
-    {
-        this->croppedImage = $dataUrl;
-    }
-    
 }

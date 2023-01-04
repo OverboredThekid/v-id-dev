@@ -1,62 +1,35 @@
 <div>
 <div>
-    <div class="form-group">
-        <button wire:click="capturePhoto" class="btn btn-primary">Capture Photo</button>
-        <button wire:click="uploadPhoto" class="btn btn-secondary">Upload Photo</button>
-    </div>
-    @if($capturing)
-        <div wire:ignore>
-            <video id="webcam" autoplay></video>
+    @if ($photo)
+        <img src="{{ $photo }}" alt="Your Photo" class="w-full">
+    @else
+        <div class="text-center py-5">
+            <h3 class="text-gray-600">Take a photo or upload one from your computer</h3>
+            <button wire:click="openCamera" class="btn btn-primary mt-5">Take Photo</button>
+            <button wire:click="openFileInput" class="btn btn-secondary mt-5">Upload Photo</button>
         </div>
-        <div class="form-group">
-            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
-            <button wire:click="cancelCapture" class="btn btn-secondary">Cancel</button>
-        </div>
-    @elseif($uploading)
-        <div wire:ignore>
-            <input type="file" id="photoUpload" />
-        </div>
-        <div class="form-group">
-            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
-            <button wire:click="cancelUpload" class="btn btn-secondary">Cancel</button>
-        </div>
-    @elseif($cropping)
-        <img id="croppedImage" src="{{ $croppedImage }}" />
-        <div wire:ignore>
-            <div id="cropper"></div>
-        </div>
-        <div class="form-group">
-            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
-            <button wire:click="cancelCrop" class="btn btn-secondary">Cancel</button>
-        </div>
-    @elseif($submitting)
-        <div class="form-group">
-            <button wire:click="confirmSubmit" class="btn btn-primary">Confirm</button>
-            <button wire:click="cancelSubmit" class="btn btn-secondary">Cancel</button>
+    @endif
+
+    <input type="file" wire:model="photo" class="hidden">
+
+    @if ($showCamera)
+        <div class="relative mt-10">
+            <video wire:model="video" class="w-full"></video>
+            <button wire:click="capture" class="absolute bottom-0 right-0 mb-5 mr-5 btn btn-primary rounded-full p-3">
+                <i class="fas fa-camera"></i>
+            </button>
+            <button wire:click="closeCamera" class="absolute top-0 left-0 mt-5 ml-5 btn btn-secondary rounded-full p-3">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     @endif
 </div>
-@push('scripts')
-<script>
-window.livewire.on('captureSuccess', () => {
-const video = document.getElementById('webcam');
-const canvas = document.createElement('canvas');
-canvas.width = video.videoWidth;
-canvas.height = video.videoHeight;
-canvas.getContext('2d').drawImage(video, 0, 0);
-let data = canvas.toDataURL('image/png');
-let image = document.createElement('img');
-image.src = data;
-document.getElementById('cropper').appendChild(image);
-let cropper = new Cropper(image, {
-aspectRatio: 1,
-viewMode: 2,
-crop(event) {
-let dataUrl = cropper.getCroppedCanvas().toDataURL();
-window.livewire.emit('croppedImage', dataUrl);
-}
-});
-});
-</script>
-@endpush
+
+@if ($photo)
+    <div class="mt-10">
+        <button wire:click="crop" class="btn btn-primary mr-3">Crop</button>
+        <button wire:click="submit" class="btn btn-success">Submit</button>
+    </div>
+@endif
+
 </div>
