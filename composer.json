@@ -15,6 +15,7 @@
         "filament/spatie-laravel-media-library-plugin": "^2.16",
         "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",

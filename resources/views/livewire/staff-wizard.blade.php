@@ -1,12 +1,10 @@
 <div>
     <div id='wizard' class='wizard-body'>
-
         @if(!empty($successMessage))
         <div class="alert alert-success">
             {{ $successMessage }}
         </div>
         @endif
-
         <div class="stepwizard">
             <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
@@ -23,12 +21,10 @@
                 </div>
             </div>
         </div>
-
         <div class="row setup-content  {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1">
             <div class="col-xs-12">
                 <div class="col-md-12">
                     <h3> Step 1</h3>
-
                     <div class="form-group">
                         <label for="title">First and Last Name:</label>
                         <input type="text" wire:model="name" class="form-control" id="taskTitle">
@@ -50,6 +46,7 @@
                 </div>
             </div>
         </div>
+        <!-- Photo ID Section of the form -->
         <div class="row setup-content  {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
             <div class="col-xs-12">
                 <div class="col-md-12">
@@ -72,6 +69,7 @@
                 </div>
             </div>
         </div>
+        <!-- End of Photo ID Section -->
         <div class="row setup-content  {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
             <div class="col-xs-12">
                 <div class="col-md-12">
