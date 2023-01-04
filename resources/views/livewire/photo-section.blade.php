@@ -1,44 +1,62 @@
 <div>
-<div x-data="{ photo: null }">
-  <video x-data x-ref="video" x-init="$refs.video.muted = true; $refs.video.playsinline = true;" autoplay width="100%"></video>
-  <canvas x-data x-ref="canvas" width="480" height="360"></canvas>
-  <button x-on:click="capture()">Capture</button>
-  <input type="file" x-ref="fileInput" accept="image/*" class="hidden">
-  <button x-on:click="$refs.fileInput.click()">Choose File</button>
-  <button x-bind:class="{ 'hidden': !photo }" x-on:click="photo = null">Clear</button>
-  <div x-bind:class="{ 'hidden': !photo }">
-    <div x-data="{ crop: { aspectRatio: 1 } }">
-      <img x-data x-bind:src="photo" x-ref="photo" x-init="new Cropper($refs.photo, $data)">
-      <button x-on:click="crop()">Crop</button>
+<div>
+    <div class="form-group">
+        <button wire:click="capturePhoto" class="btn btn-primary">Capture Photo</button>
+        <button wire:click="uploadPhoto" class="btn btn-secondary">Upload Photo</button>
     </div>
-  </div>
+    @if($capturing)
+        <div wire:ignore>
+            <video id="webcam" autoplay></video>
+        </div>
+        <div class="form-group">
+            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
+            <button wire:click="cancelCapture" class="btn btn-secondary">Cancel</button>
+        </div>
+    @elseif($uploading)
+        <div wire:ignore>
+            <input type="file" id="photoUpload" />
+        </div>
+        <div class="form-group">
+            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
+            <button wire:click="cancelUpload" class="btn btn-secondary">Cancel</button>
+        </div>
+    @elseif($cropping)
+        <img id="croppedImage" src="{{ $croppedImage }}" />
+        <div wire:ignore>
+            <div id="cropper"></div>
+        </div>
+        <div class="form-group">
+            <button wire:click="submitPhoto" class="btn btn-primary">Submit</button>
+            <button wire:click="cancelCrop" class="btn btn-secondary">Cancel</button>
+        </div>
+    @elseif($submitting)
+        <div class="form-group">
+            <button wire:click="confirmSubmit" class="btn btn-primary">Confirm</button>
+            <button wire:click="cancelSubmit" class="btn btn-secondary">Cancel</button>
+        </div>
+    @endif
 </div>
-
-<script src="/path/to/alpine.js"></script>
-<script src="/path/to/cropper.js"></script>
+@push('scripts')
 <script>
-  function capture() {
-    const fileInput = this.$refs.fileInput;
-    if (fileInput.files && fileInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.photo = e.target.result;
-      };
-      reader.readAsDataURL(fileInput.files[0]);
-    } else {
-      const video = this.$refs.video;
-      const canvas = this.$refs.canvas;
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      this.photo = canvas.toDataURL();
-    }
-  }
-
-  function crop() {
-    const cropper = this.$refs.photo.cropper;
-    const canvas = cropper.getCroppedCanvas();
-    this.photo = canvas.toDataURL();
-  }
+window.livewire.on('captureSuccess', () => {
+const video = document.getElementById('webcam');
+let canvas = document.createElement('canvas');
+canvas.width = video.videoWidth;
+canvas.height = video.videoHeight;
+canvas.getContext('2d').drawImage(video, 0, 0);
+let data = canvas.toDataURL('image/png');
+let image = document.createElement('img');
+image.src = data;
+document.getElementById('cropper').appendChild(image);
+let cropper = new Cropper(image, {
+aspectRatio: 1,
+viewMode: 2,
+crop(event) {
+let dataUrl = cropper.getCroppedCanvas().toDataURL();
+window.livewire.emit('croppedImage', dataUrl);
+}
+});
+});
 </script>
-
+@endpush
 </div>
