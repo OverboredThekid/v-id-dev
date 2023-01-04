@@ -38,7 +38,6 @@
         </button>
     @endif
 </div>
-@push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
     <script>
@@ -84,5 +83,4 @@
             });
         }
     </script>
-@endpush
 </div>
