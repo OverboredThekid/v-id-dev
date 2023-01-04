@@ -66,6 +66,9 @@ class PhotoSection extends Component
 
     public function render()
     {
-        return view('livewire.photo-section')->layout('layouts.photo');
+        return $this->view('livewire.photo-section', [
+            'photo' => $this->photo,
+            'showWebcam' => $this->showWebcam,
+        ])->layout('layouts.photo');
     }
 }
