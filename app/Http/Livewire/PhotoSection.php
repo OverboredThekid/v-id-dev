@@ -15,7 +15,10 @@ class PhotoSection extends Component
 
     public function render()
     {
-        return view('livewire.photo-section.photo-section');
+        return view('livewire.photo-section', [
+            'photo' => $this->photo,
+            'showWebcam' => $this->showWebcam,
+        ])->layout('layouts.photo');
     }
 
     public function cropPhoto($formData)
