@@ -61,6 +61,29 @@
 
 @push('scripts')
 <script>
+    function hideModal(modalId) {
+        $('#' + modalId).modal('hide');
+    }
+
+    function showModal(modalId) {
+        $('#' + modalId).modal('show');
+    }
+
+    @if(session()->has('modal'))
+        showModal('modalId');
+    @endif
+
+    window.livewire.on('showModal', (modalId) => {
+        showModal(modalId);
+    });
+
+    window.livewire.on('hideModal', (modalId) => {
+        hideModal(modalId);
+    });
+</script>
+
+
+<script>
     function showCropper() {
         document.getElementById('captureContainer').style.display = 'none';
         document.getElementById('cropperContainer').style.display = 'block';
