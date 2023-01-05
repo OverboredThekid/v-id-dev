@@ -35,13 +35,13 @@
     </div>
     @push('scripts')
     <script>
-        setTimeout(function() {
-            Webcam.set({
+         Webcam.set({
                 width: 320,
                 height: 240,
                 image_format: 'jpeg',
                 jpeg_quality: 90
             });
+        setTimeout(function() {
             Webcam.attach('#captureCanvas');
         }, 1000);
 
