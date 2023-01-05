@@ -18,6 +18,6 @@ class PhotoSection extends Component
 
     public function render()
     {
-        return view('livewire.photo-section');
+        return view('livewire.photo-section')->layout('layouts.photo');
     }
 }
