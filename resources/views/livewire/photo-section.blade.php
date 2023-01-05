@@ -5,31 +5,32 @@
     </div>
     <div wire:ignore wire:loading.class="hidden">
         @if ($showCaptureForm)
-            <div wire:ignore>
-                <button x-data x-on:click="capturePhoto()">Capture</button>
-            </div>
+        <div wire:ignore>
+            <canvas id="captureCanvas"></canvas>
+            <button x-data x-on:click="capturePhoto()">Capture</button>
+        </div>
         @endif
         @if ($showUploadForm)
-            <div wire:ignore>
-                <input type="file" wire:model="photo" accept="image/*">
-            </div>
+        <div wire:ignore>
+            <input type="file" wire:model="photo" accept="image/*">
+        </div>
         @endif
         @if ($photo)
+        <div>
+            <img id="photoPreview" src="{{ $photo->temporaryUrl() }}">
+        </div>
+        <div wire:ignore>
+            <button wire:click="openCropModal">Crop</button>
+        </div>
+        <div wire:ignore wire:model="showCropModal">
             <div>
-                <img id="photoPreview" src="{{ $photo->temporaryUrl() }}">
+                <img id="croppedPhotoPreview" src="{{ $croppedPhotoUrl }}">
             </div>
-            <div wire:ignore>
-                <button wire:click="openCropModal">Crop</button>
+            <div>
+                <button wire:click="submitPhoto">Submit</button>
+                <button wire:click="closeCropModal">Cancel</button>
             </div>
-            <div wire:ignore wire:model="showCropModal">
-                <div>
-                    <img id="croppedPhotoPreview" src="{{ $croppedPhotoUrl }}">
-                </div>
-                <div>
-                    <button wire:click="submitPhoto">Submit</button>
-                    <button wire:click="closeCropModal">Cancel</button>
-                </div>
-            </div>
+        </div>
         @endif
     </div>
     @push('scripts')
