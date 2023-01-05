@@ -27,8 +27,8 @@ class PhotoSection extends Component
 
         // Create canvas to store cropped image
         $canvas = document . createElement('canvas');
-        $canvas . width = $imageDataWidth;
-        $canvas . height = $imageDataHeight;
+        $canvas.width = $imageDataWidth;
+        $canvas.height = $imageDataHeight;
         $context = $canvas . getContext('2d');
 
         // Draw cropped image on canvas
