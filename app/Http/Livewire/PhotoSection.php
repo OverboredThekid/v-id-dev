@@ -80,17 +80,15 @@ class PhotoSection extends Component
     private function initializeWebcam()
     {
         // Set up the webcam using webcam.js
-        echo '
-            <script>
-                Webcam.set({
-                    width: 320,
-                    height: 240,
-                    image_format: "jpeg",
-                    jpeg_quality: 90
-                });
-                Webcam.attach("#webcam");
-            </script>
-        ';
+        $this->script('
+            Webcam.set({
+                width: 320,
+                height: 240,
+                image_format: "jpeg",
+                jpeg_quality: 90
+            });
+            Webcam.attach("#webcam");
+        ');
     }
 
     private function getWebcamPhoto()
@@ -119,28 +117,21 @@ class PhotoSection extends Component
     private function cropPhoto()
     {
         // Initialize the cropper
-        echo '
-            <script>
-                var image = document.getElementById("photo");
-                var cropper = new Cropper(image, {
-                    aspectRatio: 1,
-                    crop: function(e) {
-                        $("input[name=x]").val(e.detail.x);
-                        $("input[name=y]").val(e.detail.y);
-                        $("input[name=height]").val(e.detail.height);
-                        $("input[name=width]").val(e.detail.width);
-                    }
-                });
-            </script>
-        ';
+        $this->script('
+            var image = document.getElementById("photo");
+            var cropper = new Cropper(image, {
+                aspectRatio: 1,
+                crop: function(e) {
+                    $("input[name=x]").val(e.detail.x);
+                    $("input[name=y]").val(e.detail.y);
+                    $("input[name=height]").val(e.detail.height);
+                    $("input[name=width]").val(e.detail.width);
+                }
+            });
+        ');
 
         // Get the crop data from the form
-        $data = [
-            'x' => request()->input('x'),
-            'y' => request()->input('y'),
-            'height' => request()->input('height'),
-            'width' => request()->input('width'),
-        ];
+        $data = [            'x' => request()->input('x'),            'y' => request()->input('y'),            'height' => request()->input('height'),            'width' => request()->input('width'),        ];
 
         // Crop the photo using Intervention Image
         return Image::make($this->photo)->crop(
@@ -150,6 +141,7 @@ class PhotoSection extends Component
             intval($data['y'])
         );
     }
+
 
     public function render()
     {
