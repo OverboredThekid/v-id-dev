@@ -9,7 +9,7 @@
     </div>
 
     @if($showWebcam)
-        <div wire:init="initWebcam" class="mt-4">
+        <div wire:init="initWebcam()" class="mt-4">
             <webcam wire:model="photo"></webcam>
             <div class="flex justify-center mt-4">
                 <button wire:click="capture" class="btn btn-primary">
