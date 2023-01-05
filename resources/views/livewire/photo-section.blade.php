@@ -75,12 +75,13 @@
     }, 1000);
 }
 
-    function capture() {
-        Webcam.snap(function(dataUri) {
-            @this.set('photo', dataUri);
-            @this.set('showWebcam', false);
-        });
-    }
+function capture() {
+    Webcam.snap(function(dataUri) {
+        @this.set('photo', Upload.fromDataUri(dataUri));
+        @this.set('showWebcam', false);
+    });
+}
+
 </script>
 @endpush
 
