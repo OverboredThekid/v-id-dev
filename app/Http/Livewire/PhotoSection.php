@@ -72,7 +72,7 @@ class PhotoSection extends Component
      $this->reset();
  }
 
- public function reset()
+ public function resetpage()
  {
      $this->captureModalOpen = false;
      $this->uploadModalOpen = false;
