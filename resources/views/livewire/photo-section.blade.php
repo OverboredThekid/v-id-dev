@@ -1,88 +1,107 @@
 <div>
-<div class="photo-section">
-    <div class="webcam-container" x-data="{ open: false }">
-        <button x-on:click="open = true; startWebcam">
-            Take a Photo
-        </button>
-        <div x-show="open" x-transition:enter="ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-            <div class="overlay" x-on:click.away="open = false; stopWebcam"></div>
-            <div class="modal" x-on:click.away="open = false; stopWebcam">
-                <div id="webcam"></div>
-                <button class="btn btn-primary" x-on:click="takeSnapshot">
-                    Take Photo
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="upload-container" x-data="{ open: false }">
-        <button x-on:click="open = true">
-            Upload a Photo
-        </button>
-        <input type="file" x-show="open" x-on:change="open = false" wire:model="photo" />
-    </div>
-
-    @if($photo)
-        <div class="cropper-container">
-            <img id="photo" src="{{ $photo->temporaryUrl() }}" />
-        </div>
-        <button class="btn btn-primary" wire:click="cropPhoto">
-            Crop Photo
-        </button>
+    @if ($photo)
+        <img src="{{ $photo }}" alt="Photo" class="w-full">
     @endif
 
-    @if($croppedPhoto)
-        <img src="{{ $croppedPhoto }}" />
-        <button class="btn btn-primary" wire:click="submitPhoto">
-            Submit Photo
-        </button>
+    <div class="mt-4">
+        <label class="inline-flex items-center">
+            <input type="radio" class="form-radio" wire:model="photoType" value="capture" wire:click="$set('photo', null)">
+            <span class="ml-2">Capture Photo</span>
+        </label>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" class="form-radio" wire:model="photoType" value="upload" wire:click="$set('photo', null)">
+            <span class="ml-2">Upload Photo</span>
+        </label>
+    </div>
+
+    @if ($photoType == 'capture')
+        <div class="mt-4">
+            <video wire:ignore wire:ref="video" class="w-full"></video>
+            <button wire:click="capturePhoto" class="btn btn-primary mt-4">Capture</button>
+        </div>
+    @elseif ($photoType == 'upload')
+        <div class="mt-4">
+            <input type="file" wire:model="photo" class="form-input">
+            <button wire:click="uploadPhoto" class="btn btn-primary mt-4">Upload</button>
+        </div>
     @endif
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js" defer></script>
+
+    @if ($photo)
+        <div class="mt-4">
+            <button wire:click="cropPhoto" class="btn btn-primary">Crop</button>
+            <button wire:click="submit" class="btn btn-secondary">Submit</button>
+        </div>
+    @endif
+
+    @if ($croppedPhoto)
+        <div class="mt-4">
+            <img src="{{ $croppedPhoto }}" alt="Cropped Photo" class="w-full">
+        </div>
+    @endif
     <script>
-        Webcam.on('load', function() {
-            function startWebcam() {
-                window.Webcam.set({
-                    width: 320,
-                    height: 240,
-                    image_format: 'jpeg',
-                    jpeg_quality: 90
-                });
-                window.Webcam.attach('#webcam');
+        function getUserMedia(constraints) {
+            if (navigator.mediaDevices.getUserMedia) {
+                return navigator.mediaDevices.getUserMedia(constraints);
+            } else if (navigator.mediaDevices.webkitGetUserMedia) {
+                return navigator.mediaDevices.webkitGetUserMedia(constraints);
+            } else if (navigator.mediaDevices.mozGetUserMedia) {
+                return navigator.mediaDevices.mozGetUserMedia(constraints);
+            } else {
+                return Promise.reject(new Error('Your browser does not support getUserMedia'));
             }
+        }
 
-            function stopWebcam() {
-                window.Webcam.reset();
-            }
+        function startVideo() {
+            const video = document.querySelector('[wire\\:ref=video]');
+            const constraints = {
+                video: true
+            };
 
-            function takeSnapshot() {
-                window.Webcam.snap(function(dataUri) {
-                    document.getElementById('photo').src = dataUri;
+            getUserMedia(constraints)
+                .then((stream) => {
+                    video.srcObject = stream;
+                    video.addEventListener('loadedmetadata', () => {
+                        video.play();
+                    });
+                })
+                .catch((error) => {
+                    console.error(error);
                 });
-            }
+        }
 
-            function cropPhoto() {
-                var image = document.getElementById('photo');
-                var cropper = new Cropper(image, {
-                    aspectRatio: 1,
-                    crop: function(event) {
-                        console.log(event.detail.x);
-                        console.log(event.detail.y);
-                        console.log(event.detail.width);
-                        console.log(event.detail.height);
-                        console.log(event.detail.rotate);
-                        console.log(event.detail.scaleX);
-                        console.log(event.detail.scaleY);
-                    }
-                });
+        function stopVideo(videoElement) {
+            const stream = videoElement.srcObject;
+            const tracks = stream.getTracks();
 
-                cropper.getCroppedCanvas().toBlob((blob) => {
-                    const formData = new FormData();
-                    formData.append('cropped_photo', blob);
-                    @this.call('cropPhoto', formData);
-                });
-            }});
-            </script>
+            tracks.forEach((track) => {
+                track.stop();
+            });
+
+            videoElement.srcObject = null;
+        }
+
+        function captureFrame(videoElement) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+
+            context.drawImage(videoElement, 0, 0);
+
+            return canvas.toDataURL('image/jpeg');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('[wire\\:ref=video]');
+
+            startVideo();
+
+            document.querySelector('[wire\\:click=capturePhoto]').addEventListener('click', () => {
+                Livewire.emit('capturePhoto', captureFrame(video));
+                stopVideo(video);
+                startVideo();
+            });
+        });
+    </script>
 </div>
