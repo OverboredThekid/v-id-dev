@@ -77,7 +77,7 @@
 
 function capture() {
     Webcam.snap(function(dataUri) {
-        @this.set('photo', Upload.fromDataUri(dataUri));
+        @this.set('photo', \Laravel\Lighthouse\Uploads\Upload::fromDataUri(dataUri));
         @this.set('showWebcam', false);
     });
 }
