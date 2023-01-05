@@ -11,59 +11,85 @@ class PhotoSection extends Component
     use WithFileUploads;
 
  
-    public $showCaptureModal = false; // Define the property
-    public $showUploadModal = false;
-    public $showCropper = false;
-    public $capture;
-    public $upload;
+    public $captureModalOpen = false;
+    public $uploadModalOpen = false;
+    public $cropModalOpen = false;
+
+    public $capturedImage;
+    public $uploadedPhoto;
     public $croppedImage;
 
-    public function openCaptureModal()
+    public function showCaptureModal()
     {
-        $this->showCaptureModal = true; // Set the property to true
+        $this->captureModalOpen = true;
     }
 
-    public function openUploadModal()
+    public function hideCaptureModal()
     {
-        $this->showUploadModal = true;
+        $this->reset();
     }
 
-    public function captureImage()
+    public function showUploadModal()
     {
-        $this->capture->store('captures');
-        $this->croppedImage = $this->capture->getRealPath();
-        $this->showCropper = true;
+        $this->uploadModalOpen = true;
     }
 
-    public function uploadImage()
+    public function hideUploadModal()
+    {
+        $this->reset();
+    }
+
+    public function showCropModal()
+    {
+        $this->cropModalOpen = true;
+    }
+
+    public function hideCropModal()
+    {
+        $this->reset();
+    }
+
+    public function takePhoto()
+    {
+        Webcam.snap(function(data_uri) {
+            this.capturedImage = data_uri;
+            this.showCropModal();
+        }.bind(this));
+    }
+
+    public function uploadPhoto()
     {
         $this->validate([
-            'upload' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'uploadedPhoto' => 'required|image',
         ]);
 
-        $this->croppedImage = $this->upload->getRealPath();
-        $this->showCropper = true;
+        $this->croppedImage = $this->uploadedPhoto->getRealPath();
+        $this->showCropModal();
     }
 
-    public function resetForm()
+    public function cropAndSubmit()
     {
-        $this->showCaptureModal = false;
-        $this->showUploadModal = false;
-        $this->showCropper = false;
-        $this->capture = null;
-        $this->upload = null;
+        $image = (new \Intervention\Image\ImageManager)->make($this->croppedImage);
+
+        // You can perform cropping and other image manipulation here using the Intervention Image library.
+        // Then, save the image and clear the form.
+        $image->save(storage_path('app/public/cropped_image.jpg'));
+
+        // Reset form and close modal
+        $this->reset();
+    }
+
+    public function reset()
+    {
+        $this->captureModalOpen = false;
+        $this->uploadModalOpen = false;
+        $this->cropModalOpen = false;
+
+        $this->capturedImage = null;
+        $this->uploadedPhoto = null;
         $this->croppedImage = null;
-    }
 
-    public function submitForm()
-    {
-        $this->validate([
-            'croppedImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        // Save the cropped image to storage or database, etc.
-
-        $this->resetForm();
+        $this->resetValidation();
     }
 
     public function render()
