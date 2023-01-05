@@ -1,4 +1,5 @@
 <div>
+<div>
     <button wire:click="showCaptureModal" class="btn btn-primary">Capture Photo</button>
     <button wire:click="showUploadModal" class="btn btn-primary">Upload Photo</button>
 </div>
@@ -59,9 +60,6 @@
 </div>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.7.0/dist/alpine.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/cropperjs@2.3.4/dist/cropper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.25/webcam.min.js"></script>
 <script>
     function showCropper() {
         document.getElementById('captureContainer').style.display = 'none';
@@ -111,3 +109,4 @@
     }
 </script>
 @endpush
+</div>
