@@ -26,9 +26,6 @@
   </div>
 </div>
 @push('scripts')
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.4/dist/cropper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.0/webcam.min.js"></script>
   <script>
     // Initialize cropper
     let cropper;
