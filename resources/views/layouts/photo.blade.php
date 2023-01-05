@@ -6,9 +6,12 @@
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js"></script>
     @livewireStyles
 </head>
+
 <body>
     {{ $slot }}
 </body>
 <footer>
+    @stack('scripts')
+
     @livewireScripts
 </footer>
