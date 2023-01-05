@@ -1,55 +1,53 @@
 <div>
-  <button wire:click="showCaptureModal" class="capture-button">Capture</button>
-  <button wire:click="showUploadModal" class="upload-button">Upload</button>
-
-  @if ($showCaptureModal)
-    <div class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Capture Photo</h2>
-          <button wire:click="hideModal" class="close-button">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="capture-container">
-            <canvas wire:model="capturedImage" width="640" height="480"></canvas>
-            <div class="capture-controls">
-              <video wire:model="video" width="640" height="480" autoplay></video>
-              <button wire:click="captureImage" class="capture-button">Capture</button>
-            </div>
-          </div>
-          <div class="cropper-container" wire:ignore>
-            <img wire:model="croppedImage" alt="Cropped image">
-            <div class="cropper-controls">
-              <button wire:click="submitImage" class="submit-button">Submit</button>
-              <button wire:click="cancelCrop" class="cancel-button">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div wire:ignore>
+        <button wire:click="showCaptureForm">Capture</button>
+        <button wire:click="showUploadForm">Upload</button>
     </div>
-  @endif
-
-  @if ($showUploadModal)
-    <div class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Upload Photo</h2>
-          <button wire:click="hideModal" class="close-button">&times;</button>
+    <div wire:ignore wire:loading.class="hidden">
+        @if ($showCaptureForm)
+        <div wire:ignore>
+            <button x-data x-on:click="Webcam.snap( function(data_uri) { $dispatch('photoCaptured', data_uri) } )">Capture</button>
         </div>
-        <div class="modal-body">
-          <form wire:submit.prevent="uploadImage" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" wire:model="uploadedImage">
-            <button type="submit" class="upload-button">Upload</button>
-          </form>
-          <div class="cropper-container" wire:ignore>
-            <img wire:model="croppedImage" alt="Cropped image">
-            <div class="cropper-controls">
-              <button wire:click="submitImage" class="submit-button">Submit</button>
-              <button wire:click="cancelCrop" class="cancel-button">Cancel</button>
+        @endif
+        @if ($showUploadForm)
+        <div wire:ignore>
+            <input type="file" wire:model="photo" accept="image/*">
+        </div>
+        @endif
+        @if ($photo)
+        <div>
+            <img id="photoPreview" src="{{ $photo->temporaryUrl() }}">
+        </div>
+        <div wire:ignore>
+            <button wire:click="openCropModal">Crop</button>
+        </div>
+        <div wire:ignore wire:model="showCropModal">
+            <div>
+                <img id="croppedPhotoPreview" src="{{ $croppedPhotoUrl }}">
             </div>
-          </div>
+            <div>
+                <button wire:click="submitPhoto">Submit</button>
+                <button wire:click="closeCropModal">Cancel</button>
+            </div>
         </div>
-      </div>
+        @endif
     </div>
-  @endif
+    @push('scripts')
+    <script>
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('#captureCanvas');
+
+        function capturePhoto() {
+            Webcam.snap(function(data_uri) {
+                window.livewire.emit('photoCaptured', data_uri);
+            });
+        }
+    </script>
+
+    @endpush
 </div>
