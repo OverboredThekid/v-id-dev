@@ -63,18 +63,17 @@
 </div>
 @push('scripts')
 <script>
-    window.onload = function() {
-        Webcam.attach('webcam');
-    };
+ 
 
     function initWebcam() {
+        Webcam.attach('webcam');
         Webcam.set({
             width: 320,
             height: 240,
             image_format: 'jpeg',
             jpeg_quality: 90
         });
-        Webcam.attach('webcam');
+        
     }
 
     function capture() {
