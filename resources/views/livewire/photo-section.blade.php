@@ -77,10 +77,11 @@
 
 function capture() {
     Webcam.snap(function(dataUri) {
-        @this.set('photo', new File(dataUri));
+        @this.set('photo', new File([dataUri], 'user.jpg'));
         @this.set('showWebcam', false);
     });
 }
+
 
 </script>
 @endpush
