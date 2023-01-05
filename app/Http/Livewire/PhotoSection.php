@@ -11,61 +11,44 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
-    public $showCaptureForm = false;
-    public $showUploadForm = false;
     public $photo;
-    public $croppedPhotoUrl;
-    public $showCropModal = false;
+    public $croppedPhoto;
 
-    public function showCaptureForm()
+    public function showCaptureModal()
     {
-        $this->resetForm();
-        $this->showCaptureForm = true;
+        $this->emit('showModal', 'captureModal');
     }
 
-    public function showUploadForm()
+    public function showUploadModal()
     {
-        $this->resetForm();
-        $this->showUploadForm = true;
+        $this->emit('showModal', 'uploadModal');
     }
 
-    public function resetForm()
+    public function takePhoto()
     {
-        $this->showCaptureForm = false;
-        $this->showUploadForm = false;
-        $this->photo = null;
-        $this->croppedPhotoUrl = null;
-        $this->showCropModal = false;
+        $this->emit('hideModal', 'captureModal');
+
+        $this->croppedPhoto = Image::make($_POST['croppedImage'])
+            ->encode('jpg', 75);
     }
 
-    public function photoCaptured($dataUri)
+    public function cancelCrop()
     {
-        $this->photo = Image::make($dataUri);
-        $this->openCropModal();
+        $this->emit('showModal', 'captureModal');
     }
 
-    public function openCropModal()
+    public function submit()
     {
-        $this->showCropModal = true;
-    }
+        $this->validate([
+            'croppedPhoto' => ['required'],
+        ]);
 
-    public function closeCropModal()
-    {
-        $this->resetForm();
-    }
+        // Save the cropped photo to your server or do whatever you need to with it...
 
-    public function cropPhoto()
-    {
-        $this->croppedPhotoUrl = $this->photo
-            ->fit(300, 300)
-            ->encode('data-url');
-    }
+        $this->emit('hideModal', 'captureModal');
+        $this->emit('hideModal', 'uploadModal');
 
-    public function submitPhoto()
-    {
-        // Save the photo to your storage or database here...
-
-        $this->resetForm();
+        $this->reset();
     }
 
     public function render()
