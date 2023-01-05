@@ -24,7 +24,7 @@
 
     @if($showFileInput)
     <div class="mt-4">
-        <input type="file" wire:model="photo" />
+        <input type="file" wire:model.lazy="photo" />
         <div class="flex justify-center mt-4">
             <button wire:click="submit" class="btn btn-primary">
                 Select
