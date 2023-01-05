@@ -1,8 +1,4 @@
 <div>
-    @if ($photo)
-    <img src="{{ $photo }}" alt="Photo" class="w-full">
-    @endif
-
     <div class="mt-4">
         <label class="inline-flex items-center">
             <input type="radio" class="form-radio" wire:model="photoType" value="capture" wire:click="$set('photo', null)">

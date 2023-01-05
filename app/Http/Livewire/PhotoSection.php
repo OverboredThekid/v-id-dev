@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Intervention\Image\Facades\Image;
@@ -43,7 +44,9 @@ class PhotoSection extends Component
         ]);
 
         $this->photo = $this->photo->temporaryUrl();
+        Log::info('Temp URL: ' . $this->photo->temporaryUrl());
         $this->croppedPhoto = null;
+
     }
 
     public function cropPhoto()
