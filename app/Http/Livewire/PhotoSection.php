@@ -57,9 +57,6 @@ class PhotoSection extends Component
     }
     public function render()
     {
-        return view('livewire.photo-section', [
-            'photo' => $this->photo,
-            'croppedPhoto' => $this->croppedPhoto
-        ])->layout('layouts.photo');
+        return view('livewire.photo-section')->layout('layouts.photo');
     }
 }
