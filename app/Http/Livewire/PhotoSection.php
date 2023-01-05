@@ -12,12 +12,16 @@ class PhotoSection extends Component
 
     public $photo;
     public $croppedPhoto;
+    public $photoType;
+
 
     public function mount()
-    {
-        $this->photo = null;
-        $this->croppedPhoto = null;
-    }
+{
+    $this->photo = null;
+    $this->croppedPhoto = null;
+    $this->photoType = 'capture'; // initialize $photoType
+}
+
 
     public function render()
     {
