@@ -11,48 +11,151 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
+
+    // State variables
+    public $captureModal = false;
+    public $uploadModal = false;
+    public $cropModal = false;
     public $photo;
     public $croppedPhoto;
 
-    public function showCaptureModal()
+    public function openCaptureModal()
     {
-        $this->emit('showModal', 'captureModal');
+        // Initialize the webcam
+        $this->initializeWebcam();
+
+        $this->captureModal = true;
     }
 
-    public function showUploadModal()
+    public function openUploadModal()
     {
-        $this->emit('showModal', 'uploadModal');
+        $this->uploadModal = true;
     }
 
-    public function takePhoto()
+    public function closeModal()
     {
-        $this->emit('hideModal', 'captureModal');
-
-        $this->croppedPhoto = Image::make($_POST['croppedImage'])
-            ->encode('jpg', 75);
+        $this->captureModal = false;
+        $this->uploadModal = false;
+        $this->cropModal = false;
+        $this->photo = null;
+        $this->croppedPhoto = null;
     }
 
-    public function cancelCrop()
+    public function capturePhoto()
     {
-        $this->emit('showModal', 'captureModal');
+        // Get the photo from the webcam
+        $this->photo = $this->getWebcamPhoto();
+
+        // Close the capture modal and open the crop modal
+        $this->captureModal = false;
+        $this->cropModal = true;
     }
 
-    public function submit()
+    public function uploadPhoto()
     {
+        // Validate the uploaded photo
         $this->validate([
-            'croppedPhoto' => ['required'],
+            'photo' => 'image|max:1024'
         ]);
 
-        // Save the cropped photo to your server or do whatever you need to with it...
+        // Open the crop modal
+        $this->uploadModal = false;
+        $this->cropModal = true;
+    }
 
-        $this->emit('hideModal', 'captureModal');
-        $this->emit('hideModal', 'uploadModal');
+    public function submitPhoto()
+    {
+        // Crop the photo
+        $this->croppedPhoto = $this->cropPhoto();
 
-        $this->reset();
+        // Perform any additional actions, such as saving the photo to a database or storage service
+        // ...
+
+        // Close the crop modal and reset the form
+        $this->cropModal = false;
+        $this->photo = null;
+        $this->croppedPhoto = null;
+    }
+
+    private function initializeWebcam()
+    {
+        // Set up the webcam using webcam.js
+        echo '
+            <script>
+                Webcam.set({
+                    width: 320,
+                    height: 240,
+                    image_format: "jpeg",
+                    jpeg_quality: 90
+                });
+                Webcam.attach("#webcam");
+            </script>
+        ';
+    }
+
+    private function getWebcamPhoto()
+    {
+        // Capture the photo from the webcam using webcam.js
+        $data = 'data:image/jpeg;base64,' . Webcam.snap();
+
+        // Save the photo to a temporary file
+        $file = $this->saveBase64Image($data);
+
+        // Return the Intervention Image instance
+        return Image::make($file);
+    }
+
+    private function saveBase64Image($data)
+    {
+        // Generate a random filename
+        $filename = str_random(16) . '.jpg';
+
+        // Save the data to a temporary file
+        \File::put(storage_path('app/public/' . $filename), base64_decode(explode(',', $data)[1]));
+
+        return storage_path('app/public/' . $filename);
+    }
+
+    private function cropPhoto()
+    {
+        // Initialize the cropper
+        echo '
+            <script>
+                var image = document.getElementById("photo");
+                var cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    crop: function(e) {
+                        $("input[name=x]").val(e.detail.x);
+                        $("input[name=y]").val(e.detail.y);
+                        $("input[name=height]").val(e.detail.height);
+                        $("input[name=width]").val(e.detail.width);
+                    }
+                });
+            </script>
+        ';
+
+        // Get the crop data from the form
+        $data = [
+            'x' => request()->input('x'),
+            'y' => request()->input('y'),
+            'height' => request()->input('height'),
+            'width' => request()->input('width'),
+        ];
+
+        // Crop the photo using Intervention Image
+        return Image::make($this->photo)->crop(
+            intval($data['height']),
+            intval($data['width']),
+            intval($data['x']),
+            intval($data['y'])
+        );
     }
 
     public function render()
     {
-        return view('livewire.photo-section')->layout('layouts.photo');
+        return view('livewire.photo-section', [
+            'photo' => $this->photo,
+            'croppedPhoto' => $this->croppedPhoto
+        ])->layout('layouts.photo');
     }
 }
