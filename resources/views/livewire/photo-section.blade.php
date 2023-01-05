@@ -61,6 +61,9 @@
     </div>
     @endif
 </div>
+@php
+    use Laravel\Lighthouse\Uploads\Upload;
+@endphp
 @push('scripts')
 <script>
     function initWebcam() {
@@ -77,7 +80,7 @@
 
 function capture() {
     Webcam.snap(function(dataUri) {
-        @this.set('photo', \Laravel\Lighthouse\Uploads\Upload::fromDataUri(dataUri));
+        @this.set('photo', Upload.fromDataUri(dataUri));
         @this.set('showWebcam', false);
     });
 }
