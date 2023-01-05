@@ -1,108 +1,49 @@
 <div>
-    <div class="mt-4">
-        <label class="inline-flex items-center">
-            <input type="radio" class="form-radio" wire:model="photoType" value="capture" wire:click="$set('photo', null)">
-            <span class="ml-2">Capture Photo</span>
-        </label>
-        <label class="inline-flex items-center ml-6">
-            <input type="radio" class="form-radio" wire:model="photoType" value="upload" wire:click="$set('photo', null)">
-            <span class="ml-2">Upload Photo</span>
-        </label>
+    <div class="w-full flex justify-center mt-4">
+        @if ($photo)
+            <img id="photo" src="{{ $photo }}" class="w-1/2 h-64 object-cover object-center rounded-lg shadow-lg">
+        @endif
     </div>
 
-    @if ($photoType == 'capture')
-    <div class="mt-4">
-        <video wire:ignore wire:ref="video" class="w-full"></video>
-        <button wire:click="capturePhoto" class="btn btn-primary mt-4">Capture</button>
+    <div class="w-full flex justify-center mt-4">
+        @if (! $photo)
+            <button wire:click="capture" class="btn btn-primary mr-2">
+                Capture Photo
+            </button>
+            <input type="file" wire:model="photo" class="hidden">
+            <button wire:click="$emit('fileChooseClicked')" class="btn btn-primary ml-2">
+                Choose from Computer
+            </button>
+        @endif
     </div>
-    @elseif ($photoType == 'upload')
-    <div class="mt-4">
-        <input type="file" wire:model="photo" class="form-input">
-        <button wire:click="uploadPhoto" class="btn btn-primary mt-4">Upload</button>
-    </div>
-    @endif
-    @if ($photo)
-    <img src="{{ $photo }}" alt="Photo" class="w-full">
-    @endif
 
     @if ($photo)
-    <div class="mt-4">
-        <button wire:click="cropPhoto" class="btn btn-primary">Crop</button>
-        <button wire:click="submit" class="btn btn-secondary">Submit</button>
-    </div>
+        <div class="w-full flex justify-center mt-4">
+            <button wire:click="submit" class="btn btn-primary">
+                Crop and Submit
+            </button>
+        </div>
     @endif
+</div>
 
-    @if ($croppedPhoto)
-    <div class="mt-4">
-        <img src="{{ $croppedPhoto }}" alt="Cropped Photo" class="w-full">
-    </div>
-    @endif
-    <script>
-        function getUserMedia(constraints) {
-            if (navigator.mediaDevices.getUserMedia) {
-                return navigator.mediaDevices.getUserMedia(constraints);
-            } else if (navigator.mediaDevices.webkitGetUserMedia) {
-                return navigator.mediaDevices.webkitGetUserMedia(constraints);
-            } else if (navigator.mediaDevices.mozGetUserMedia) {
-                return navigator.mediaDevices.mozGetUserMedia(constraints);
-            } else {
-                return Promise.reject(new Error('Your browser does not support getUserMedia'));
-            }
-        }
-
-        function startVideo() {
-            const video = document.querySelector('[wire\\:ref=video]');
-            const constraints = {
-                video: true
-            };
-
-            getUserMedia(constraints)
-                .then((stream) => {
-                    video.srcObject = stream;
-                    video.addEventListener('loadedmetadata', () => {
-                        video.play();
-                    });
-                })
-                .catch((error) => {
-                    console.error(error);
+@push('scripts')
+    @if ($photo)
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                var image = document.getElementById('photo');
+                var cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
                 });
-        }
 
-        function stopVideo(videoElement) {
-            const stream = videoElement.srcObject;
-            const tracks = stream.getTracks();
-
-            tracks.forEach((track) => {
-                track.stop();
+                @this.set('cropper', cropper)
             });
+        </script>
+    @endif
 
-            videoElement.srcObject = null;
-        }
-
-        function captureFrame(videoElement) {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-
-            context.drawImage(videoElement, 0, 0);
-
-            // return data URL representing the captured photo
-            return canvas.toDataURL('image/jpeg');
-        }
-
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const video = document.querySelector('[wire\\:ref=video]');
-
-            startVideo();
-
-            document.querySelector('[wire\\:click=capturePhoto]').addEventListener('click', () => {
-                Livewire.emit('capturePhoto', captureFrame(video));
-                stopVideo(video);
-                startVideo();
-            });
+    <script>
+        window.livewire.on('fileChooseClicked', function () {
+            document.querySelector('input[type=file]').click();
         });
     </script>
-</div>
+@endpush
