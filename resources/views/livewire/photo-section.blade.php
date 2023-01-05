@@ -26,6 +26,7 @@
             <button wire:click="cancelPreview" class="btn btn-secondary">Cancel</button>
         </div>
     </div>
+    @push('scripts')
     <script>
         function showElement(elementId) {
             document.getElementById(elementId).style.display = 'block';
