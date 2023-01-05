@@ -14,28 +14,33 @@ class PhotoSection extends Component
     public $showCaptureForm = false;
     public $showUploadForm = false;
     public $photo;
-    public $showCropModal = false;
     public $croppedPhotoUrl;
+    public $showCropModal = false;
 
     public function showCaptureForm()
     {
+        $this->resetForm();
         $this->showCaptureForm = true;
-        $this->showUploadForm = false;
-        $this->photo = null;
-        $this->showCropModal = false;
     }
 
     public function showUploadForm()
     {
-        $this->showCaptureForm = false;
+        $this->resetForm();
         $this->showUploadForm = true;
+    }
+
+    public function resetForm()
+    {
+        $this->showCaptureForm = false;
+        $this->showUploadForm = false;
         $this->photo = null;
+        $this->croppedPhotoUrl = null;
         $this->showCropModal = false;
     }
 
     public function photoCaptured($dataUri)
     {
-        $this->photo = $dataUri;
+        $this->photo = Image::make($dataUri);
         $this->openCropModal();
     }
 
@@ -46,20 +51,21 @@ class PhotoSection extends Component
 
     public function closeCropModal()
     {
-        $this->showCropModal = false;
+        $this->resetForm();
+    }
+
+    public function cropPhoto()
+    {
+        $this->croppedPhotoUrl = $this->photo
+            ->fit(300, 300)
+            ->encode('data-url');
     }
 
     public function submitPhoto()
     {
-        $this->validate([
-            'photo' => 'required|image|max:1024',
-        ]);
+        // Save the photo to your storage or database here...
 
-        $croppedPhoto = Image::make($this->photo)
-            ->fit(400, 400)
-            ->encode('jpg');
-
-        $this->croppedPhotoUrl = $croppedPhoto->encoded;
+        $this->resetForm();
     }
 
     public function render()
