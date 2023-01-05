@@ -10,54 +10,73 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
+    // state variables
     public $photo;
-    public $cropping;
+    public $croppedPhoto;
+    public $webcamOn;
+    public $fileOn;
 
+    // initialize state variables
     public function mount()
     {
-        $this->cropping = false;
+        $this->webcamOn = false;
+        $this->fileOn = false;
     }
 
+    // toggle webcam on and off
+    public function toggleWebcam()
+    {
+        $this->webcamOn = !$this->webcamOn;
+
+        if ($this->webcamOn) {
+            Webcam.attach('#my_camera');
+        } else {
+            Webcam.reset();
+        }
+    }
+
+    // capture photo from webcam
     public function capture()
     {
-        $this->photo = null;
-        $this->cropping = false;
-
-        $this->call('capture');
+        Webcam.snap(function(data_uri) {
+            this.photo = data_uri;
+            this.webcamOn = false;
+            this.fileOn = true;
+        });
     }
 
-    public function save()
+    // toggle file input on and off
+    public function toggleFile()
     {
-        $this->validate([
-            'photo' => 'required|image|max:1024'
-        ]);
-
-        $this->photo = Image::make($this->photo)
-            ->fit(320, 320, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })
-            ->encode('jpg', 75);
-
-        $this->cropping = false;
+        this.fileOn = !this.fileOn;
     }
 
+    // select photo from file input
+    public function updatedPhoto($photo)
+    {
+        this.photo = $photo;
+        this.fileOn = true;
+    }
+
+    // crop photo
     public function crop()
     {
-        $this->cropping = true;
+        // create cropper
+        $cropper = new Cropper(this.refs.photo, [
+            'aspectRatio' => 1,
+            'crop' => function($event) {
+                $this->croppedPhoto = $event['detail']['canvas']->toDataURL();
+            }.bind(this)
+        ]);
+    
+        // crop photo
+        $cropper->crop();
     }
 
-    public function cropped($data)
+    // submit photo
+    public function submit()
     {
-        $this->photo = Image::make($this->photo)
-            ->crop((int) $data['height'], (int) $data['width'], (int) $data['x'], (int) $data['y'])
-            ->encode('jpg', 75);
-    }
-
-    public function remove()
-    {
-        $this->photo = null;
-        $this->cropping = false;
+        this.$emit('photoSelected', this.croppedPhoto);
     }
 
     public function render()
