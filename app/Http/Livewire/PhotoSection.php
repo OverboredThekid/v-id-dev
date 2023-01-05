@@ -17,8 +17,10 @@ class PhotoSection extends Component
 
     public function capture()
     {
-        $this->capturedImage = Image::make($_POST['image'])->encode('jpg');
-        $this->emit('showModal');
+        if (isset($_POST['image'])) {
+            $this->capturedImage = Image::make($_POST['image'])->encode('jpg');
+            $this->emit('showModal');
+        }
     }
 
     public function upload()
@@ -29,11 +31,9 @@ class PhotoSection extends Component
 
     public function crop()
     {
-    if (isset($_POST['image'])) {
-    $this->croppedImage = Image::make($_POST['image'])
-    ->crop((int) $_POST['x'], (int) $_POST['y'], (int) $_POST['width'], (int) $_POST['height'])
-    ->encode('jpg');
-    }
+        $this->croppedImage = Image::make($_POST['image'])
+            ->crop((int) $_POST['x'], (int) $_POST['y'], (int) $_POST['width'], (int) $_POST['height'])
+            ->encode('jpg');
     }
     public function render()
     {
