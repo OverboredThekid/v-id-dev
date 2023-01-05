@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Components;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -9,65 +9,63 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
-    public $photo;
-    public $croppedPhoto;
-    public $showWebcam = false;
-    public $showFileInput = false;
+    public $showCaptureModal = false;
+    public $showUploadModal = false;
     public $showCropper = false;
+    public $capture;
+    public $upload;
+    public $croppedImage;
 
-    public function openWebcam()
+    public function openCaptureModal()
     {
-        $this->resetpage();
-        $this->showWebcam = true;
+        $this->showCaptureModal = true;
     }
 
-    public function openFileInput()
+    public function openUploadModal()
     {
-        $this->resetpage();
-        $this->showFileInput = true;
+        $this->showUploadModal = true;
     }
 
-    public function openCropper()
+    public function captureImage()
     {
+        $this->capture->store('captures');
+        $this->croppedImage = $this->capture->getRealPath();
         $this->showCropper = true;
     }
 
-    public function cancelWebcam()
+    public function uploadImage()
     {
-        $this->resetpage();
+        $this->validate([
+            'upload' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $this->croppedImage = $this->upload->getRealPath();
+        $this->showCropper = true;
     }
 
-    public function cancelFileInput()
+    public function resetForm()
     {
-        $this->resetpage();
-    }
-
-    public function cancelCropper()
-    {
+        $this->showCaptureModal = false;
+        $this->showUploadModal = false;
         $this->showCropper = false;
+        $this->capture = null;
+        $this->upload = null;
+        $this->croppedImage = null;
     }
 
-    public function submit()
+    public function submitForm()
     {
-        if ($this->croppedPhoto) {
-            $this->photo = $this->croppedPhoto;
-        }
+        $this->validate([
+            'croppedImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        $this->resetpage();
-        $this->emit('photoSelected', $this->photo);
-    }
+        // Save the cropped image to storage or database, etc.
 
-    public function resetpage()
-    {
-        $this->photo = null;
-        $this->croppedPhoto = null;
-        $this->showWebcam = false;
-        $this->showFileInput = false;
-        $this->showCropper = false;
+        $this->resetForm();
     }
 
     public function render()
     {
-        return view('livewire.photo-section')->layout('layouts.photo');
+        return view('livewire.photo-section')->layout("layouts.photo");
     }
 }

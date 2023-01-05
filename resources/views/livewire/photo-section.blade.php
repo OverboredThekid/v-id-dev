@@ -1,89 +1,81 @@
 <div>
-    <div class="flex justify-center mt-4">
-        <button wire:click="openWebcam" class="btn btn-primary" onclick="initWebcam()">
-            Take Photo
-        </button>
-        <button wire:click="openFileInput" class="btn btn-primary ml-2">
-            Select Photo
-        </button>
+    <div wire:ignore>
+        <button wire:click="openCaptureModal" class="capture-button">Capture Photo</button>
+        <button wire:click="openUploadModal" class="upload-button">Upload Photo</button>
     </div>
 
-    @if($showWebcam)
-    <div class="mt-4">
-        <webcam wire:model="photo"></webcam>
-        <div class="flex justify-center mt-4">
-            <button onclick="capture()" class="btn btn-primary">
-                Capture
-            </button>
-            <button wire:click="cancelWebcam" class="btn btn-secondary ml-2">
-                Cancel
-            </button>
-        </div>
-    </div>
-    @endif
-
-    @if($showFileInput)
-    <div class="mt-4">
-        <input type="file" wire:model.lazy="photo" />
-        <div class="flex justify-center mt-4">
-            <button wire:click="submit" class="btn btn-primary">
-                Select
-            </button>
-            <button wire:click="cancelFileInput" class="btn btn-secondary ml-2">
-                Cancel
-            </button>
-        </div>
-    </div>
-    @endif
-
-    @if($photo)
-    <div class="mt-4">
-        <img wire:click="openCropper" src="{{ $photo->temporaryUrl() }}" alt="Photo" class="w-full" />
-    </div>
-    <div wire:ignore class="modal" x-data="{ open: {{ $showCropper ? 'true' : 'false' }} }" @keydown.escape="open = false">
-        <div class="modal-overlay" x-show="open" x-on:click.away="open = false"></div>
-        <div class="modal-container" x-show="open">
+    <!-- Capture Modal -->
+    <div wire:ignore class="modal" x-data x-init="cropper = null" x-bind:class.hidden="!showCaptureModal">
+        <div class="modal-overlay" @click.stop="showCaptureModal = false"></div>
+        <div class="modal-container">
             <div class="modal-header">
-                <button class="modal-close" x-on:click="open = false">&times;</button>
+                <h2 class="modal-title">Capture Photo</h2>
+                <button class="modal-close" @click.stop="showCaptureModal = false">&times;</button>
             </div>
-            <div class="modal-body p-4">
-                <cropper :src="'{{ $photo->temporaryUrl() }}'" wire:model="croppedPhoto"></cropper>
-            </div>
-            <div class="modal-footer">
-                <button wire:click="submit" class="btn btn-primary">
-                    Crop and Save
-                </button>
-                <button wire:click="cancelCropper" class="btn btn-secondary ml-2">
-                    Cancel
-                </button>
+            <div class="modal-body">
+                <div class="capture-container">
+                    <webcam wire:model="capture" />
+                    <button wire:click="captureImage" class="capture-button">Capture</button>
+                </div>
+                <div class="cropper-container" x-bind:class.hidden="!showCropper">
+                    <img wire:model="croppedImage" x-ref="cropperImage" />
+                    <button wire:click="resetForm" class="cancel-button">Cancel</button>
+                    <button wire:click="submitForm" class="submit-button">Submit</button>
+                </div>
             </div>
         </div>
     </div>
-    @endif
+
+    <!-- Upload Modal -->
+    <div wire:ignore class="modal" x-data x-init="cropper = null" x-bind:class.hidden="!showUploadModal">
+        <div class="modal-overlay" @click.stop="showUploadModal = false"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Upload Photo</h2>
+                <button class="modal-close" @click.stop="showUploadModal = false">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-container">
+                    <input type="file" wire:model="upload" />
+                    <button wire:click="uploadImage" class="upload-button">Upload</button>
+                </div>
+                <div class="cropper-container" x-bind:class.hidden="!showCropper">
+                    <img wire:model="croppedImage" x-ref="cropperImage" />
+                    <button wire:click="resetForm" class="cancel-button">Cancel</button>
+                    <button wire:click="submitForm" class="submit-button">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-@push('scripts')
+@push('script')
 <script>
-    function initWebcam() {
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
+    function initCropper() {
+        const image = document.querySelector('[x-ref="cropperImage"]');
+        const options = {
+            aspectRatio: 1,
+            zoomable: false,
+            rotatable: false,
+            scalable: false,
+            crop(event) {
+                // Update the cropped image data
+                livewire.set('croppedImage', event.detail.canvas.toDataURL());
+            }
+        };
+
+        // Initialize Cropper.js
+        window.cropper = new Cropper(image, options);
+    }
+
+    window.addEventListener('livewire:load', () => {
+        // Initialize Cropper.js when the Livewire component is loaded
+        initCropper();
     });
-    setTimeout(function() {
-        Webcam.attach('webcam');
-    }, 1000);
-}
 
-function capture() {
-    Webcam.snap(function(dataUri) {
-        @this.set('photo', new File([dataUri], 'user.jpg'));
-        @this.set('showWebcam', false);
+    window.addEventListener('livewire:unload', () => {
+        // Destroy Cropper.js when the Livewire component is unloaded
+        window.cropper.destroy();
+        window.cropper = null;
     });
-}
-
-
 </script>
 @endpush
-
-</div>
