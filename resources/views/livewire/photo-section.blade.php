@@ -63,26 +63,11 @@
 </div>
 @push('scripts')
 <script>
- 
-
- function initWebcam() {
-            Webcam.set({
-                width: 320,
-                height: 240,
-                image_format: 'jpeg',
-                jpeg_quality: 90
-            });
-
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                        Webcam.attach('webcam');
-                    }
-                });
-            });
-
-            observer.observe(document.querySelector('webcam'), { childList: true });
-        }
+    function initWebcam() {
+        setTimeout(function() {
+            Webcam.attach('webcam');
+        }, 1000);
+    }
 
     function capture() {
         Webcam.snap(function(dataUri) {
