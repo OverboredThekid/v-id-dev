@@ -29,9 +29,11 @@ class PhotoSection extends Component
 
     public function crop()
     {
-        $this->croppedImage = Image::make($_POST['image'])
-            ->crop((int) $_POST['x'], (int) $_POST['y'], (int) $_POST['width'], (int) $_POST['height'])
-            ->encode('jpg');
+    if (isset($_POST['image'])) {
+    $this->croppedImage = Image::make($_POST['image'])
+    ->crop((int) $_POST['x'], (int) $_POST['y'], (int) $_POST['width'], (int) $_POST['height'])
+    ->encode('jpg');
+    }
     }
     public function render()
     {
