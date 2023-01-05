@@ -80,7 +80,7 @@ class PhotoSection extends Component
     private function initializeWebcam()
     {
         // Set up the webcam using webcam.js
-        $this->addsScript('
+        $this->emit('initializeWebcam', '
             Webcam.set({
                 width: 320,
                 height: 240,
@@ -117,7 +117,7 @@ class PhotoSection extends Component
     private function cropPhoto()
     {
         // Initialize the cropper
-        $this->addsScript('
+        $this->emit('initializeCropper', '
             var image = document.getElementById("photo");
             var cropper = new Cropper(image, {
                 aspectRatio: 1,
@@ -141,6 +141,7 @@ class PhotoSection extends Component
             intval($data['y'])
         );
     }
+
 
 
     public function render()
