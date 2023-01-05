@@ -1,6 +1,6 @@
 <div>
     <div class="flex justify-center mt-4">
-        <button wire:click="openWebcam" class="btn btn-primary">
+        <button wire:click="openWebcam" class="btn btn-primary" onclick="initWebcam()">
             Take Photo
         </button>
         <button wire:click="openFileInput" class="btn btn-primary ml-2">
@@ -9,7 +9,7 @@
     </div>
 
     @if($showWebcam)
-        <div wire:init="window.initWebcam()" class="mt-4">
+        <div class="mt-4">
             <webcam wire:model="photo"></webcam>
             <div class="flex justify-center mt-4">
                 <button wire:click="capture" class="btn btn-primary">
@@ -60,6 +60,7 @@
             </div>
         </div>
     @endif
+</div>
     @push('scripts')
    <script>
         function initWebcam() {
