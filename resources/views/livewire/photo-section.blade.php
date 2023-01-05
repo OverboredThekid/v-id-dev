@@ -23,8 +23,6 @@
         <input type="file" wire:model="photo" class="hidden" />
     @endif
 </div>
-
-@push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.x.x/webcam.min.js"></script>
@@ -62,4 +60,3 @@
             });
         });
     </script>
-@endpush
