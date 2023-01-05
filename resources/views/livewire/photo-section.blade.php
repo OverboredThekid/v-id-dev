@@ -64,7 +64,6 @@
             </div>
         </div>
     </div>
-</div>
 <script>
     let cropper;
 
@@ -134,3 +133,4 @@
         reader.readAsDataURL(file);
     });
 </script>
+</div>
