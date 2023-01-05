@@ -16,24 +16,24 @@ class PhotoSection extends Component
     public function cropPhoto()
     {
         // Get cropper.js instance
-        $cropper = $('#cropper-image').data('cropper');
+        $cropper = get('#cropper-image').data('cropper');
 
         // Get cropped image data
-        $imageData = $cropper.getData();
+        $imageData = $cropper . getData();
         $imageDataWidth = $imageData['width'];
         $imageDataHeight = $imageData['height'];
         $imageDataX = $imageData['x'];
         $imageDataY = $imageData['y'];
 
         // Create canvas to store cropped image
-        $canvas = document.createElement('canvas');
-        $canvas.width = $imageDataWidth;
-        $canvas.height = $imageDataHeight;
-        $context = $canvas.getContext('2d');
+        $canvas = document . createElement('canvas');
+        $canvas . width = $imageDataWidth;
+        $canvas . height = $imageDataHeight;
+        $context = $canvas . getContext('2d');
 
         // Draw cropped image on canvas
-        $context.drawImage(
-            document.getElementById('cropper-image'),
+        $context . drawImage(
+            document . getElementById('cropper-image'),
             $imageDataX,
             $imageDataY,
             $imageDataWidth,
@@ -45,7 +45,7 @@ class PhotoSection extends Component
         );
 
         // Convert canvas to data URL
-        $this->croppedPhoto = $canvas.toDataURL();
+        $this->croppedPhoto = $canvas . toDataURL();
     }
 
     public function submitPhoto()
