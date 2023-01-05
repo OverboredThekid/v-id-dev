@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use CropperJS;
-use WebcamJS;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class PhotoSection extends Component
 {
@@ -14,36 +14,92 @@ class PhotoSection extends Component
     public $photo;
     public $croppedPhoto;
 
-    public function capture() {
-        Webcam.set({
-            width: 320,
-            height: 240,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
-    }
-    
-
-    public function upload()
+    public function openCamera()
     {
-        Webcam.reset();
-        this.photo = this.refs.fileInput.files[0];
+        $this->croppedPhoto = null;
+        $this->photo = null;
+
+        echo '
+            <script>
+                window.Webcam.set({
+                    width: 400,
+                    height: 300,
+                    image_format: "jpeg",
+                    jpeg_quality: 90
+                });
+                window.Webcam.attach("#camera");
+            </script>
+            <div id="camera"></div>
+            <button wire:click="capture" class="btn btn-primary">Capture</button>
+        ';
+    }
+
+    public function capture()
+    {
+        $photoData = request()->input('webcam');
+        list($type, $photoData) = explode(';', $photoData);
+        list(, $photoData) = explode(',', $photoData);
+        $photoData = base64_decode($photoData);
+
+        $fileName = 'captured-photo-' . time() . '.jpg';
+        Storage::disk('public')->put($fileName, $photoData);
+
+        $this->photo = '/storage/' . $fileName;
+
+        echo '
+            <script>
+                window.Webcam.reset();
+            </script>
+        ';
     }
 
     public function crop()
     {
-        CropperJS.crop();
-        this.croppedPhoto = CropperJS.getCroppedCanvas().toDataURL();
-        CropperJS.destroy();
+        $this->croppedPhoto = null;
+
+        echo '
+            <script>
+                window.livewire.emit("cropperModalOpened")
+            </script>
+        ';
     }
 
     public function save()
     {
-        // Save the cropped photo to your server or database here.
+        $croppedImage = Image::make($this->photo)
+            ->fit(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+        $fileName = 'cropped-photo-' . time() . '.jpg';
+        Storage::disk('public')->put($fileName, (string) $croppedImage->encode());
+
+        $this->croppedPhoto = '/storage/' . $fileName;
+
+        echo '
+            <script>
+                window.livewire.emit("cropperModalClosed")
+            </script>
+        ';
+    }
+
+    public function cancel()
+    {
+        echo '
+            <script>
+                window.livewire.emit("cropperModalClosed")
+            </script>
+        ';
+    }
+
+    public function resetpage()
+    {
+        $this->croppedPhoto = null;
+        $this->photo = null;
     }
 
     public function render()
     {
-        return view('livewire.photo-section');
+        return view('livewire.photo-section')->layout('layouts.photo');
     }
 }
