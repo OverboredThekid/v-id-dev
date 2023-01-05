@@ -67,6 +67,8 @@
 <script>
     let cropper;
 
+    window.livewire = {};
+
     function showCroppedImage(img) {
         var image = document.createElement('img');
         image.src = img;
