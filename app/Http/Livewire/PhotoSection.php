@@ -65,4 +65,9 @@ class PhotoSection extends Component
         $this->showFileInput = false;
         $this->showCropper = false;
     }
+
+    public function render()
+    {
+        return view('livewire.photo-section')->layout('layouts.photo');
+    }
 }
