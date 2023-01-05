@@ -11,7 +11,7 @@ class PhotoSection extends Component
     use WithFileUploads;
 
  
-    public $showCaptureModal = false;
+    public $showCaptureModal = false; // Define the property
     public $showUploadModal = false;
     public $showCropper = false;
     public $capture;
@@ -20,7 +20,7 @@ class PhotoSection extends Component
 
     public function openCaptureModal()
     {
-        $this->showCaptureModal = true;
+        $this->showCaptureModal = true; // Set the property to true
     }
 
     public function openUploadModal()
@@ -65,7 +65,7 @@ class PhotoSection extends Component
 
         $this->resetForm();
     }
-    
+
     public function render()
     {
         return view('livewire.photo-section')->layout('layouts.photo');

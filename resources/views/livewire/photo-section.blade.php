@@ -5,7 +5,7 @@
     </div>
 
     <!-- Capture Modal -->
-    <div wire:ignore class="modal" x-data x-init="cropper = null" x-bind:class.hidden="!showCaptureModal">
+    <div wire:ignore class="modal" x-data x-init="cropper = null" x-bind:class.hidden="{{ $showCaptureModal ? 'hidden' : '' }}">
         <div class="modal-overlay" @click.stop="showCaptureModal = false"></div>
         <div class="modal-container">
             <div class="modal-header">
