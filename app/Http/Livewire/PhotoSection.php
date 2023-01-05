@@ -14,16 +14,15 @@ class PhotoSection extends Component
     public $photo;
     public $croppedPhoto;
 
-    public function capture()
-    {
+    public function capture() {
         Webcam.set({
             width: 320,
             height: 240,
             image_format: 'jpeg',
             jpeg_quality: 90
         });
-        Webcam.attach('#webcam');
     }
+    
 
     public function upload()
     {

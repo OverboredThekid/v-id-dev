@@ -1,79 +1,104 @@
 <div>
-    <div wire:ignore>
-        <input type="file" id="fileInput" class="hidden" accept="image/*" wire:model="photo">
-        <button id="captureButton" type="button" class="btn btn-primary" wire:click="capture()">Capture</button>
-        <button id="uploadButton" type="button" class="btn btn-secondary" wire:click="$refresh()">Upload</button>
-        <div id="webcam" style="display:none;"></div>
-    </div>
-    <div wire:loading wire:target="upload" class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-    <div wire:ignore>
-        <img id="capturedImage" src="" style="display:none;">
-    </div>
-    @if ($photo)
-        <div wire:ignore>
-            <div id="cropperContainer"></div>
-            <button id="cropButton" type="button" class="btn btn-success" wire:click="crop()">Crop</button>
+    <div>
+        <div wire:ignore.self class="camera-container">
+            <div class="capture-container" id="capture-container">
+                <video wire:ignore.self class="camera-stream" id="camera-stream"></video>
+                <div class="capture-overlay" id="capture-overlay"></div>
+                <div class="capture-buttons" id="capture-buttons">
+                    <button wire:click="openWebcam" class="btn btn-primary" id="btn-capture-webcam">Capture from Webcam</button>
+                    <button wire:click="openFilePicker" class="btn btn-secondary" id="btn-upload-file">Upload from Computer</button>
+                </div>
+            </div>
+            <input type="file" wire:model="image" class="image-input" accept="image/*" id="image-input">
         </div>
-        <img src="{{ $croppedPhoto }}" id="croppedImage" style="display:none;">
-    @endif
-    @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x/dist/alpine.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.6/dist/cropper.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.25/webcam.min.js" defer></script>
+        @if($image)
+            <div class="cropper-container" wire:ignore>
+                <img src="{{ $image->temporaryUrl() }}" id="cropper-image">
+                <div class="cropper-buttons" id="cropper-buttons">
+                    <button wire:click="cropImage" class="btn btn-primary" id="btn-crop-image">Crop Image</button>
+                    <button wire:click="reset" class="btn btn-secondary" id="btn-reset">Start Over</button>
+                </div>
+            </div>
+        @endif
+        @if($croppedImage)
+            <div class="cropped-image-container" wire:ignore>
+                <img src="{{ $croppedImage->temporaryUrl() }}" class="cropped-image">
+                <button wire:click="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+            </div>
+        @endif
+    </div>
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.7.0/dist/alpine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.6/dist/cropper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.25/webcam.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script>
-        window.addEventListener('load', function () {
-            var captureButton = document.getElementById('captureButton');
-            var uploadButton = document.getElementById('uploadButton');
-            var fileInput = document.getElementById('fileInput');
-            var capturedImage = document.getElementById('capturedImage');
-            var cropperContainer = document.getElementById('cropperContainer');
-            var cropButton = document.getElementById('cropButton');
-            var croppedImage = document.getElementById('croppedImage');
-
-            captureButton.addEventListener('click', function () {
-                Webcam.snap(function (dataUri) {
-                    capturedImage.src = dataUri;
-                    capturedImage.style.display = 'block';
-                    fileInput.value = null;
+        function getCroppedImageData() {
+            const canvas = document.createElement('canvas');
+            const displayScale = window.devicePixelRatio;
+            const displayWidth = Math.floor(document.querySelector('.cropper-container').offsetWidth * displayScale);
+            const displayHeight = Math.floor(document.querySelector('.cropper-container').offsetHeight * displayScale);
+            canvas.width = displayWidth;
+            canvas.height = displayHeight;
+            canvas.getContext('2d').scale(displayScale, displayScale);
+            cropper.getCroppedCanvas().toBlob((blob) => {
+                const formData = new FormData();
+                formData.append('cropped_image', blob);
+                $.ajax({
+                    url: '{{ route('livewire.photo-section.crop-image') }}',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: (response) => {
+                        window.livewire.emit('croppedImageUploaded', response.path);
+                    },
                 });
             });
+        }
 
-            uploadButton.addEventListener('click', function () {
-                fileInput.click();
+        let cropper;
+        let webcam;
+        let webcamStarted = false;
+
+        document.querySelector('#btn-capture-webcam').addEventListener('click', () => {
+            document.querySelector('#capture-container').style.display = 'none';
+            webcam = new Webcam(document.querySelector('#camera-stream'));
+            webcam.set({
+                width: 1280,
+                height: 720,
+                dest_width: 1280,
+                dest_height: 720,
+                image_format: 'jpeg',
+                jpeg_quality: 90,
             });
-
-            fileInput.addEventListener('change', function () {
-                if (fileInput.files && fileInput.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        capturedImage.src = e.target.result;
-                        capturedImage.style.display = 'block';
-                    };
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
-            });
-
-            @if ($photo)
-                var cropper = new CropperJS(capturedImage, {
-                    aspectRatio: 1,
-                    crop: function () {
-                        cropButton.style.display = 'block';
-                    }
-                });
-                cropperContainer.appendChild(cropper.getCropperElement());
-            @endif
-
-            cropButton.addEventListener('click', function () {
-                cropper.getCroppedCanvas().toBlob(function (blob) {
-                    croppedImage.src = URL.createObjectURL(blob);
-                    croppedImage.style.display = 'block';
-                });
-                cropButton.style.display = 'none';
-            });
+            webcam.attach();
+            webcamStarted = true;
         });
-    </script>
-@endsection
+
+        document.querySelector('#image-input').addEventListener('change', () => {
+            const file = document.querySelector('#image-input').files[0];
+            if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        document.querySelector('#cropper-image').src = e.target.result;
+        cropper = new Cropper(document.getElementById('cropper-image'), {
+            aspectRatio: 1,
+            viewMode: 2,
+            crop(event) {
+                console.log(event.detail.x);
+                console.log(event.detail.y);
+                console.log(event.detail.width);
+                console.log(event.detail.height);
+                console.log(event.detail.rotate);
+                console.log(event.detail.scaleX);
+                console.log(event.detail.scaleY);
+            },
+        });
+    };
+    reader.readAsDataURL(file);
+}
+</script>
+                           
 
 </div>
