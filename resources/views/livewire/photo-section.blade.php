@@ -1,6 +1,6 @@
 <div>
     @if ($photo)
-        <img src="{{ $photo }}" alt="Photo" class="w-full">
+    <img src="{{ $photo }}" alt="Photo" class="w-full">
     @endif
 
     <div class="mt-4">
@@ -15,28 +15,28 @@
     </div>
 
     @if ($photoType == 'capture')
-        <div class="mt-4">
-            <video wire:ignore wire:ref="video" class="w-full"></video>
-            <button wire:click="capturePhoto" class="btn btn-primary mt-4">Capture</button>
-        </div>
+    <div class="mt-4">
+        <video wire:ignore wire:ref="video" class="w-full"></video>
+        <button wire:click="capturePhoto" class="btn btn-primary mt-4">Capture</button>
+    </div>
     @elseif ($photoType == 'upload')
-        <div class="mt-4">
-            <input type="file" wire:model="photo" class="form-input">
-            <button wire:click="uploadPhoto" class="btn btn-primary mt-4">Upload</button>
-        </div>
+    <div class="mt-4">
+        <input type="file" wire:model="photo" class="form-input">
+        <button wire:click="uploadPhoto" class="btn btn-primary mt-4">Upload</button>
+    </div>
     @endif
 
     @if ($photo)
-        <div class="mt-4">
-            <button wire:click="cropPhoto" class="btn btn-primary">Crop</button>
-            <button wire:click="submit" class="btn btn-secondary">Submit</button>
-        </div>
+    <div class="mt-4">
+        <button wire:click="cropPhoto" class="btn btn-primary">Crop</button>
+        <button wire:click="submit" class="btn btn-secondary">Submit</button>
+    </div>
     @endif
 
     @if ($croppedPhoto)
-        <div class="mt-4">
-            <img src="{{ $croppedPhoto }}" alt="Cropped Photo" class="w-full">
-        </div>
+    <div class="mt-4">
+        <img src="{{ $croppedPhoto }}" alt="Cropped Photo" class="w-full">
+    </div>
     @endif
     <script>
         function getUserMedia(constraints) {
@@ -89,8 +89,10 @@
 
             context.drawImage(videoElement, 0, 0);
 
+            // return data URL representing the captured photo
             return canvas.toDataURL('image/jpeg');
         }
+
 
         window.addEventListener('DOMContentLoaded', () => {
             const video = document.querySelector('[wire\\:ref=video]');

@@ -29,10 +29,11 @@ class PhotoSection extends Component
     }
 
     public function capturePhoto($photo)
-    {
-        $this->photo = $photo;
-        $this->croppedPhoto = null;
-    }
+{
+    $this->photo = $photo;
+    $this->croppedPhoto = null;
+}
+
 
     public function uploadPhoto()
     {
