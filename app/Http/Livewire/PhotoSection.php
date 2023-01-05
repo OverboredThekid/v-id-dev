@@ -10,17 +10,18 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
+
     public $photo;
     public $croppedPhoto;
     public $photoType;
 
 
     public function mount()
-{
-    $this->photo = null;
-    $this->croppedPhoto = null;
-    $this->photoType = 'capture'; // initialize $photoType
-}
+    {
+        $this->photo = null;
+        $this->croppedPhoto = null;
+        $this->photoType = 'capture'; // initialize $photoType
+    }
 
 
     public function render()
@@ -29,10 +30,10 @@ class PhotoSection extends Component
     }
 
     public function capturePhoto($photo)
-{
-    $this->photo = $photo;
-    $this->croppedPhoto = null;
-}
+    {
+        $this->photo = $photo;
+        $this->croppedPhoto = null;
+    }
 
 
     public function uploadPhoto()
@@ -41,7 +42,7 @@ class PhotoSection extends Component
             'photo' => 'image|max:1024'
         ]);
 
-        $this->photo = $this->photo->store('photos');
+        $this->photo = $this->photo->temporaryUrl();
         $this->croppedPhoto = null;
     }
 

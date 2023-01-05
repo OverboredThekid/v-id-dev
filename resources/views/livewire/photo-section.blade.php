@@ -25,6 +25,9 @@
         <button wire:click="uploadPhoto" class="btn btn-primary mt-4">Upload</button>
     </div>
     @endif
+    @if ($photo)
+    <img src="{{ $photo }}" alt="Photo" class="w-full">
+    @endif
 
     @if ($photo)
     <div class="mt-4">
