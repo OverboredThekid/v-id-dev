@@ -1,51 +1,79 @@
-<div class="photo-section">
-    <div class="webcam-container">
-        <!-- Webcam.js component to capture photo -->
-        <div id="my_camera"></div>
-        <div class="capture-buttons">
-            <!-- Button to capture photo -->
-            <button class="btn btn-primary" onclick="take_snapshot()">Capture Photo</button>
-            <!-- Button to select photo from file system -->
-            <button class="btn btn-secondary" wire:click="$emit('photoSelected')">Select from Computer</button>
-        </div>
+<div>
+    <div wire:ignore>
+        <input type="file" id="fileInput" class="hidden" accept="image/*" wire:model="photo">
+        <button id="captureButton" type="button" class="btn btn-primary" wire:click="capture()">Capture</button>
+        <button id="uploadButton" type="button" class="btn btn-secondary" wire:click="$refresh()">Upload</button>
+        <div id="webcam" style="display:none;"></div>
     </div>
-    <!-- File input to select photo from file system -->
-    <input type="file" wire:model="photo" accept="image/*" style="display:none" />
-    <!-- Cropper.js component to crop photo -->
-    <div class="cropper-container" style="display:none">
-        <img wire:model="photo" id="cropper-image" />
-        <div class="crop-buttons">
-            <!-- Button to crop photo -->
-            <button class="btn btn-primary" wire:click="cropPhoto">Crop Photo</button>
-            <!-- Button to submit photo -->
-            <button class="btn btn-secondary" wire:click="submitPhoto">Submit</button>
-        </div>
+    <div wire:loading wire:target="upload" class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
-<!-- Include Alpine.js, Webcam.js, and Cropper.js libraries -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
+    <div wire:ignore>
+        <img id="capturedImage" src="" style="display:none;">
+    </div>
+    @if ($photo)
+        <div wire:ignore>
+            <div id="cropperContainer"></div>
+            <button id="cropButton" type="button" class="btn btn-success" wire:click="crop()">Crop</button>
+        </div>
+        <img src="{{ $croppedPhoto }}" id="croppedImage" style="display:none;">
+    @endif
+    @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x/dist/alpine.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.6/dist/cropper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.25/webcam.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js" defer></script>
-<!-- Use Alpine.js to toggle between webcam and cropper components -->
-<script>
-    window.addEventListener('photoSelected', () => {
-        document.querySelector('.webcam-container').style.display = 'none';
-        document.querySelector('.cropper-container').style.display = 'block';
-    });
+    <script>
+        window.addEventListener('load', function () {
+            var captureButton = document.getElementById('captureButton');
+            var uploadButton = document.getElementById('uploadButton');
+            var fileInput = document.getElementById('fileInput');
+            var capturedImage = document.getElementById('capturedImage');
+            var cropperContainer = document.getElementById('cropperContainer');
+            var cropButton = document.getElementById('cropButton');
+            var croppedImage = document.getElementById('croppedImage');
 
-    // Webcam.js initialization and snapshot function
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-    Webcam.attach('#my_camera');
-    function take_snapshot() {
-        Webcam.snap((data_uri) => {
-            document.querySelector('#cropper-image').src = data_uri;
-            document.querySelector('.webcam-container').style.display = 'none';
-            document.querySelector('.cropper-container').style.display = 'block';
+            captureButton.addEventListener('click', function () {
+                Webcam.snap(function (dataUri) {
+                    capturedImage.src = dataUri;
+                    capturedImage.style.display = 'block';
+                    fileInput.value = null;
+                });
+            });
+
+            uploadButton.addEventListener('click', function () {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        capturedImage.src = e.target.result;
+                        capturedImage.style.display = 'block';
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            });
+
+            @if ($photo)
+                var cropper = new CropperJS(capturedImage, {
+                    aspectRatio: 1,
+                    crop: function () {
+                        cropButton.style.display = 'block';
+                    }
+                });
+                cropperContainer.appendChild(cropper.getCropperElement());
+            @endif
+
+            cropButton.addEventListener('click', function () {
+                cropper.getCroppedCanvas().toBlob(function (blob) {
+                    croppedImage.src = URL.createObjectURL(blob);
+                    croppedImage.style.display = 'block';
+                });
+                cropButton.style.display = 'none';
+            });
         });
-    }
-</script>
+    </script>
+@endsection
+
 </div>

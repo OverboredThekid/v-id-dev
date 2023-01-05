@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Components;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\ImageManagerStatic as Image;
+use CropperJS;
+use WebcamJS;
 
 class PhotoSection extends Component
 {
@@ -13,69 +14,37 @@ class PhotoSection extends Component
     public $photo;
     public $croppedPhoto;
 
-    public function cropPhoto()
+    public function capture()
     {
-        // Get cropper.js instance
-        $cropper = get('#cropper-image').data('cropper');
-
-        // Get cropped image data
-        $imageData = $cropper . getData();
-        $imageDataWidth = $imageData['width'];
-        $imageDataHeight = $imageData['height'];
-        $imageDataX = $imageData['x'];
-        $imageDataY = $imageData['y'];
-
-        // Create canvas to store cropped image
-        $canvas = document . createElement('canvas');
-        $canvas.width = $imageDataWidth;
-        $canvas.height = $imageDataHeight;
-        $context = $canvas . getContext('2d');
-
-        // Draw cropped image on canvas
-        $context . drawImage(
-            document . getElementById('cropper-image'),
-            $imageDataX,
-            $imageDataY,
-            $imageDataWidth,
-            $imageDataHeight,
-            0,
-            0,
-            $imageDataWidth,
-            $imageDataHeight
-        );
-
-        // Convert canvas to data URL
-        $this->croppedPhoto = $canvas . toDataURL();
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('#webcam');
     }
 
-    public function submitPhoto()
+    public function upload()
     {
-        // If photo was taken with webcam
-        if ($this->croppedPhoto) {
-            // Convert data URL to binary image data
-            $image = Image::make($this->croppedPhoto);
-            $image = (string) $image->encode('jpg');
-            $this->photo = "data:image/jpg;base64," . base64_encode($image);
-        }
-
-        // Validate and store uploaded photo
-        $this->validate([
-            'photo' => 'image|max:1024', // max size in kilobytes
-        ]);
-        $this->storePhoto();
+        Webcam.reset();
+        this.photo = this.refs.fileInput.files[0];
     }
 
-    public function storePhoto()
+    public function crop()
     {
-        // Store photo in desired location (e.g. public/photos)
-        $path = $this->photo->store('photos');
+        CropperJS.crop();
+        this.croppedPhoto = CropperJS.getCroppedCanvas().toDataURL();
+        CropperJS.destroy();
+    }
 
-        // Do something with the stored photo (e.g. update user profile)
-        // ...
+    public function save()
+    {
+        // Save the cropped photo to your server or database here.
     }
 
     public function render()
     {
-        return view('livewire.photo-section')->layout('layouts.photo');
+        return view('livewire.photo-section');
     }
 }
