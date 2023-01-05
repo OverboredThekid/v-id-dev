@@ -10,32 +10,59 @@ class PhotoSection extends Component
     use WithFileUploads;
 
     public $photo;
-    public $cropped_image;
+    public $croppedPhoto;
+    public $showWebcam = false;
+    public $showFileInput = false;
+    public $showCropper = false;
 
-    public function capturePhoto()
+    public function openWebcam()
     {
-        // The photo data is saved to a hidden input in the blade view script
-        // We can retrieve it here and store it in the $photo property
-        $this->photo = $this->cropped_image;
+        $this->resetpage();
+        $this->showWebcam = true;
     }
 
-    public function cropPhoto()
+    public function openFileInput()
     {
-        // The cropped image data is saved to a hidden input in the blade view script
-        // We can retrieve it here and store it in the $photo property
-        $this->photo = $this->cropped_image;
+        $this->resetpage();
+        $this->showFileInput = true;
+    }
 
-        // Close the modal
-        $this->emit('closeModal');
+    public function openCropper()
+    {
+        $this->showCropper = true;
+    }
+
+    public function cancelWebcam()
+    {
+        $this->resetpage();
+    }
+
+    public function cancelFileInput()
+    {
+        $this->resetpage();
+    }
+
+    public function cancelCropper()
+    {
+        $this->showCropper = false;
     }
 
     public function submit()
     {
-        // Do something with the $photo here, such as saving it to the database
+        if ($this->croppedPhoto) {
+            $this->photo = $this->croppedPhoto;
+        }
+
+        $this->resetpage();
+        $this->emit('photoSelected', $this->photo);
     }
 
-    public function render()
+    public function resetpage()
     {
-        return view('livewire.photo-section')->layout('layouts.photo');
+        $this->photo = null;
+        $this->croppedPhoto = null;
+        $this->showWebcam = false;
+        $this->showFileInput = false;
+        $this->showCropper = false;
     }
 }
