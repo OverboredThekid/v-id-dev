@@ -11,7 +11,6 @@ class PhotoSection extends Component
 {
     use WithFileUploads;
 
-
     // State variables
     public $photo;
 
