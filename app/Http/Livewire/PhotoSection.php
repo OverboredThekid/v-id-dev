@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PhotoSection extends Component
 {
     use WithFileUploads;
 
+ 
     public $showCaptureModal = false;
     public $showUploadModal = false;
     public $showCropper = false;
@@ -63,9 +65,9 @@ class PhotoSection extends Component
 
         $this->resetForm();
     }
-
+    
     public function render()
     {
-        return view('livewire.photo-section')->layout("layouts.photo");
+        return view('livewire.photo-section')->layout('layouts.photo');
     }
 }
