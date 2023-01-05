@@ -12,7 +12,7 @@
     <div class="mt-4">
         <webcam wire:model="photo"></webcam>
         <div class="flex justify-center mt-4">
-            <button wire:click="capture" class="btn btn-primary">
+            <button onclick="capture()" class="btn btn-primary">
                 Capture
             </button>
             <button wire:click="cancelWebcam" class="btn btn-secondary ml-2">
