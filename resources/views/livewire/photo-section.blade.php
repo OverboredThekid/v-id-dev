@@ -64,10 +64,16 @@
 @push('scripts')
 <script>
     function initWebcam() {
-        setTimeout(function() {
-            Webcam.attach('webcam');
-        }, 1000);
-    }
+    Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    setTimeout(function() {
+        Webcam.attach('webcam');
+    }, 1000);
+}
 
     function capture() {
         Webcam.snap(function(dataUri) {
