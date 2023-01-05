@@ -1,22 +1,29 @@
 <div>
-    @if (!$uploaded)
-        <div class="webcam-container">
-            <div id="my_camera"></div>
-            <div class="capture-container">
-                <button wire:click="capture" class="btn btn-primary">Capture</button>
-            </div>
-        </div>
+    @if ($cropping)
+        <div x-data="{ cropper: null }">
+            <img src="{{ $photo }}" x-ref="photo" class="w-full h-64 object-cover" />
 
-        <input type="hidden" wire:model="photoUrl">
-    @elseif (!$cropped)
-        <div id="cropper"></div>
-        <input type="hidden" wire:model="croppedPhotoUrl">
-        <button wire:click="crop" class="btn btn-primary">Crop</button>
+            <button wire:click="crop" class="btn btn-blue mt-4" x-on:click="cropper = new Cropper(photo, { aspectRatio: 16 / 9, crop(event) { [event.detail.x, event.detail.y, event.detail.width, event.detail.height].forEach((value, index) => window.livewire.emit('x', value)) } })">
+                Crop
+            </button>
+        </div>
+    @elseif ($croppedPhoto)
+        <img src="{{ $croppedPhoto }}" class="w-full h-64 object-cover" />
+
+        <button wire:click="submit" class="btn btn-blue mt-4">
+            Submit
+        </button>
     @else
-        <img src="{{ $croppedPhotoUrl }}" class="img-fluid">
-        <button wire:click="submit" class="btn btn-primary">Submit</button>
+        <webcam class="w-full h-64 object-cover" wire:model="photo" />
+
+        <button wire:click="capture" class="btn btn-blue mt-4">
+            Capture
+        </button>
+
+        <input type="file" wire:model="photo" class="hidden" />
     @endif
 </div>
+
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.x.x/dist/cropper.js"></script>

@@ -11,11 +11,8 @@ class PhotoSection extends Component
     use WithFileUploads;
 
     public $photo;
-    public $photoUrl;
     public $croppedPhoto;
-    public $croppedPhotoUrl;
-    public $uploaded = false;
-    public $cropped = false;
+    public $cropping;
 
     public function render()
     {
@@ -24,14 +21,21 @@ class PhotoSection extends Component
 
     public function capture()
     {
-        $this->photo = Image::make($this->photoUrl)->encode('jpg');
-        $this->uploaded = true;
+        $this->validate([
+            'photo' => 'required|image|max:1024',
+        ]);
+
+        $this->cropping = true;
     }
 
     public function crop()
     {
-        $this->croppedPhoto = Image::make($this->croppedPhotoUrl)->encode('jpg');
-        $this->cropped = true;
+        $croppedPhoto = (new \Crop($this->photo))
+            ->setCoordinates($this->x, $this->y, $this->width, $this->height)
+            ->getCroppedImage();
+
+        $this->croppedPhoto = $croppedPhoto->encode('jpg');
+        $this->cropping = false;
     }
 
     public function submit()
@@ -40,8 +44,16 @@ class PhotoSection extends Component
             'croppedPhoto' => 'required|image|max:1024',
         ]);
 
-        // Save the cropped photo to your desired location
-        // and do any other processing you need to do with it.
-        $this->croppedPhoto->save(public_path('photos/cropped.jpg'));
+        // Persist the photo to your database or storage.
+
+        // Reset the component state.
+        $this->resetpage();
+    }
+
+    public function resetpage()
+    {
+        $this->photo = null;
+        $this->croppedPhoto = null;
+        $this->cropping = false;
     }
 }
