@@ -54,6 +54,7 @@
 
                     <div class="form-group img-upload">
                         @livewire('PhotoSection')
+                        <input type="hidden" wire:model="is_active" value="1">
                     </div>
 
                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="secondStepSubmit">Next</button>
@@ -83,6 +84,7 @@
                             <td>Photo:</td>
                             <td>@if($imageData)
                                 <img src="{{ $imageData }}" />
+                                <input type="hidden" wire:model="file" value='$imageData'>
                                 @endif
                             </td>
                         </tr>
