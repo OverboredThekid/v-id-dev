@@ -15,13 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.js" defer></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css'/>
     @livewireStyles
+    @livewireScripts
+
 </head>
 
 <body>
     {{ $slot }}
 </body>
 <footer>
-    @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.25/webcam.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.6/dist/cropper.min.js"></script>
