@@ -57,7 +57,7 @@ class StaffWizard extends Component
         $file = Image::make($this->imageData)->encode('jpg');
         $temp_path = public_path('tmp/' . time() . '.jpg'); 
         $file->save($temp_path);
-        $file = new TemporaryUploadedFile($temp_path, 'storage', 'image/jpeg', null, true);
+        $file = new TemporaryUploadedFile($temp_path, 'public', 'image/jpeg', null, true);
 
         $staff_prints = new staff_prints;
         $staff_prints->is_active = '0';
