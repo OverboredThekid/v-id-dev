@@ -55,7 +55,7 @@ class StaffWizard extends Component
 
         // Convert the base64 data to an uploaded file
         $filez = Image::make($this->imageData)->encode('jpg');
-        $temp_path = storage_path('tmp/' . time() . '.jpg');
+        $temp_path = public_path('tmp/' . time() . '.jpg');
         $filez->save($temp_path);
         $filez = new UploadedFile($temp_path, 'image.jpg', 'image/jpeg', null, true);
 
