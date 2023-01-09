@@ -84,7 +84,7 @@
                             <td>Photo:</td>
                             <td>@if($imageData)
                                 <img src="{{ $imageData }}" />
-                                <input type="hidden" wire:model="file" value='$imageData'>
+                                <input type="hidden" wire:model="file" value="{{ $imageData }}">
                                 @endif
                             </td>
                         </tr>
