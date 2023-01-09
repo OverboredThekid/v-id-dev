@@ -53,7 +53,7 @@
                     <h3> Step 2</h3>
 
                     <div class="form-group img-upload">
-                    @livewire('PhotoSection')
+                        @livewire('PhotoSection')
                     </div>
 
                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="secondStepSubmit">Next</button>
@@ -79,6 +79,13 @@
                             <td>Phone Number:</td>
                             <td><strong>{{$phone}}</strong></td>
                         </tr>
+                        <tr>
+                            <td>Photo:</td>
+                            <td>@if($imageData)
+                                <img src="{{ $imageData }}" />
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div id='end-buttons'>
@@ -97,4 +104,10 @@
         </div>
     </div>
 </div>
+<script>
+    window.livewire.on('sendBase64Image', (data) => {
+        // Call the 'sendBase64Image' method on the component with the image data as an argument
+        @this.call('sendBase64Image', data)
+    });
+</script>
 </div>

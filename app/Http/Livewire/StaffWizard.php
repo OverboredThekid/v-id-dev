@@ -18,8 +18,7 @@ class StaffWizard extends Component
     public $name, $email, $phone, $file, $is_active;
     public $successMessage = '';
     public $url;
-    public $image;
-
+    public $imageData;
 
     public function firstStepSubmit()
     {
@@ -32,24 +31,12 @@ class StaffWizard extends Component
         $this->currentStep = 2;
         $this->successMessage = '';
     }
+    public function sendBase64Image($data)
+{
+    $this->imageData = $data;
+    $this->currentStep = 3;
 
-
-    public function mount()
-    {
-        $this->image = null;
-    }
-
-    // Listen for the 'imageProcessed' event
-    protected $listeners = ['imageProcessed' => 'updateImage'];
-
-    public function updateImage($imageData)
-    {
-        // Update the component's state with the image data
-        $this->image = $imageData;
-
-        $this->currentStep = 3;
-    }
-
+}
     public function secondStepSubmit()
     {
         $validatedData = $this->validate([
