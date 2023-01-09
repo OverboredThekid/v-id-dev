@@ -53,7 +53,7 @@
                     <h3> Step 2</h3>
 
                     <div class="form-group img-upload">
-                    <div wire:include="livewire.PhotoSection"></div>
+                    @livewire('PhotoSection')
                     </div>
 
                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="secondStepSubmit">Next</button>
