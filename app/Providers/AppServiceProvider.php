@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationItem;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,5 +42,8 @@ class AppServiceProvider extends ServiceProvider
                     ->sort(2),
             ]);
         });
+
+        Livewire::component('photosection', Photosection::class);
+
     }
 }
