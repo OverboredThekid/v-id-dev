@@ -53,15 +53,7 @@
                     <h3> Step 2</h3>
 
                     <div class="form-group img-upload">
-                        <label for="description">Image Upload</label>
-                        <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                            <input type="file" wire:model="file" :wire:key='file' class="form-control" id="file" x-show="!isUploading" accept="image/*" />
-                            <input type="hidden" wire:model="is_active" value="1">
-                            <div class="mt-2" x-show="isUploading">
-                                <progress max="100" x-bind:value="progress"></progress>
-                            </div>
-                            @error('file') <span class="error">{{ $message }}</span> @enderror
-                        </div>
+                    <div wire:include="livewire.PhotoSection"></div>
                     </div>
 
                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="secondStepSubmit">Next</button>
