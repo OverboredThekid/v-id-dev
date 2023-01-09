@@ -8,6 +8,7 @@ use Livewire\WithFileUploads;
 use Livewire\Component;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
+use Livewire\TemporaryUploadedFile;
 
 
 class StaffWizard extends Component
@@ -53,15 +54,15 @@ class StaffWizard extends Component
     public function submitForm()
     {
 
-        // Convert the base64 data to an uploaded file
-        $filez = Image::make($this->imageData)->encode('jpg');
-        $temp_path = public_path('tmp/' . time() . '.jpg');
-        $filez->save($temp_path);
-        $filez = new UploadedFile($temp_path, 'image.jpg', 'image/jpeg', null, true);
+        // Convert the base64 data to a TemporaryUploadedFile object
+        $file = Image::make($this->imageData)->encode('jpg');
+        $temp_path = storage_path('tmp/' . time() . '.jpg');
+        $file->save($temp_path);
+        $file = new TemporaryUploadedFile($temp_path, 'image.jpg', 'image/jpeg', null, true);
 
         $staff_prints = new staff_prints;
         $staff_prints->is_active = '0';
-        $staff_prints->addMedia($filez)->toMediaCollection('staff_print');
+        $staff_prints->addMedia($file)->toMediaCollection('staff_print');
 
         staff::firstOrCreate([
             'name' => $this->name,
