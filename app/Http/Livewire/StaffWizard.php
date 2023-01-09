@@ -46,6 +46,8 @@ class StaffWizard extends Component
     {
         // Update the component's state with the image data
         $this->image = $imageData;
+
+        $this->currentStep = 3;
     }
 
     public function secondStepSubmit()
