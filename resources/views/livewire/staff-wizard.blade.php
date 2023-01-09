@@ -81,7 +81,7 @@
                             <td><strong>{{$phone}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Photo:</td>
+                            <td>Staff Photo:</td>
                             <td>@if($imageData)
                                 <img src="{{ $imageData }}" />
                                 <input type="hidden" wire:model="file" value="{{ $imageData }}">
