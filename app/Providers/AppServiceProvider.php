@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\PhotoSection;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Filament\Facades\Filament;
@@ -43,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        Livewire::component('photosection', Photosection::class);
+        Livewire::component('PhotoSection', PhotoSection::class);
 
     }
 }
