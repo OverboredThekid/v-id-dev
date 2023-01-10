@@ -31,7 +31,7 @@
     <div>
         <div class="container">
             <h5>Image Upload</h5>
-           <label class="btn btn-primary"> <input type="file" name="image" class="image btn btn-primary">Upload A Photo</label>
+           <label class="btn btn-primary"><input type="file" name="image" class="image">Upload A Photo</label>
             <br>
             <br>
             <div class="embed-responsive embed-responsive-16by9">
