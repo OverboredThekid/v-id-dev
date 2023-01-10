@@ -103,8 +103,8 @@
 
     $("#crop").click(function() {
         canvas = cropper.getCroppedCanvas({
-            width: 160,
-            height: 160,
+            width: 360,
+            height: 360,
         });
 
         canvas.toBlob(function(blob) {
