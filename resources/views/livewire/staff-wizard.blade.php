@@ -51,7 +51,7 @@
             <div class="col-xs-12">
                 <div class="col-md-12">
                     <h3> Step 2</h3>
-
+                    <label>Staff Photo</label>
                     <div class="form-group img-upload">
                         @livewire('PhotoSection')
                         <input type="hidden" wire:model="is_active" value="1">
