@@ -3,12 +3,14 @@ use Spatie\LaravelSettings\Settings;
 
 class BadgeSettings extends Settings
 {
-    public string $site_name;
+    public string $qrcode_link;
     
-    public bool $site_active;
+    public string $exp_date;
+
+    public bool $is_redirect;
     
     public static function group(): string
     {
-        return 'general';
+        return 'badges';
     }
 }
