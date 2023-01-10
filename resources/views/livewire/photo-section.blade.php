@@ -30,23 +30,18 @@
     </style>
     <div>
         <div class="container">
-            <h5>Image Upload</h5>
            <label class="btn btn-primary"><input type="file" name="image" class="image">Upload A Photo</label>
-            <br>
-            <br>
+           <br>
             <div class="embed-responsive embed-responsive-16by9">
                 <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;"></video>
             </div>
             <div id="loading-message"  style="display: none;">Loading webcam...</div>
             <br>
             <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
-
-            <div class="container">
                 <div class="row">
                     <button id="take-photo" class="btn btn-primary" style="display: none; margin: right 15px;">Capture</button>
                     <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
                 </div>
-            </div>
 
             <br>
         </div>
