@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "3x1io/filament-user": "^1.1",
+        "alperenersoy/filament-export": "^0.2.4",
         "bezhansalleh/filament-shield": "^2.3",
         "camya/filament-title-with-slug": "^0.5.3",
         "cms-multi/filament-clear-cache": "^1.0",
