@@ -142,7 +142,7 @@
         <script>
             function printpart() {
                 window.print();
-                setTimeout(window.close, 0);
+               // setTimeout(window.close, 0);
             }
         </script>
 </div>
