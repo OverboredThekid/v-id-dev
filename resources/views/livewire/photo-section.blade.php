@@ -34,12 +34,10 @@
             <input type="file" name="image" class="image btn btn-primary">
             <br>
             <br>
-            <div style="width: 100%; max-width: 640px; max-height: 480px;">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video id="webcam" autoplay class="embed-responsive-item" style="display: none; width: 640px; height: 480px;"></video>
-                </div>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video id="webcam" width="640" height="480" autoplay class="embed-responsive-item" style="display: none; width: 640px; height: 480px;"></video>
             </div>
-            <div id="loading-message" style="display: none;">Loading webcam...</div>
+            <div id="loading-message"  style="display: none;">Loading webcam...</div>
             <br>
             <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
 
