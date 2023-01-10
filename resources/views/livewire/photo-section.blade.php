@@ -33,9 +33,15 @@
             <video id="webcam" autoplay style="display: none;"></video>
             <div id="loading-message" style="display: none;">Loading webcam...</div>
             <br>
-            <button id="activate-webcam" class="btn btn-primary">Take Photo</button>
-            <button id="take-photo" class="btn btn-primary" style="display: none;">Take Photo</button>
-            <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
+            <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
+
+            <div class="container">
+                <div class="row">
+                    <button id="take-photo" class="btn btn-primary" style="display: none;">Capture</button>
+                    <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
+                </div>
+            </div>
+
             <br>
         </div>
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
