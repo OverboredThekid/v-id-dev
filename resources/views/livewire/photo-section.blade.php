@@ -37,7 +37,7 @@
 
             <div class="container">
                 <div class="row">
-                    <button id="take-photo" class="btn btn-primary" style="display: none;">Capture</button>
+                    <button id="take-photo" class="btn btn-primary" style="display: none; margin: right 15px;">Capture</button>
                     <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
                 </div>
             </div>
