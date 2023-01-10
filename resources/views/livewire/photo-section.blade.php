@@ -120,7 +120,7 @@
             // Get the canvas context
             var context = canvas.getContext('2d');
             // Draw the current frame of the video onto the canvas
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            context.drawImage(video, 0, 0, 320, 320);
             // Get the image data from the canvas
             var imageData = canvas.toDataURL('image/png');
             // Set the src of the image element to the image data
