@@ -23,6 +23,9 @@
         .modal-lg {
             max-width: 1000px !important;
         }
+        body{
+            overflow: auto;
+        }
     </style>
     <div>
         <div class="container">
