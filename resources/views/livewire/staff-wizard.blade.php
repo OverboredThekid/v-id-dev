@@ -56,8 +56,6 @@
                         @livewire('PhotoSection')
                         <input type="hidden" wire:model="is_active" value="1">
                     </div>
-
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="secondStepSubmit">Next</button>
                     <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(1)">Back</button>
                 </div>
             </div>
