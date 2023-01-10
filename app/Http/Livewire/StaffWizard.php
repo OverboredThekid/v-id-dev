@@ -91,9 +91,15 @@ class StaffWizard extends Component
 
     public function is_loggedin()
     {
-        $staff_prints = new staff_prints;
-        $staff_prints->is_active = '1';
-        $staff_prints->addMedia($this->file)->toMediaCollection('staff_print');
+         // Convert the base64 data to a TemporaryUploadedFile object
+         $file = Image::make($this->imageData)->encode('jpg');
+         $temp_path = storage_path('tmp/' . time() . '.jpg'); 
+         $file->save($temp_path);
+         $file = new TemporaryUploadedFile($temp_path, 'public', 'image/jpeg', null, true);
+ 
+         $staff_prints = new staff_prints;
+         $staff_prints->is_active = '1';
+         $staff_prints->addMedia($temp_path)->toMediaCollection('staff_print');
 
         staff::firstOrCreate([
             'name' => $this->name,
