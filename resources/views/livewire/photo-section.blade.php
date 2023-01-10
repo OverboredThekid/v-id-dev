@@ -34,8 +34,10 @@
             <input type="file" name="image" class="image btn btn-primary">
             <br>
             <br>
-            <div class="embed-responsive embed-responsive-16by9">
-                <video id="webcam" autoplay class="embed-responsive-item" style="display: none; width: 640px; height: 480px;"></video>
+            <div style="width: 100%; max-width: 640px; max-height: 480px;">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video id="webcam" autoplay class="embed-responsive-item" style="display: none; width: 640px; height: 480px;"></video>
+                </div>
             </div>
             <div id="loading-message" style="display: none;">Loading webcam...</div>
             <br>
@@ -120,7 +122,7 @@
             // Get the canvas context
             var context = canvas.getContext('2d');
             // Draw the current frame of the video onto the canvas
-            context.drawImage(video, 0, 0, 320, 320);
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
             // Get the image data from the canvas
             var imageData = canvas.toDataURL('image/png');
             // Set the src of the image element to the image data
