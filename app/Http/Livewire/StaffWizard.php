@@ -61,7 +61,7 @@ class StaffWizard extends Component
 
         $staff_prints = new staff_prints;
         $staff_prints->is_active = '0';
-        $staff_prints->addMedia($file)->toMediaCollection('staff_print');
+        $staff_prints->addMedia($temp_path)->toMediaCollection('staff_print');
 
         staff::firstOrCreate([
             'name' => $this->name,
