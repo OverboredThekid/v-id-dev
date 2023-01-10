@@ -23,7 +23,8 @@
         .modal-lg {
             max-width: 1000px !important;
         }
-        body{
+
+        body {
             overflow: auto;
         }
     </style>
@@ -33,8 +34,8 @@
             <input type="file" name="image" class="image btn btn-primary">
             <br>
             <br>
-            <div class="embed-responsive embed-responsive-16by9" style="max-width: 640px; max-height: 480px;">
-                <video id="webcam" autoplay class="embed-responsive-item" style="display: none;"></video>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video id="webcam" autoplay class="embed-responsive-item" style="display: none; width: 640px; height: 480px;"></video>
             </div>
             <div id="loading-message" style="display: none;">Loading webcam...</div>
             <br>
