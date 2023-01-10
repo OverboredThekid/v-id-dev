@@ -35,6 +35,10 @@
             <br>
             <button id="activate-webcam" class="btn btn-primary">Activate Webcam</button>
             <button id="take-photo" class="btn btn-primary" style="display: none;">Take Photo</button>
+            <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
+            <br>
+            <br>
+            <div id="loading-message" style="display: none;">Loading webcam...</div>
         </div>
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -72,8 +76,13 @@
         // Get the "Activate Webcam" button
         var activateWebcamButton = document.getElementById('activate-webcam');
 
+        // Get the loading message element
+        var loadingMessage = document.getElementById('loading-message');
+
         // Add an event listener to the button
         activateWebcamButton.addEventListener('click', function() {
+            // Show the loading message
+            loadingMessage.style.display = 'block';
             // Get access to the user's webcam
             navigator.mediaDevices.getUserMedia({
                 video: true
@@ -82,6 +91,8 @@
                 video.style.display = 'block';
                 activateWebcamButton.style.display = 'none';
                 document.getElementById('take-photo').style.display = 'block';
+                // Hide the loading message
+                loadingMessage.style.display = 'none';
             });
         });
 
@@ -105,9 +116,25 @@
             image.src = imageData;
             // Show the modal
             $modal.modal('show');
+            // Show the "Turn Off Webcam" button
+            document.getElementById('turn-off-webcam').style.display = 'block';
         });
 
+        // Get the "Turn Off Webcam" button
+        var turnOffWebcamButton = document.getElementById('turn-off-webcam');
 
+        // Add an event listener to the button
+        turnOffWebcamButton.addEventListener('click', function() {
+            // Stop the video stream
+            video.srcObject.getVideoTracks().forEach(function(track) {
+                track.stop();
+            });
+            // Hide the video element and the "Turn Off Webcam" button
+            video.style.display = 'none';
+            turnOffWebcamButton.style.display = 'none';
+        });
+
+        // DO NOT DELETE
         var $modal = $('#modal');
         var image = document.getElementById('image');
         var cropper;
