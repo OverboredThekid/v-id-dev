@@ -26,11 +26,13 @@
     </style>
     <div>
         <div class="container">
-            <h1>Image Upload</h1>
+            <h5>Image Upload</h5>
             <input type="file" name="image" class="image btn btn-primary">
             <br>
             <br>
-            <video id="webcam" autoplay style="display: none;"></video>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video id="webcam" autoplay class="embed-responsive-item" style="display: none;"></video>
+            </div>
             <div id="loading-message" style="display: none;">Loading webcam...</div>
             <br>
             <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
