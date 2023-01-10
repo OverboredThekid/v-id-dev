@@ -27,18 +27,16 @@
     <div>
         <div class="container">
             <h1>Image Upload</h1>
-            <input type="file" name="image" class="image">
+            <input type="file" name="image" class="image btn btn-primary">
             <br>
             <br>
             <video id="webcam" autoplay style="display: none;"></video>
+            <div id="loading-message" style="display: none;">Loading webcam...</div>
             <br>
-            <br>
-            <button id="activate-webcam" class="btn btn-primary">Activate Webcam</button>
+            <button id="activate-webcam" class="btn btn-primary">Take Photo</button>
             <button id="take-photo" class="btn btn-primary" style="display: none;">Take Photo</button>
             <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
             <br>
-            <br>
-            <div id="loading-message" style="display: none;">Loading webcam...</div>
         </div>
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
