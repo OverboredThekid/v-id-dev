@@ -91,6 +91,7 @@
                 document.getElementById('take-photo').style.display = 'block';
                 // Hide the loading message
                 loadingMessage.style.display = 'none';
+                document.getElementById('turn-off-webcam').style.display = 'block';
             });
         });
 
@@ -115,7 +116,6 @@
             // Show the modal
             $modal.modal('show');
             // Show the "Turn Off Webcam" button
-            document.getElementById('turn-off-webcam').style.display = 'block';
         });
 
         // Get the "Turn Off Webcam" button
