@@ -29,7 +29,6 @@
         }
     </style>
     <div>
-        <div class="container">
            <label class="btn btn-primary"><input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo</label>
            <br>
             <div class="embed-responsive embed-responsive-16by9">
@@ -44,7 +43,6 @@
                 </div>
 
             <br>
-        </div>
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
