@@ -29,20 +29,20 @@
         }
     </style>
     <div>
-           <label class="btn btn-primary"><input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo</label>
-           <br>
-            <div class="embed-responsive embed-responsive-16by9">
-                <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;"></video>
-            </div>
-            <div id="loading-message"  style="display: none;">Loading webcam...</div>
-            <br>
-            <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
-                <div class="row">
-                    <button id="take-photo" class="btn btn-primary" style="display: none; margin: right 15px;">Capture</button>
-                    <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
-                </div>
+        <label class="btn btn-primary"><input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo</label>
+        <br>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;"></video>
+        </div>
+        <div id="loading-message" style="display: none;">Loading webcam...</div>
+        <br>
+        <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
+        <div class="row">
+            <button id="take-photo" class="btn btn-primary" style="display: none; margin: right 15px;">Capture</button>
+            <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
+        </div>
 
-            <br>
+        <br>
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -64,13 +64,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer fixed-bottom justify-content-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-primary" id="crop">Crop</button>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script>
         // Get the video element
