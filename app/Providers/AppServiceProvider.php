@@ -34,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        \Reworck\FilamentSettings\FilamentSettings::setFormFields([
+            \Filament\Forms\Components\TextInput::make('qrcode-link'),
+            \Filament\Forms\Components\Toggle::make('is_redirect'),
+            \Filament\Forms\Components\DateTimePicker::make('card_exp'),
+        ]);
+
         Filament::serving(function () {
             Filament::registerNavigationItems([
                 NavigationItem::make('Staff Wizard')
@@ -43,11 +49,7 @@ class AppServiceProvider extends ServiceProvider
                     ->sort(2),
             ]);
         });
-        \Reworck\FilamentSettings\FilamentSettings::setFormFields([
-            \Filament\Forms\Components\TextInput::make('qrcode-link'),
-            \Filament\Forms\Components\Toggle::make('is_redirect'),
-            \Filament\Forms\Components\DateTimePicker::make('card_exp'),
-        ]);
+        
         Livewire::component('PhotoSection', PhotoSection::class);
 
     }
