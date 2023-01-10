@@ -14,7 +14,6 @@
         "ekremogul/filament-grapesjs": "dev-main",
         "filament/filament": "2.x-dev",
         "filament/spatie-laravel-media-library-plugin": "^2.16",
-        "filament/spatie-laravel-settings-plugin": "^2.16",
         "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
@@ -23,6 +22,7 @@
         "laravel/tinker": "^2.7",
         "marjose123/filament-no-connection": "^1.0",
         "rahmanramsi/filament-editorjs": "^1.0",
+        "reworck/filament-settings": "^0.3.0",
         "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
