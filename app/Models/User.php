@@ -44,6 +44,10 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
+    public function canManageSettings(): bool
+    {
+        return $this->can('manage.settings');
+    }
     public function canAccessFilament(): bool
     {
         return true;
