@@ -55,7 +55,7 @@ class StaffWizard extends Component
 
         // Convert the base64 data to a TemporaryUploadedFile object
         $file = Image::make($this->imageData)->encode('jpg');
-        $temp_path = public_path('tmp/' . time() . '.jpg'); 
+        $temp_path = storage_path('tmp/' . time() . '.jpg'); 
         $file->save($temp_path);
         $file = new TemporaryUploadedFile($temp_path, 'public', 'image/jpeg', null, true);
 
