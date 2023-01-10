@@ -30,7 +30,7 @@
     </style>
     <div>
         <div class="container">
-           <input type="file" name="image" class="image">
+           <label class="btn btn-primary"><input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo</label>
            <br>
             <div class="embed-responsive embed-responsive-16by9">
                 <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;"></video>
