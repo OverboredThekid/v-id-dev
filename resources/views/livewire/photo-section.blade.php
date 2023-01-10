@@ -129,6 +129,8 @@
             });
             // Hide the video element and the "Turn Off Webcam" button
             video.style.display = 'none';
+            takePhotoButton.style.display = 'none';
+            activateWebcamButton.style.display = 'block';
             turnOffWebcamButton.style.display = 'none';
         });
 
