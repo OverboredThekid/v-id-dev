@@ -1,7 +1,7 @@
 <?php
 use Spatie\LaravelSettings\Settings;
 
-class BadgeSettings extends Settings
+class BadgeSetting extends Settings
 {
     public string $qrcode_link;
     
