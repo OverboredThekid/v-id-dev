@@ -21,8 +21,8 @@ class ManageSettings extends SettingsPage
             TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
             DatePicker::make('exp_date')->required()->label('Card Experation Date'),
             Toggle::make('is_redirect')->required()->label('Link Redirecting'),
-            SpatieMediaLibraryFileUpload::make('svg_file_front')->required()->label("Front Of ID"),
-            SpatieMediaLibraryFileUpload::make('svg_file_back')->required()->label('Back Of ID'),
+            SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Front Of ID"),
+            SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Back Of ID'),
         ];
     }
 }
