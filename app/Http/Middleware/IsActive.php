@@ -5,9 +5,16 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Models\staff;
+use app\Settings\BadgeSettings;
 
 class IsActive
 {
+    function isredirect(): string{
+        return app(BadgeSettings::class)->is_redirect;
+    }
+    public function qrlink(): string{
+        return app(BadgeSettings::class)->qr_link;
+    }
     /**
      * Handle an incoming request.
      *
@@ -19,7 +26,7 @@ class IsActive
     {
         // Retrieve the employee record using the slug passed in the route
         $staff = staff::where('id', $request->slug)->first();
-    
+    if($this->isredirect() == false){
         // Check if the employee record was found
         if ($staff) {
             // If the employee record was found, check if the employee is active
@@ -34,5 +41,8 @@ class IsActive
             // If the employee record was not found, redirect the user to a 404 error page
             return abort(403, 'This Staff Member Was Not Found');
         }
+    }else{
+        return redirect($this->qrlink());
+    }
     }
 }
