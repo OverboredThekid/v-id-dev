@@ -43,7 +43,7 @@ class IsActive
                 // If the employee record was not found, redirect the user to a 404 error page
                 return abort(403, 'This Staff Member Was Not Found');
             }
-        } elseif ($this->isredirect()) {
+        } if($this->isredirect()) {
             $staff = staff::where('id', $request->slug)->first();
             // Check if the employee record was found
             if ($staff) {
