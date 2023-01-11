@@ -13,7 +13,7 @@ Route::get('staff/wizard', StaffWizard::class)->name('wizard');
 Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
 //Staff Link Route ~Livewire
-Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['isActive']);
+Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active']);
  
 //Basic Index ~Livewire
 Route::get('/', Home::class);
