@@ -32,8 +32,8 @@ class ManageSettings extends SettingsPage
             Section::make('SVG File')
                 ->description('Upload Front and Back SVG files for the print')
                 ->schema([
-                    FileUpload::make('svg_front'),
-                    SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Card Back'),
+                    FileUpload::make('svg_front')->required()->label('Card Front'),
+                    FileUpload::make('svg_back')->required()->label('Card Back'),
                 ])
 
         ];
