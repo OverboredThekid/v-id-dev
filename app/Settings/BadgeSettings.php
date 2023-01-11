@@ -7,9 +7,9 @@ use Spatie\LaravelSettings\Settings;
 class BadgeSettings extends Settings
 {
     public string $qr_link;
-    public string $svg_front;
+    public object $svg_front;
     public string $exp_date;
-    public string $svg_back;
+    public object $svg_back;
     public bool $is_redirect;
 
     public static function group(): string
