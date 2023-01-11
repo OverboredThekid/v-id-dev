@@ -3,11 +3,11 @@
 namespace App\Filament\Pages;
 
 use App\Settings\BadgeSettings;
+use Filament\Pages\SettingsPage;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Pages\SettingsPage;
 
 class ManageSettings extends SettingsPage
 {
@@ -22,6 +22,7 @@ class ManageSettings extends SettingsPage
             DatePicker::make('exp_date')->required()->label('Card Experation Date'),
             Toggle::make('is_redirect')->required()->label('Link Redirecting'),
             SpatieMediaLibraryFileUpload::make('svg_file_front')->required()->label("Front Of ID"),
+            SpatieMediaLibraryFileUpload::make('svg_file_back')->required()->label('Back Of ID'),
         ];
     }
 }
