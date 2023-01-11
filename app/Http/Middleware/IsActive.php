@@ -26,7 +26,7 @@ class IsActive
     {
         // Retrieve the employee record using the slug passed in the route
         $staff = staff::where('id', $request->slug)->first();
-    if($this->isredirect() == false){
+    if(!$this->isredirect()){
         // Check if the employee record was found
         if ($staff) {
             // If the employee record was found, check if the employee is active
@@ -41,7 +41,7 @@ class IsActive
             // If the employee record was not found, redirect the user to a 404 error page
             return abort(403, 'This Staff Member Was Not Found');
         }
-    }elseif($this->isredirect() == false){
+    }elseif($this->isredirect()){
         
         return redirect($this->qrlink());
     }
