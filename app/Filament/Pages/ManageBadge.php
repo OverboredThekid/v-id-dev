@@ -7,6 +7,7 @@ use Filament\Pages\SettingsPage;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class ManageBadge extends SettingsPage
 {
@@ -22,7 +23,8 @@ class ManageBadge extends SettingsPage
         return [
             TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
             DatePicker::make('exp_date')->required()->label('Card Experation Date'),
-            Toggle::make('is_redirect')->required()->label('Link Redirecting')
+            Toggle::make('is_redirect')->required()->label('Link Redirecting'),
+            SpatieMediaLibraryFileUpload::make('svg'),
         ];
     }
 }

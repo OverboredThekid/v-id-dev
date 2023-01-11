@@ -9,6 +9,8 @@ class BadgeSettings extends Settings
     public string $qr_link;
 
     public string $exp_date;
+
+    public string $svg_file;
     
     public bool $is_redirect;
     
