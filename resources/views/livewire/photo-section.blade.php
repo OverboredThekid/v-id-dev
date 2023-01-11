@@ -65,12 +65,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-primary" id="crop">Crop</button>
                     </div>
+                </div>
+            </div>
         </div>
 
     </div>
