@@ -79,7 +79,7 @@
                 </defs>
                 <g id="Back_ID">
                     <line id="Red_Dash_Linw" class="cls-9" x1="61.68" y1="188.25" x2="145.09" y2="187.45" /><text class="cls-3" transform="translate(60.24 230.96)">
-                        <tspan x="0" y="0">EXP {{$exp_date}}</tspan>
+                        <tspan x="0" y="0">EXP {{date('m-Y', strtotime($exp_date))}}</tspan>
                     </text><text class="cls-2" transform="translate(78.03 211.66)">
                         <tspan x="0" y="0">STAFF</tspan>
                     </text>
