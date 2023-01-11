@@ -31,7 +31,6 @@ class IsActive
 
         // Check if the employee record was found
         if ($staff) {
-            // if redirect is true or false in settings
             if ($this->isredirect() == false) {
                 // If the employee record was found, check if the employee is active
                 if ($staff->is_active) {
@@ -41,15 +40,8 @@ class IsActive
                     // If the employee is not active, redirect the user to a 404 error page
                     return abort(403, 'This Staff Member Is Not Active.');
                 }
-            } elseif ($this->isredirect() == true) {
-                // If the employee record was found, check if the employee is active
-                if ($staff->is_active) {
-                    // If the employee is active, allow the request to proceed
-                    return redirect($this->qrlink());
-                } else {
-                    // If the employee is not active, redirect the user to a 404 error page
-                    return abort(403, 'This Staff Member Is Not Active.');
-                }
+            } else {
+                return redirect($this->qrlink());
             }
         } else {
             // If the employee record was not found, redirect the user to a 404 error page
