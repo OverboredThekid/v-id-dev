@@ -8,7 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Toggle;
 
-class ManageBage extends SettingsPage
+class ManageBadge extends SettingsPage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
