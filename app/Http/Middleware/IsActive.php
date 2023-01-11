@@ -44,6 +44,7 @@ class IsActive
                 return abort(403, 'This Staff Member Was Not Found');
             }
         } elseif ($this->isredirect()) {
+            $staff = staff::where('id', $request->slug)->first();
             // Check if the employee record was found
             if ($staff) {
                 // If the employee record was found, check if the employee is active
