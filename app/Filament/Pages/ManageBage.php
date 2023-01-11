@@ -17,9 +17,9 @@ class ManageBage extends SettingsPage
     protected function getFormSchema(): array
     {
         return [
-            TextInput::make('qr_link')->require()->url()->prefix('https://')->suffix('.com'),
-            DatePicker::make('exp_date')->require(),
-            Toggle::make('is_redirect')->require()
+            TextInput::make('qr_link')->required()->url()->prefix('https://')->suffix('.com'),
+            DatePicker::make('exp_date')->required(),
+            Toggle::make('is_redirect')->required()
         ];
     }
 }
