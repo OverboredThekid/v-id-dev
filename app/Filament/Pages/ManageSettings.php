@@ -20,7 +20,7 @@ class ManageSettings extends SettingsPage
     {
         return [
             Section::make('Card Details')
-                ->description('Manage The changing values for Card Function')
+                ->description('Manage The changing values for "Card Maker"')
                 ->schema([
                     TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
                     DatePicker::make('exp_date')->required()->label('Card Experation Date'),
@@ -30,8 +30,8 @@ class ManageSettings extends SettingsPage
             Section::make('SVG File')
                 ->description('Upload Front and Back SVG files for the print')
                 ->schema([
-                    SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Front Of ID"),
-                    SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Back Of ID'),
+                    SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Card Front"),
+                    SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Card Back'),
                 ])
 
         ];
