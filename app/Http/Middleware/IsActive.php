@@ -9,6 +9,11 @@ use app\Settings\BadgeSettings;
 
 class IsActive
 {
+    private function getStaff(Request $request): ?staff
+    {
+        return staff::where('id', $request->slug)->first();
+    }
+    
     function isredirect(): string{
         return app(BadgeSettings::class)->is_redirect;
     }
@@ -25,8 +30,8 @@ class IsActive
     public function handle(Request $request, Closure $next)
     {
         // Retrieve the employee record using the slug passed in the route
-        $staff = staff::where('id', $request->slug)->first();
     if(!$this->isredirect()){
+        $staff = $this->getStaff($request);
         // Check if the employee record was found
         if ($staff) {
             // If the employee record was found, check if the employee is active
@@ -42,7 +47,7 @@ class IsActive
             return abort(403, 'This Staff Member Was Not Found');
         }
     }elseif($this->isredirect()){
-        
+        $staff = $this->getStaff($request);
         return redirect($this->qrlink());
     }
     }
