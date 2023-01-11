@@ -57,7 +57,7 @@ class IsActive
                 }
             } else {
                 // If the employee record was not found, redirect the user to a 404 error page
-                return abort(403, 'This Staff Member Was Not Found' . $staff->id);
+                return abort(403, 'This Staff Member Was Not Found');
             }
         }
     }
