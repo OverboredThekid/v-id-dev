@@ -10,7 +10,9 @@ class BadgeSettings extends Settings
 
     public string $exp_date;
 
-    public object $svg_file;
+    public object $svg_file_front;
+
+    public object $svg_file_back;
     
     public bool $is_redirect;
     
