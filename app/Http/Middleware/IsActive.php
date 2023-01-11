@@ -11,7 +11,7 @@ class IsActive
 {
     private function getStaff(Request $request): ?staff
     {
-        return staff::where('id', $request->slug)->first();
+        return staff::where('id', $request->id)->first();
     }
     
     function isredirect(): string{
