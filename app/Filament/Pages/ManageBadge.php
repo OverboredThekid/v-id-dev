@@ -21,7 +21,7 @@ class ManageBadge extends SettingsPage
     {
         return [
             TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
-            DatePicker::make('exp_date')->required()->label('Card Experation dATE'),
+            DatePicker::make('exp_date')->required()->label('Card Experation Date'),
             Toggle::make('is_redirect')->required()->label('Is Redirecting')
         ];
     }
