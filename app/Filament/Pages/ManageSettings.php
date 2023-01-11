@@ -9,6 +9,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\FileUpload;
+
 
 class ManageSettings extends SettingsPage
 {
@@ -30,7 +32,7 @@ class ManageSettings extends SettingsPage
             Section::make('SVG File')
                 ->description('Upload Front and Back SVG files for the print')
                 ->schema([
-                    SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Card Front"),
+                    FileUpload::make('svg_front'),
                     SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Card Back'),
                 ])
 
