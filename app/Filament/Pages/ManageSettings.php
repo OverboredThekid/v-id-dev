@@ -8,6 +8,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
 
 class ManageSettings extends SettingsPage
 {
@@ -18,11 +19,21 @@ class ManageSettings extends SettingsPage
     protected function getFormSchema(): array
     {
         return [
-            TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
-            DatePicker::make('exp_date')->required()->label('Card Experation Date'),
-            Toggle::make('is_redirect')->required()->label('Link Redirecting'),
-            SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Front Of ID"),
-            SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Back Of ID'),
+            Section::make('Card Details')
+                ->description('Manage The changing values for Card Function')
+                ->schema([
+                    TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
+                    DatePicker::make('exp_date')->required()->label('Card Experation Date'),
+                    Toggle::make('is_redirect')->required()->label('Link Redirecting'),
+
+                ]),
+            Section::make('SVG File')
+                ->description('Upload Front and Back SVG files for the print')
+                ->schema([
+                    SpatieMediaLibraryFileUpload::make('svg_front')->required()->label("Front Of ID"),
+                    SpatieMediaLibraryFileUpload::make('svg_back')->required()->label('Back Of ID'),
+                ])
+
         ];
     }
 }
