@@ -14,6 +14,9 @@ class ManageBadge extends SettingsPage
 
     protected static string $settings = BadgeSettings::class;
 
+    protected static ?string $navigationGroup = 'System';
+
+
     protected function getFormSchema(): array
     {
         return [
