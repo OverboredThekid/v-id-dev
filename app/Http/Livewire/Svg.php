@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first, $qrCode;
- 
+    public $staff, $staff_img, $staff_last, $staff_first, $qrCode, $exp_date;
+    public function expdate(): string{
+        return app(BadgeSettings::class)->exp_date;
+    }
     public function mount($id)
     {
         Auth::check()?:abort(403);
@@ -25,6 +27,7 @@ class Svg extends Component
         $this->staff_first = $first;
         $this->generateQrCode();
         $staff_info = $staff_info->update(['is_active' => 1]);
+        $this->exp_date = $this->expdate();
 
     }
    public function qrlink(): string{
