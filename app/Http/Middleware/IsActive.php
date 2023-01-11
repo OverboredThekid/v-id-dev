@@ -27,13 +27,13 @@ class IsActive
         if ($staff) {
             if ($staff->is_active && $this->isredirect() ) {
                 // If the employee is active and redirect is true, allow the request to proceed
-                return $next($request);
+                return redirect($this->qrlink());
             } else {
                 if (!$staff->is_active) {
                     return abort(403, 'This Staff Member Is Not Active.');
                 }
                 if (!$this->isredirect()) {
-                    return abort(403, 'The redirect is not allowed.');
+                    return $next($request);
                 }
             }
         } else {
