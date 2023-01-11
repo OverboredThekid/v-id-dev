@@ -25,18 +25,11 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
-        $this->generateQrCode();
+        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("Https://$_SERVER[HTTP_HOST]/staff/".$staff_info->staff->id));
         $staff_info = $staff_info->update(['is_active' => 1]);
         $this->exp_date = $this->expdate();
 
     }
-   public function qrlink(): string{
-        return app(BadgeSettings::class)->qr_link;
-    }
-    public function generateQrCode()
-    {
-        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate($this->qrlink()));
-    } 
 
     public function render()
     {
