@@ -28,9 +28,11 @@ class IsActive
     {
         // Retrieve the employee record using the slug passed in the route
         $staff = staff::where('id', $request->slug)->first();
-        if ($this->isredirect() == false) {
-            // Check if the employee record was found
-            if ($staff) {
+
+        // Check if the employee record was found
+        if ($staff) {
+            // if redirect is true or false in settings
+            if ($this->isredirect() == false) {
                 // If the employee record was found, check if the employee is active
                 if ($staff->is_active) {
                     // If the employee is active, allow the request to proceed
@@ -39,12 +41,7 @@ class IsActive
                     // If the employee is not active, redirect the user to a 404 error page
                     return abort(403, 'This Staff Member Is Not Active.');
                 }
-            } else {
-                // If the employee record was not found, redirect the user to a 404 error page
-                return abort(403, 'This Staff Member Was Not Found');
-            }
-        } else {
-            if ($staff) {
+            } elseif ($this->isredirect() == true) {
                 // If the employee record was found, check if the employee is active
                 if ($staff->is_active) {
                     // If the employee is active, allow the request to proceed
@@ -53,10 +50,10 @@ class IsActive
                     // If the employee is not active, redirect the user to a 404 error page
                     return abort(403, 'This Staff Member Is Not Active.');
                 }
-            } else {
-                // If the employee record was not found, redirect the user to a 404 error page
-                return abort(403, 'This Staff Member Was Not Found');
             }
+        } else {
+            // If the employee record was not found, redirect the user to a 404 error page
+            return abort(403, 'This Staff Member Was Not Found');
         }
     }
 }
