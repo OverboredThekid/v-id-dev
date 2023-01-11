@@ -20,9 +20,9 @@ class ManageBadge extends SettingsPage
     protected function getFormSchema(): array
     {
         return [
-            TextInput::make('qr_link')->required()->url(),
-            DatePicker::make('exp_date')->required(),
-            Toggle::make('is_redirect')->required()
+            TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
+            DatePicker::make('exp_date')->required()->label('Card Experation dATE'),
+            Toggle::make('is_redirect')->required()->label('Is Redirecting')
         ];
     }
 }
