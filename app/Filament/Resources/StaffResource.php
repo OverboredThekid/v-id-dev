@@ -75,8 +75,7 @@ class StaffResource extends Resource
                     ExcelExport::make()
                         ->askForFilename()
                         ->askForWriterType()
-                        ->allFields()
-                ])
+                ])->allFields()
             ])
             
             ->headerActions([ 
@@ -84,8 +83,7 @@ class StaffResource extends Resource
                     ExcelExport::make()
                         ->askForFilename()
                         ->askForWriterType()
-                        ->allFields()
-                ])
+                ])->allFields()
             ]);
     }
 
