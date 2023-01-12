@@ -24,6 +24,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\Action;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class StaffResource extends Resource
@@ -70,7 +71,7 @@ class StaffResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                ExportBulkAction::make()->allFields()->withWriterType(Excel::CSV)
+                ExportAction::make('export')->withWriterType(Excel::CSV)
             ])
             
             ->headerActions([ 
