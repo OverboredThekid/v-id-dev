@@ -71,11 +71,11 @@ class StaffResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                ExportAction::make('export')->withWriterType(Excel::CSV)
+                ExportBulkAction::make('export')
             ])
             
             ->headerActions([ 
-                ExportAction::make()->allFields()->withFilename('Staff')->withWriterType(Excel::CSV)
+                ExportAction::make()->allFields()->withFilename('Staff')
             ]);
     }
 
