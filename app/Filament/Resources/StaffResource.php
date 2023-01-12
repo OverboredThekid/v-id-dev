@@ -73,16 +73,12 @@ class StaffResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 ExportBulkAction::make('export')->fromModel()->exports([
                     ExcelExport::make()
-                        ->askForFilename()
-                        ->askForWriterType()
                 ])
             ])
             
             ->headerActions([ 
                 ExportAction::make('export')->fromModel()->exports([
                     ExcelExport::make()
-                        ->askForFilename()
-                        ->askForWriterType()
                 ])
             ]);
     }
