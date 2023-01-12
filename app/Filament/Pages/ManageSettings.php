@@ -24,9 +24,9 @@ class ManageSettings extends SettingsPage
             Section::make('Card Details')
                 ->description('Manage The changing values for "Card Maker"')
                 ->schema([
-                    TextInput::make('qr_link')->required()->url()->label('Redirecting Link')->description('This section is used to set the path of the Landing Page for the Badge QR Code'),
-                    DatePicker::make('exp_date')->required()->label('Card Experation Date')->minDate(now()->subMonths(3))->maxDate(now()->addMonths(3))->description('Set The EXP. Date on the Badge, can only Set 4 Months ahead'),
-                    Toggle::make('is_redirect')->required()->label('Link Redirecting')->description('Used To redirect QR Code to Redirecting Link or custom page (Coming Soon!)'),
+                    TextInput::make('qr_link')->required()->url()->label('Redirecting Link')->hint('This section is used to set the path of the Landing Page for the Badge QR Code'),
+                    DatePicker::make('exp_date')->required()->label('Card Experation Date')->minDate(now()->subMonths(3))->maxDate(now()->addMonths(3))->hint('Set The EXP. Date on the Badge, can only Set 4 Months ahead'),
+                    Toggle::make('is_redirect')->required()->label('Link Redirecting')->hint('Used To redirect QR Code to Redirecting Link or custom page (Coming Soon!)'),
                 ]),
             Section::make('SVG File')
                 ->description('Upload Front and Back SVG files for the print')
