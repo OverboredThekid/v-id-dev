@@ -24,6 +24,8 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\Action;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+
 
 class StaffResource extends Resource
 {
@@ -69,11 +71,21 @@ class StaffResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                ExportBulkAction::make('export')
+                ExportBulkAction::make('export')->exports([
+                    ExcelExport::make()
+                        ->askForFilename()
+                        ->askForWriterType()
+                        ->allFields()
+                ])
             ])
             
             ->headerActions([ 
-                ExportAction::make('export')
+                ExportAction::make('export')->exports([
+                    ExcelExport::make()
+                        ->askForFilename()
+                        ->askForWriterType()
+                        ->allFields()
+                ])
             ]);
     }
 
