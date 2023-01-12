@@ -8,7 +8,8 @@ use app\Settings\BadgeSettings;
 use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use DOMDocument;
+use DOMXPath;
 
 class Svg extends Component
 {
@@ -52,7 +53,7 @@ class Svg extends Component
             $new_front->setAttribute("id", "newId");
             $new_front->nodeValue = "new content";
             // Replace the existing div element with the new one
-            $element->parentNode->replaceChild($new_front, $element_front);
+            $element_front->parentNode->replaceChild($new_front, $element_front);
         }
         $svg_front = $dom_front->saveXML();
         
