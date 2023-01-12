@@ -77,8 +77,10 @@ class StaffResource extends Resource
             ])
             
             ->headerActions([ 
-                ExportAction::make('export')->Model(staff::class)->exports([
-                    ExcelExport::make()
+                ExportAction::make('export')->exports([
+                    ExcelExport::make()->fromModel()->except([
+                        'created_at', 'updated_at', 'deleted_at',
+                    ]),
                 ])
             ]);
     }
