@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "3x1io/filament-browser": "^1.0",
         "3x1io/filament-user": "^1.1",
         "alperenersoy/filament-export": "^0.2.4",
         "bezhansalleh/filament-shield": "^2.3",
