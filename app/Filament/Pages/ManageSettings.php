@@ -25,7 +25,7 @@ class ManageSettings extends SettingsPage
                 ->description('Manage The changing values for "Card Maker"')
                 ->schema([
                     TextInput::make('qr_link')->required()->url()->label('Card QR Link'),
-                    DatePicker::make('exp_date')->required()->label('Card Experation Date'),
+                    DatePicker::make('exp_date')->required()->label('Card Experation Date')->minDate(now()->subMonths(4))->maxDate(now()->subMonths(4)),
                     Toggle::make('is_redirect')->required()->label('Link Redirecting'),
 
                 ]),
