@@ -27,9 +27,9 @@
                 <defs>
                     <style>
                         .cls-1 {
-                            font-size: 15px;
+                            font-size: 12px;
                             min-font-size: 10px;
-                            max-font-size: 15px;
+                            max-font-size: 14px;
                         }
 
                         .cls-1,
