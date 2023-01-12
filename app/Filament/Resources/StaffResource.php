@@ -71,13 +71,13 @@ class StaffResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                ExportBulkAction::make('export')->fromModel()->exports([
+                ExportBulkAction::make('export')->Model()->exports([
                     ExcelExport::make()
                 ])
             ])
             
             ->headerActions([ 
-                ExportAction::make('export')->fromModel()->exports([
+                ExportAction::make('export')->Model('staff')->exports([
                     ExcelExport::make()
                 ])
             ]);
