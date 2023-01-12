@@ -40,36 +40,36 @@ class Svg extends Component
 
 
         //Front Of Card
-        $svg_front = file_get_contents("/storage/svg/" . $this->svgfront());
-        $dom_front = new DOMDocument();
-        $dom_front->loadXML($svg_front);
-        $xpath_front = new DOMXPath($dom_front);
-        $elements_front = $xpath_front->query("//*[@id='targetId']");
-        foreach ($elements_front as $element_front) {
-            // Create a new div element
-            $new_front = $dom_front->createElement("div");
-            $new_front->setAttribute("id", "newId");
-            $new_front->nodeValue = "new content";
-            // Replace the existing div element with the new one
-            $elements_front->parentNode->replaceChild($new_front, $element_front);
-        }
-        $svg_front = $dom_front->saveXML();
+        // $svg_front = file_get_contents("/storage/svg/" . $this->svgfront());
+        // $dom_front = new DOMDocument();
+        // $dom_front->loadXML($svg_front);
+        // $xpath_front = new DOMXPath($dom_front);
+        // $elements_front = $xpath_front->query("//*[@id='targetId']");
+        // foreach ($elements_front as $element_front) {
+        //     // Create a new div element
+        //     $new_front = $dom_front->createElement("div");
+        //     $new_front->setAttribute("id", "newId");
+        //     $new_front->nodeValue = "new content";
+        //     // Replace the existing div element with the new one
+        //     $elements_front->parentNode->replaceChild($new_front, $element_front);
+        // }
+        // $svg_front = $dom_front->saveXML();
         
-        //Back Of Card
-        $svg_back = file_get_contents("/storage/svg/" . $this->svgback());
-        $dom_back = new DOMDocument();
-        $dom_back->loadXML($svg_back);
-        $xpath_back = new DOMXPath($dom_back);
-        $elements_back = $xpath_back->query("//*[@id='targetId']");
-        foreach ($elements_back as $element_back) {
-            // Create a new div element
-            $new_back = $dom_back->createElement("div");
-            $new_back->setAttribute("id", "newId");
-            $new_back->nodeValue = "new content";
-            // Replace the existing div element with the new one
-            $element_back->parentNode->replaceChild($new_back, $element_back);
-        }
-        $svg_back = $dom_back->saveXML();
+     //Back Of Card
+        // $svg_back = file_get_contents("/storage/svg/" . $this->svgback());
+        // $dom_back = new DOMDocument();
+        // $dom_back->loadXML($svg_back);
+        // $xpath_back = new DOMXPath($dom_back);
+        // $elements_back = $xpath_back->query("//*[@id='targetId']");
+        // foreach ($elements_back as $element_back) {
+        //     // Create a new div element
+        //     $new_back = $dom_back->createElement("div");
+        //     $new_back->setAttribute("id", "newId");
+        //     $new_back->nodeValue = "new content";
+        //     // Replace the existing div element with the new one
+        //     $element_back->parentNode->replaceChild($new_back, $element_back);
+        // }
+        // $svg_back = $dom_back->saveXML();
 
     }
 
