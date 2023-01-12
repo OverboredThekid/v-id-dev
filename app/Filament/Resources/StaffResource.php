@@ -72,7 +72,9 @@ class StaffResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
                 ExportBulkAction::make('export')->exports([
-                    ExcelExport::make()
+                    ExcelExport::make()->fromModel()->except([
+                        'created_at', 'updated_at', 'deleted_at',
+                    ]),
                 ])
             ])
             
