@@ -77,7 +77,7 @@ class StaffResource extends Resource
             ])
             
             ->headerActions([ 
-                ExportAction::make('export')->Model('staff')->exports([
+                ExportAction::make('export')->Model(staff::class)->exports([
                     ExcelExport::make()
                 ])
             ]);
