@@ -40,7 +40,7 @@ class Svg extends Component
 
 
         //Front Of Card
-        $svg_front = file_get_contents("/storage/svg/" . $this->svgfront());
+        $svg_front = file_get_contents("/storage/" . $this->svgfront());
         $dom_front = new DOMDocument();
         $dom_front->loadXML($svg_front);
         $xpath_front = new DOMXPath($dom_front);
@@ -56,7 +56,7 @@ class Svg extends Component
         $svg_front = $dom_front->saveXML();
         
         //Back Of Card
-        $svg_back = file_get_contents("/storage/svg/" . $this->svgback());
+        $svg_back = file_get_contents("/storage/" . $this->svgback());
         $dom_back = new DOMDocument();
         $dom_back->loadXML($svg_back);
         $xpath_back = new DOMXPath($dom_back);
