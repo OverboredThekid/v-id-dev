@@ -24,8 +24,6 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\Action;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
-use Maatwebsite\Excel\Facades\Excel;
-
 
 class StaffResource extends Resource
 {
@@ -75,7 +73,7 @@ class StaffResource extends Resource
             ])
             
             ->headerActions([ 
-                ExportAction::make()->allFields()->withFilename('Staff')
+                ExportAction::make()->withFilename('Staff')
             ]);
     }
 
