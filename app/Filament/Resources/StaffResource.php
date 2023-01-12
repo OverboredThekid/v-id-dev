@@ -73,7 +73,7 @@ class StaffResource extends Resource
             ])
             
             ->headerActions([ 
-                ExportAction::make()->withFilename('Staff')
+                ExportAction::make('export')
             ]);
     }
 
