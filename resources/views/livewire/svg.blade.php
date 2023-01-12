@@ -29,7 +29,7 @@
                         .cls-1 {
                             font-size: 15px;
                             min-font-size: 10px;
-                            max-font-size: 18px;
+                            max-font-size: 15px;
                         }
 
                         .cls-1,
