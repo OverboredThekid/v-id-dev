@@ -22,6 +22,8 @@ use Filament\Navigation\NavigationItem;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\Action;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 
 
 class StaffResource extends Resource
@@ -68,11 +70,11 @@ class StaffResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                \AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction::make('export'),
+                ExportBulkAction::make()->allFields()->withWriterType(Excel::CSV)
             ])
             
             ->headerActions([ 
-                \AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction::make('export')
+                ExportAction::make()->allFields()->withFilename('Staff')->withWriterType(Excel::CSV)
             ]);
     }
 
