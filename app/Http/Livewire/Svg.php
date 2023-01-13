@@ -75,7 +75,7 @@ class Svg extends Component
         
         foreach ($elements_back as $element_back) {
             // Replace the fill attribute with a new color
-            $element_back->setAttribute('xlink:href', $qrCode);
+            $element_back->setAttribute('xlink:href', 'data:image/svg+xml;base64,'. $qrCode);
         }
         
         $svg_back =  $dom_back->saveXML();
