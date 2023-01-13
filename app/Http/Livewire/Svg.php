@@ -72,7 +72,7 @@ class Svg extends Component
         //Back Of Card
         $svg_back = file_get_contents(url('/storage/' . $this->svgback()));
         $dom_back = new DOMDocument();
-        $dom_back->loadXML($svg_back);
+        $dom_back->load($svg_back);
         $xpath_back = new DOMXPath($dom_back);
         $elements_back = $xpath_back->query("//*[@id='qr_code']");
         foreach ($elements_back as $element_back) {
