@@ -57,13 +57,16 @@ class Svg extends Component
        $elements_front2 = $xpath_front->query("//*[@id='staff_last']");
        $elements_front3 = $xpath_front->query("//*[@id='exp_date']");
        foreach ($elements_front1 as $element_front) {
-           // Replace the fill attribute with a new color
+           $element_front->setAttribute('font-size', '12');
+           $element_front->setAttribute('min-font-size', '10');
+           $element_front->setAttribute('max-font-size', '14');
            $element_front->nodeValue = $first;
        }foreach ($elements_front2 as $element_front) {
-           // Replace the fill attribute with a new color
+           $element_front->setAttribute('font-size', '12');
+           $element_front->setAttribute('min-font-size', '10');
+           $element_front->setAttribute('max-font-size', '14');
            $element_front->nodeValue = $last;
        }foreach ($elements_front3 as $element_front) {
-           // Replace the fill attribute with a new color
            $element_front->nodeValue ="EXP". date('m-Y', strtotime($this->expdate()));
        }
        
