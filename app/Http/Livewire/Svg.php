@@ -52,9 +52,6 @@ class Svg extends Component
         $dom_front = new DOMDocument();
         $dom_front->loadXML($svg_front);
         $xpath_front = new DOMXPath($dom_front);
-
-
-
         $elements_front = $xpath_front->query("//*[@id='targetId']");
         foreach ($elements_front as $element_front) {
             // Create a new div element
@@ -69,10 +66,9 @@ class Svg extends Component
         $this->svg_front = $svg_front;
 
         //Back Of Card
-        //Back Of Card
         $svg_back = file_get_contents(url('/storage/' . $this->svgback()));
         $dom_back = new DOMDocument();
-        $dom_back->load($svg_back);
+        $dom_back->loadXML($svg_back);
         $xpath_back = new DOMXPath($dom_back);
         $elements_back = $xpath_back->query("//*[@id='qr_code']");
         foreach ($elements_back as $element_back) {
