@@ -16,6 +16,8 @@ class ManageSettings extends SettingsPage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
+    protected static ?string $navigationGroup = 'Settings';
+
     protected static string $settings = BadgeSettings::class;
 
     protected function getFormSchema(): array
