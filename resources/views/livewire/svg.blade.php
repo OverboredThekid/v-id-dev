@@ -14,6 +14,9 @@
                 body {
                     margin: 0;
                     padding: 0;
+                    font-size: 12px;
+                    min-font-size: 10px;
+                    max-font-size: 14px;
                 }
 
                 @page {
@@ -23,8 +26,8 @@
                     /* this affects the margin in the printer settings */
                 }
             </style>
-        {!! $svg_front!!}
-        {!! $svg_back!!}
+            {!! $svg_front!!}
+            {!! $svg_back!!}
         </div>
         <script>
             function printpart() {
