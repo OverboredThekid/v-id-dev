@@ -18,7 +18,11 @@
                     min-font-size: 10px;
                     max-font-size: 14px;
                 }
-
+                .cls-1 {
+            font-size: 12px;
+            min-font-size: 10px;
+            max-font-size: 14px;
+        }
                 @page {
                     size: auto;
                     /* auto is the initial value */
