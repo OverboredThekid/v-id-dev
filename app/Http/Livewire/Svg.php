@@ -62,8 +62,7 @@ class Svg extends Component
            $element_front->setAttribute('max-font-size', '14');
            $element_front->nodeValue = $first;
        }foreach ($elements_front2 as $element_front) {
-           $element_front->setAttribute('font-size', '12');
-           $element_front->setAttribute('min-font-size', '10');
+           
            $element_front->setAttribute('max-font-size', '14');
            $element_front->nodeValue = $last;
        }foreach ($elements_front3 as $element_front) {
