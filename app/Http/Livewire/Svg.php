@@ -83,7 +83,7 @@ class Svg extends Component
                 $new_back->setAttribute($attribute->nodeName, $attribute->nodeValue);
             }
         }
-        $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,{!!". $qrCode . "!!}");
+        $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,". $qrCode);
         // Replace the existing div element with the new one
         $element_back->parentNode->replaceChild($new_back, $element_back);
     }
