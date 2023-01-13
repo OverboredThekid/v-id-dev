@@ -40,7 +40,7 @@ class Svg extends Component
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
         $this->staff_first = $first;
-        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->mergeString(url('/storage/'.$this->qrlogo()))->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $staff_info->staff->id));
+        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('png')->mergeString(url('/storage/'.$this->qrlogo()))->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $staff_info->staff->id));
         $staff_info = $staff_info->update(['is_active' => 1]);
         $this->exp_date = $this->expdate();
 
