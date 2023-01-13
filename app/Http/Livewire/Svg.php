@@ -67,7 +67,7 @@ class Svg extends Component
 
         //Back Of Card
         $dom_back = new DOMDocument();
-        $dom_back->load(file_get_contents(url('/storage/' . $this->svgback())));
+        $dom_back->loadXML(file_get_contents(url('/storage/' . $this->svgback())));
         $xpath_back = new DOMXPath($dom_back);
         
         // Find the div element with a specific class
