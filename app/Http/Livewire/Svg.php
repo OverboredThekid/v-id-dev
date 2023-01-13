@@ -35,7 +35,8 @@ class Svg extends Component
         Auth::check() ?: abort(403);
         $staff_info = staff_prints::findOrFail($id);
         $this->staff = $staff_info;
-        $this->staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
+        $staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
+        $this->staff_img = $staff_img;
         $last = Str::after($staff_info->staff->name, ' ');
         $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last;
@@ -56,6 +57,7 @@ class Svg extends Component
        $elements_front1 = $xpath_front->query("//*[@id='staff_first']");
        $elements_front2 = $xpath_front->query("//*[@id='staff_last']");
        $elements_front3 = $xpath_front->query("//*[@id='exp_date']");
+       $elements_front4 = $xpath_front->query("//*[@id='staff_img']");
        foreach ($elements_front1 as $element_front) {
         $element_front->setAttribute('style', "fill: #231f20; font-family: MyriadPro-Regular, 'Myriad Pro'; font-size: 15px; font-size: min(13px, calc(12px + 0.5vw));;");
         $element_front->nodeValue = $first;
@@ -65,6 +67,9 @@ class Svg extends Component
        }foreach ($elements_front3 as $element_front) {
            $element_front->nodeValue ="EXP. ". date('m-Y', strtotime($this->expdate()));
        }
+       foreach ($elements_front4 as $element_back) {
+        $element_back->setAttribute('xlink:href', $staff_img);
+               }      
        
        $svg_front =  $dom_front->saveXML();
        $this->svg_front = $svg_front;
