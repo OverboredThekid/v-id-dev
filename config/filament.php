@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'home_url' => '/admin',
+    'home_url' => 'admin/dashboard',
 
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +135,6 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
-            Widgets\FilamentInfoWidget::class,
         ],
     ],
 

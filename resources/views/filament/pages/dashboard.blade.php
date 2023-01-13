@@ -1,3 +1,3 @@
 <x-filament::page>
-This is the Dash of your dreams :D
+The Dash Of your Dreams :D
 </x-filament::page>
