@@ -41,7 +41,8 @@ class Svg extends Component
         $this->staff_last = $last;
         $this->staff_first = $first;
         $this->qr_logo = $this->qrlogo();
-        $this->qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $staff_info->staff->id));
+        $qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $staff_info->staff->id));
+        $this->qrCode = $qrCode;
         $staff_info = $staff_info->update(['is_active' => 1]);
         $this->exp_date = $this->expdate();
 
@@ -76,8 +77,7 @@ class Svg extends Component
         foreach ($elements_back as $element_back) {
             // Create a new div element
             $new_back = $dom_back->createElement("div");
-            $new_back->setAttribute("xlink:href", "xlink:href");
-            $new_back->nodeValue = 'data:image/svg+xml;base64,{!! $qrCode !!}';
+            $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,{!!". $qrCode . "!!}");
             // Replace the existing div element with the new one
             $element_back->parentNode->replaceChild($new_back, $element_back);
         }
