@@ -47,23 +47,28 @@ class Svg extends Component
         $this->exp_date = $this->expdate();
 
 
-        //Front Of Card
-        $svg_front = file_get_contents(url('/storage/' . $this->svgfront()));
-        $dom_front = new DOMDocument();
-        $dom_front->loadXML($svg_front);
-        $xpath_front = new DOMXPath($dom_front);
-        $elements_front = $xpath_front->query("//*[@id='targetId']");
-        foreach ($elements_front as $element_front) {
-            // Create a new div element
-            $new_front = $dom_front->createElement("div");
-            $new_front->setAttribute("id", "newId");
-            $new_front->nodeValue = "new content";
-            // Replace the existing div element with the new one
-            $element_front->parentNode->replaceChild($new_front, $element_front);
-        }
-
-        $svg_front = $dom_front->saveXML();
-        $this->svg_front = $svg_front;
+       //Front Of Card
+       $dom_front = new DOMDocument();
+       $dom_front->loadXML(file_get_contents(url('/storage/' . $this->svgfront())));
+       $xpath_front = new DOMXPath($dom_front);
+       
+       // Find the div element with a specific class
+       $elements_front1 = $xpath_front->query("//*[@id='staff_first']");
+       $elements_front2 = $xpath_front->query("//*[@id='staff_last']");
+       $elements_front3 = $xpath_front->query("//*[@id='exp_date']");
+       foreach ($elements_front1 as $element_front) {
+           // Replace the fill attribute with a new color
+           $element_front->nodeValue = $first;
+       }foreach ($elements_front2 as $element_front) {
+           // Replace the fill attribute with a new color
+           $element_front->nodeValue = $last;
+       }foreach ($elements_front3 as $element_front) {
+           // Replace the fill attribute with a new color
+           $element_front->nodeValue = $this->expdate();
+       }
+       
+       $svg_front =  $dom_front->saveXML();
+       $this->svg_front = $svg_front;
 
         //Back Of Card
         $dom_back = new DOMDocument();
