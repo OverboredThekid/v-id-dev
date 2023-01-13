@@ -48,7 +48,7 @@ class Svg extends Component
 
 
         //Front Of Card
-        $svg_front = file_get_contents(url('/storage/'.$this->svgfront()));
+        $svg_front = file_get_contents(url('/storage/' . $this->svgfront()));
         $dom_front = new DOMDocument();
         $dom_front->loadXML($svg_front);
         $xpath_front = new DOMXPath($dom_front);
@@ -68,29 +68,30 @@ class Svg extends Component
         $svg_front = $dom_front->saveXML();
         $this->svg_front = $svg_front;
 
-    //Back Of Card
-    $svg_back = file_get_contents(url('/storage/'.$this->svgback()));
-    $dom_back = new DOMDocument();
-    $dom_back->loadXML($svg_back);
-    $xpath_back = new DOMXPath($dom_back);
-    $elements_back = $xpath_back->query("//*[@id='qr_code']");
-    foreach ($elements_back as $element_back) {
-        // Create a new div element
-        $new_back = $dom_back->createElement("div");
-        //copy all the attributes of the original element
-        foreach ($element_back->attributes as $attribute) {
-            if($attribute->nodeName != "xlink:href"){
-                $new_back->setAttribute($attribute->nodeName, $attribute->nodeValue);
+        //Back Of Card
+        //Back Of Card
+        $svg_back = file_get_contents(url('/storage/' . $this->svgback()));
+        $dom_back = new DOMDocument();
+        $dom_back->loadXML($svg_back);
+        $xpath_back = new DOMXPath($dom_back);
+        $elements_back = $xpath_back->query("//*[@id='qr_code']");
+        foreach ($elements_back as $element_back) {
+            // Create a new div element
+            $new_back = $dom_back->createElement("div");
+            //copy all the attributes of the original element
+            foreach ($element_back->attributes as $attribute) {
+                if ($attribute->nodeName != "xlink:href") {
+                    $new_back->setAttribute($attribute->nodeName, $attribute->nodeValue);
+                }
             }
+            $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,{!!" . $qrCode . "!!}");
+            // Append the new div to the svg element
+            $element_back->parentNode->appendChild($new_back);
+            // Remove the old div element
+            $element_back->parentNode->removeChild($element_back);
         }
-        $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,". $qrCode);
-        // Replace the existing div element with the new one
-        $element_back->parentNode->replaceChild($new_back, $element_back);
-    }
-    $svg_back = $dom_back->saveXML();
-    $this->svg_back = $svg_back;
-
-
+        $svg_back = $dom_back->saveXML();
+        $this->svg_back = $svg_back;
     }
 
     public function render()
