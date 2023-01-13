@@ -66,27 +66,19 @@ class Svg extends Component
         $this->svg_front = $svg_front;
 
         //Back Of Card
-        $svg_back = file_get_contents(url('/storage/' . $this->svgback()));
         $dom_back = new DOMDocument();
-        $dom_back->loadXML($svg_back);
+        $dom_back->load(file_get_contents(url('/storage/' . $this->svgback())));
         $xpath_back = new DOMXPath($dom_back);
+        
+        // Find the div element with a specific class
         $elements_back = $xpath_back->query("//*[@id='qr_code']");
+        
         foreach ($elements_back as $element_back) {
-            // Create a new div element
-            $new_back = $dom_back->createElement("div");
-            //copy all the attributes of the original element
-            foreach ($element_back->attributes as $attribute) {
-                if ($attribute->nodeName != "xlink:href") {
-                    $new_back->setAttribute($attribute->nodeName, $attribute->nodeValue);
-                }
-            }
-            $new_back->setAttribute("xlink:href", "data:image/svg+xml;base64,{!!" . $qrCode . "!!}");
-            // Append the new div to the svg element
-            $element_back->parentNode->appendChild($new_back);
-            // Remove the old div element
-            $element_back->parentNode->removeChild($element_back);
+            // Replace the fill attribute with a new color
+            $element_back->setAttribute('xlink:href', $qrCode);
         }
-        $svg_back = $dom_back->saveXML();
+        
+        $svg_back =  $dom_back->saveXML();
         $this->svg_back = $svg_back;
     }
 
