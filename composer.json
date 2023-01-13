@@ -13,6 +13,7 @@
         "cms-multi/filament-clear-cache": "^1.0",
         "ekremogul/filament-grapesjs": "dev-main",
         "filament/filament": "2.x-dev",
+        "filament/notifications": "^2.16",
         "filament/spatie-laravel-media-library-plugin": "^2.16",
         "filament/spatie-laravel-settings-plugin": "^2.16",
         "filipfonal/filament-log-manager": "^1.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b32b0a77347b4c2aa302f43d19d2bbcd",
+    "content-hash": "eaa6476e7c3721ebbe0a40839cf569bb",
     "packages": [
         {
             "name": "3x1io/filament-browser",
@@ -1955,12 +1955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/notifications.git",
-                "reference": "91fc0d87202da378b422200ed9eb4cb0e7933453"
+                "reference": "fe6247865c83809fe5bf1a87d0492445f6cef03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/notifications/zipball/91fc0d87202da378b422200ed9eb4cb0e7933453",
-                "reference": "91fc0d87202da378b422200ed9eb4cb0e7933453",
+                "url": "https://api.github.com/repos/filamentphp/notifications/zipball/fe6247865c83809fe5bf1a87d0492445f6cef03e",
+                "reference": "fe6247865c83809fe5bf1a87d0492445f6cef03e",
                 "shasum": ""
             },
             "require": {
@@ -2001,7 +2001,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2022-12-07T12:06:28+00:00"
+            "time": "2023-01-12T10:12:17+00:00"
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
