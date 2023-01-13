@@ -64,7 +64,7 @@ class Svg extends Component
            $element_front->nodeValue = $last;
        }foreach ($elements_front3 as $element_front) {
            // Replace the fill attribute with a new color
-           $element_front->nodeValue = $this->expdate();
+           $element_front->nodeValue ="EXP". date('m-Y', strtotime($this->expdate()));
        }
        
        $svg_front =  $dom_front->saveXML();
