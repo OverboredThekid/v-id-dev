@@ -13,7 +13,7 @@ use DOMXPath;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first, $qrCode, $exp_date, $qr_logo;
+    public $staff, $staff_img, $staff_last, $staff_first, $qrCode, $exp_date, $qr_logo, $svg_front, $svg_back;
     public function expdate(): string
     {
         return app(BadgeSettings::class)->exp_date;
@@ -51,6 +51,9 @@ class Svg extends Component
         $dom_front = new DOMDocument();
         $dom_front->loadXML($svg_front);
         $xpath_front = new DOMXPath($dom_front);
+
+
+
         $elements_front = $xpath_front->query("//*[@id='targetId']");
         foreach ($elements_front as $element_front) {
             // Create a new div element
@@ -60,23 +63,26 @@ class Svg extends Component
             // Replace the existing div element with the new one
             $element_front->parentNode->replaceChild($new_front, $element_front);
         }
+
         $svg_front = $dom_front->saveXML();
-        
+        $this->svg_front = $svg_front;
+
         //Back Of Card
         $svg_back = file_get_contents(url('/storage/'.$this->svgback()));
         $dom_back = new DOMDocument();
         $dom_back->loadXML($svg_back);
         $xpath_back = new DOMXPath($dom_back);
-        $elements_back = $xpath_back->query("//*[@id='targetId']");
+        $elements_back = $xpath_back->query("//*[@id='qr_code']");
         foreach ($elements_back as $element_back) {
             // Create a new div element
             $new_back = $dom_back->createElement("div");
-            $new_back->setAttribute("id", "newId");
-            $new_back->nodeValue = "new content";
+            $new_back->setAttribute("xlink:href", "xlink:href");
+            $new_back->nodeValue = 'data:image/svg+xml;base64,{!! $qrCode !!}';
             // Replace the existing div element with the new one
             $element_back->parentNode->replaceChild($new_back, $element_back);
         }
         $svg_back = $dom_back->saveXML();
+        $this->svg_back = $svg_back;
 
     }
 
