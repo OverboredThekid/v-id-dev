@@ -37,10 +37,21 @@ class Svg extends Component
         $this->staff = $staff_info;
         $staff_img = $staff_info->getFirstMedia('staff_print')->getUrl();
         $this->staff_img = $staff_img;
-        $last = Str::after($staff_info->staff->name, ' ');
-        $first = Str::before($staff_info->staff->name, ' ');
-        $this->staff_last = $last;
-        $this->staff_first = $first;
+        $name = $staff_info->staff->name;
+        $parts = explode(" ", $name);
+        if(count($parts) > 1) {
+            $last_name = array_pop($parts);
+            $first_name = implode(" ", $parts);
+        }
+        else
+        {
+            $first_name = $name;
+            $last_name = " ";
+        }
+        // $last = Str::after($staff_info->staff->name, ' ');
+        // $first = Str::before($staff_info->staff->name, ' ');
+        $this->staff_last = $last_name;
+        $this->staff_first = $first_name;
         $this->qr_logo = $this->qrlogo();
         $qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $staff_info->staff->id));
         $this->qrCode = $qrCode;
