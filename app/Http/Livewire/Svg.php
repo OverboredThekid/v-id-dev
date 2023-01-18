@@ -71,10 +71,10 @@ class Svg extends Component
        $elements_front4 = $xpath_front->query("//*[@id='staff_img']");
        foreach ($elements_front1 as $element_front) {
         $element_front->setAttribute('style', "fill: #231f20; font-family: MyriadPro-Regular, 'Myriad Pro'; font-size: 15px; font-size: min(13px, calc(12px + 0.5vw));;");
-        $element_front->nodeValue = $first;
+        $element_front->nodeValue = $first_name;
        }foreach ($elements_front2 as $element_front) {
         $element_front->setAttribute('style', "fill: #231f20; font-family: MyriadPro-Regular, 'Myriad Pro'; font-size: 15px; font-size: min(13px, calc(12px + 0.5vw));");
-           $element_front->nodeValue = $last;
+           $element_front->nodeValue = $last_name;
        }foreach ($elements_front3 as $element_front) {
            $element_front->nodeValue ="EXP. ". date('m-Y', strtotime($this->expdate()));
        }
