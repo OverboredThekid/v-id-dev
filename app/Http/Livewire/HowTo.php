@@ -12,7 +12,7 @@ class HowTo extends Component
     {
         $client = new Client();
     
-        $response = $client->get('https://wiki.v-id.dev/api/pages/2', [
+        $response = $client->get('https://wiki.v-id.dev/api/pages/7', [
             'headers' => [
                 'Authorization' => 'Token 2C0QC7d2Gy2tS92agBzOBNMQ92gjlhEG:RwLyat52Chg7GSRvH38rnE1658SWoJPK'
             ]
