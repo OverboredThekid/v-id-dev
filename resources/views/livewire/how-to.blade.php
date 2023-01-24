@@ -1,4 +1,4 @@
 <div>
 test 3
-{{$bookstack}}
+{{$bookstack->content}}
 </div>
