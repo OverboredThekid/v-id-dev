@@ -48,7 +48,7 @@ class HowTo extends Component
 
     public function render()
     {
-        $bookstack = (new HowTo())->retrieveBookstack();
+        $bookstack = (new HowTo())->getBookstack();
         return view('livewire.how-to', compact('bookstack'))->layout('layouts.HowTo');
     }
 
