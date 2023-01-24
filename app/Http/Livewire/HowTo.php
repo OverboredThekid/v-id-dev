@@ -26,7 +26,7 @@ class HowTo extends Component
         // Store the data in the database or file system, depending on your specific use case.
         // Example:
         $storedBookstack = new Bookstack();
-        $storedBookstack->content = $bookstack;
+        $storedBookstack->content = json_encode($bookstack);
         $storedBookstack->save();
     }
     
