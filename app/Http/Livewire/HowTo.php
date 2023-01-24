@@ -35,7 +35,7 @@ class HowTo extends Component
         // Retrieve the data from the database or file system, depending on your specific use case.
         // Example:
         $storedBookstack = Bookstack::first();
-        return $storedBookstack->content;
+        return json_decode($storedBookstack->content);
     }
 
     public function synchronizeBookstack()
