@@ -1,3 +1,3 @@
 <x-filament::page>
-<livewire:HowTo />
+<livewire:how-to />
 </x-filament::page>
