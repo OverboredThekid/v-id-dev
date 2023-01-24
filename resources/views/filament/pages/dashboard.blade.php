@@ -1,4 +1,3 @@
 <x-filament::page>
-The Dash Of your Dreams :D
-
+<livewire:HowTo />
 </x-filament::page>
