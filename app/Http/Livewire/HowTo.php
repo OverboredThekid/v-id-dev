@@ -42,7 +42,7 @@ class HowTo extends Component
 {
     $bookstack = $this->retrieveBookstack();
     $this->storeBookstack($bookstack);
-    $this->emit('refreshComponent');
+    $this->emit('getBookstack');
 }
 
     
