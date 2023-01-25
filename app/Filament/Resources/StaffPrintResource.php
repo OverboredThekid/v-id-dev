@@ -39,7 +39,7 @@ class StaffPrintResource extends Resource
     {
         return $form
             ->schema([
-                SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints'),
+                SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_print'),
             ]);
     }
 
