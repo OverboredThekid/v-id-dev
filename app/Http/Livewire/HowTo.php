@@ -20,36 +20,11 @@ class HowTo extends Component
     
         $bookstack = json_decode($response->getBody());
         return $bookstack;
-    }
-    public function storeBookstack($bookstack)
-    {
-        // Store the data in the database or file system, depending on your specific use case.
-        // Example:
-        $storedBookstack = new Bookstack();
-        $storedBookstack->content = json_encode($bookstack);
-        $storedBookstack->save();
-    }
-    
-    public function getBookstack()
-    {
-        // Retrieve the data from the database or file system, depending on your specific use case.
-        // Example:
-        $storedBookstack = Bookstack::first();
-        return json_decode($storedBookstack->content);
-    }
-
-    public function synchronizeBookstack()
-{
-    $bookstack = $this->retrieveBookstack();
-    $this->storeBookstack($bookstack);
-    $this->emit('getBookstack');
-}
-
-    
+    }   
 
     public function render()
     {
-        $bookstack = (new HowTo())->getBookstack();
+        $bookstack = (new HowTo())->retrieveBookstack();
         return view('livewire.how-to', compact('bookstack'))->layout('layouts.HowTo');
     }
 
