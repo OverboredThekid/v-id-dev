@@ -5,7 +5,6 @@ use App\Http\Livewire\StaffWizard;
 use App\Http\Livewire\Svg;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\LinkTree;
-use App\Http\Livewire\HowTo;
 
 //Staff Wizard Route ~Livewire
 Route::get('staff/wizard', StaffWizard::class)->name('wizard');
@@ -18,9 +17,6 @@ Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active
  
 //Basic Index ~Livewire
 Route::get('/', Home::class);
-
-Route::get('view-offline-bookstack', HowTo::class);
-
 
 //Fallback ~Redirects
 Route::fallback(function () {
