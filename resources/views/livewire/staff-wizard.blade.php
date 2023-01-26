@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <h3> Step 1</h3>
                     <div class="form-group">
-                        <label for="title">First Name:</label>
+                        <label for="title">Full Name:</label>
                         <input type="text" wire:model="name" class="form-control" id="taskTitle">
                         @error('name') <span class="error">{{ $message }}</span> @enderror
                     </div>
