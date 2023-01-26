@@ -48,8 +48,6 @@ class Svg extends Component
             $first_name = $name;
             $last_name = " ";
         }
-        // $last = Str::after($staff_info->staff->name, ' ');
-        // $first = Str::before($staff_info->staff->name, ' ');
         $this->staff_last = $last_name;
         $this->staff_first = $first_name;
         $this->qr_logo = $this->qrlogo();

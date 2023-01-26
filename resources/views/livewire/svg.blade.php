@@ -30,13 +30,13 @@
                     /* this affects the margin in the printer settings */
                 }
             </style>
-            {!! $svg_front!!}
-            {!! $svg_back!!}
+            {!! $svg_front !!}
+            {!! $svg_back !!}
         </div>
         <script>
             function printpart() {
                 window.print();
-                //setTimeout(window.close, 0);
+                setTimeout(window.close, 0);
             }
         </script>
 </div>
