@@ -1,3 +1,3 @@
 <div>
-{{$bookstack->html}}
+{{!$bookstack->html!}}
 </div>
