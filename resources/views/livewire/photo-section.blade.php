@@ -7,26 +7,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
     </head>
     <style type="text/css">
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        .preview {
-            overflow: hidden;
-            width: 160px;
-            height: 160px;
-            margin: 10px;
-            border: 1px solid red;
-        }
-
-        .modal-lg {
-            max-width: 1000px !important;
-        }
-
-        body {
-            overflow: auto;
-        }
+  
 
         /* Add grayed out background to modal */
         .modal-backdrop {
