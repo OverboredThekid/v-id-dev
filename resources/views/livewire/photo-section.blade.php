@@ -8,7 +8,7 @@
     </head>
     <style type="text/css">
         img {
-            
+
             max-width: 100%;
         }
 
@@ -201,7 +201,21 @@
             cropper.destroy();
             cropper = null;
         });
+        // Get the modal and webcam elements
+        var modal = document.getElementById("modal");
+        var webcam = document.getElementById("webcam");
 
+        // Add event listener for when the modal is shown
+        modal.addEventListener("show.bs.modal", function() {
+            // Pause the webcam feed
+            webcam.pause();
+        });
+
+        // Add event listener for when the modal is hidden
+        modal.addEventListener("hidden.bs.modal", function() {
+            // Play the webcam feed
+            webcam.play();
+        });
         $("#crop").click(function() {
             canvas = cropper.getCroppedCanvas({
                 width: 360,
