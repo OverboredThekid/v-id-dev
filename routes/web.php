@@ -9,13 +9,13 @@ use App\Http\Livewire\LinkTree;
 //Staff Wizard Route ~Livewire
 Route::get('staff/wizard', StaffWizard::class)->name('wizard');
 
-//Staff ID Route ~Livewire
+//Staff ID Print Route ~Livewire
 Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
-//Staff Link Route ~Livewire
+//Staff Custom Link Route ~Livewire
 Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active']);
  
-//Basic Index ~Livewire
+//Basic Index ~Filament Dash
 Route::get('/', function () {
     return redirect('/admin');
 });
