@@ -36,7 +36,7 @@
     <!--Using Tailwind CSS classes for responsive design-->
     <div>
         <div>
-            <label class="btn btn-primary mb-8">
+            <label class="mb-10 btn btn-primary">
                 <input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo
             </label>
             <br>
@@ -52,11 +52,11 @@
                 </div>
 
                 <div class="relative">
-                    <button id="activate-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary">Take A Photo</button>
+                    <button id="activate-webcam" class="bg-blue-500 text-white rounded-lg btn btn-primary">Take A Photo</button>
 
                     <div class="flex justify-between items-center mt-4">
-                        <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary" style="display: none;">Capture</button>
-                        <button id="turn-off-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary pt-10" style="display: none; margin-top: 10px;">Turn Off Webcam</button>
+                        <button id="take-photo" class="bg-blue-500 text-white rounded-lg btn btn-primary" style="display: none;">Capture</button>
+                        <button id="turn-off-webcam" class="bg-blue-500 text-white rounded-lg btn btn-primary pt-10" style="display: none; margin-top: 10px;">Turn Off Webcam</button>
                     </div>
 
                 </div>
