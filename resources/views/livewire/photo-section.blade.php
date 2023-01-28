@@ -37,7 +37,7 @@
     <div>
         <div>
             <label class="btn btn-primary">
-                <input type="file" name="image" class="image" accept="image/*" style="display: none; margin: bottom 10px;">Upload A Photo
+                <input type="file" name="image" class="image" accept="image/*" style="display: none; margin-bottom: 10px;">Upload A Photo
             </label>
             <br>
 
