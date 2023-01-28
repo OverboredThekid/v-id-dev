@@ -42,8 +42,8 @@
             <br>
 
             <div class="relative h-screen">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item w-1/4 h-1/4" style="display: none;" playsinline></video>
+                <div class="embed-responsive embed-responsive-16by9 w-25 h-auto">
+                    <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;" playsinline></video>
                 </div>
 
 
