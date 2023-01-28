@@ -36,8 +36,8 @@
     <!--Using Tailwind CSS classes for responsive design-->
     <div>
         <div>
-            <label class="btn btn-primary">
-                <input type="file" name="image" class="image" accept="image/*" style="display: none; margin-bottom: 10px;">Upload A Photo
+            <label class="btn btn-primary" style="margin-bottom: 10px;">
+                <input type="file" name="image" class="image" accept="image/*" style="display: none;">Upload A Photo
             </label>
             <br>
 
