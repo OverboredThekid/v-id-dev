@@ -17,7 +17,7 @@ Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active
  
 //Basic Index ~Livewire
 Route::get('/', function () {
-    return redirect('/admin');
+    return redirect('/login');
 });
 
 //Fallback ~Redirects
