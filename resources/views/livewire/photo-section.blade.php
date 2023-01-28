@@ -42,7 +42,7 @@
             <br>
 
             <div class="relative h-screen">
-                <div class="embed-responsive embed-responsive-16by9 w-25 h-auto">
+                <div class="embed-responsive embed-responsive-16by9 w-50 h-auto">
                     <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;" playsinline></video>
                 </div>
 
@@ -52,11 +52,11 @@
                 </div>
 
                 <div class="relative p-4">
-                    <button id="activate-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg">Take A Photo</button>
+                    <button id="activate-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary">Take A Photo</button>
 
                     <div class="flex justify-between items-center mt-4">
-                        <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg" style="display: none;">Capture</button>
-                        <button id="turn-off-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg" style="display: none;">Turn Off Webcam</button>
+                        <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary" style="display: none;">Capture</button>
+                        <button id="turn-off-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary" style="display: none;">Turn Off Webcam</button>
                     </div>
                 </div>
             </div>
