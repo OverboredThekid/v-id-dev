@@ -1,4 +1,12 @@
 <div>
+<style>
+  @media (min-width: 640px) {
+    .sm\:scale-body {
+        transform: scale(1);
+    }
+  }
+</style>
+<body class="sm:scale-body">
     <div id='wizard' class='wizard-body'>
         @if(!empty($successMessage))
         <div class="alert alert-success">
@@ -42,7 +50,7 @@
                         @error('phone') <span class="error">{{ $message }}</span> @enderror
                     </div>
 
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="firstStepSubmit" type="button">Next</button>
+                    <button x-on:click="document.querySelector('body').classList.add('sm:scale-body')" class="bg-blue-500 text-white px-4 py-2"class="btn btn-primary nextBtn btn-lg pull-right" wire:click="firstStepSubmit" type="button">Next</button>
                 </div>
             </div>
         </div>
