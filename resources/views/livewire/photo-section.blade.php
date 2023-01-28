@@ -197,20 +197,13 @@
                 viewMode: 3,
                 preview: '.preview'
             });
-            $("#modal").on("show.bs.modal", function() {
-                // pause webcam feed when modal is shown
-                let webcamElement = document.querySelector("#webcam");
-                webcamElement.pause();
-            });
-
-            $("#modal").on("hidden.bs.modal", function() {
-                // resume webcam feed when modal is hidden
-                let webcamElement = document.querySelector("#webcam");
-                webcamElement.play();
-            });
+            let webcamElement = document.querySelector("#webcam");
+            webcamElement.pause();
         }).on('hidden.bs.modal', function() {
             cropper.destroy();
             cropper = null;
+            let webcamElement = document.querySelector("#webcam");
+            webcamElement.play();
         });
 
         $("#crop").click(function() {
