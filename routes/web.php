@@ -16,7 +16,9 @@ Route::get('staff/svg/{id}', Svg::class)->name('svg');
 Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active']);
  
 //Basic Index ~Livewire
-Route::get('/', Home::class);
+Route::get('/', function () {
+    return redirect('/admin');
+});
 
 //Fallback ~Redirects
 Route::fallback(function () {
