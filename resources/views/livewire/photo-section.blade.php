@@ -30,7 +30,7 @@
 
         /* Add grayed out background to modal */
         .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: #000;
             height: 100% !important;
             width: 100% !important;
         }
