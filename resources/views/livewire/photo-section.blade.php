@@ -55,7 +55,7 @@
                     <button id="activate-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary">Take A Photo</button>
 
                     <div class="flex justify-between items-center mt-4">
-                        <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary" style="display: none;">Capture</button>
+                        <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary mr-5" style="display: none;">Capture</button>
                         <button id="turn-off-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg btn btn-primary" style="display: none;">Turn Off Webcam</button>
                     </div>
                 </div>
