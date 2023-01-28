@@ -67,7 +67,7 @@
 
             <br>
 
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal fade" style="margin-top:20%" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document" style="margin: 0">
                     <div class="modal-content">
                         <div class="modal-header">
