@@ -31,6 +31,8 @@
         /* Add grayed out background to modal */
         .modal-backdrop {
             background-color: rgba(0, 0, 0, 0.5);
+            height: 100% !important;
+            width: 100% !important;
         }
     </style>
     <!--Using Tailwind CSS classes for responsive design-->
