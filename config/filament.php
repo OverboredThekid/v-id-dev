@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'path' => env('FILAMENT_PATH', 'admin2'),
+    'path' => env('FILAMENT_PATH', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
