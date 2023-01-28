@@ -40,18 +40,25 @@
         </label>
         <br>
 
-        <div class="embed-responsive embed-responsive-16by9">
-            <video id="webcam" width="100%" height="100%" autoplay class="embed-responsive-item" style="display: none;" playsinline></video>
-        </div>
+        <div class="relative h-screen">
+    <div class="absolute inset-0">
+        <video id="webcam" class="w-full h-full object-cover" autoplay playsinline style="display: none;"></video>
+    </div>
 
-        <div id="loading-message" style="display: none;">Loading webcam...</div>
-        <br>
-        <button id="activate-webcam" class="btn btn-primary">Take A Photo</button>
+    <div id="loading-message" class="absolute inset-0 flex items-center justify-center text-gray-700" style="display: none;">
+        Loading webcam...
+    </div>
 
-        <div class="row">
-            <button id="take-photo" class="btn btn-primary" style="display: none; margin: right 15px;">Capture</button>
-            <button id="turn-off-webcam" class="btn btn-primary" style="display: none;">Turn Off Webcam</button>
+    <div class="relative p-4">
+        <button id="activate-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg">Take A Photo</button>
+
+        <div class="flex justify-between items-center mt-4">
+            <button id="take-photo" class="bg-blue-500 text-white py-2 px-4 rounded-lg" style="display: none;">Capture</button>
+            <button id="turn-off-webcam" class="bg-blue-500 text-white py-2 px-4 rounded-lg" style="display: none;">Turn Off Webcam</button>
         </div>
+    </div>
+</div>
+
 
         <br>
 
