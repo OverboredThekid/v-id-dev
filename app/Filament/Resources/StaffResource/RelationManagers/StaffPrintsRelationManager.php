@@ -24,7 +24,7 @@ class StaffPrintsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                    SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_prints')->label("Staff Photo"),
+                    SpatieMediaLibraryFileUpload::make('staff_img')->collection('staff_print')->label("Staff Photo"),
             ]);
     }
 
