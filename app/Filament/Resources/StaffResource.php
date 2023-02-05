@@ -59,7 +59,8 @@ class StaffResource extends Resource
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('phone')->searchable(),
-                ToggleColumn::make('is_active')
+                ToggleColumn::make('is_active'),
+                TextColumn::make('id_count')
             ])
             ->filters([
                 Filter::make('is_active')->label('Active')->toggle()

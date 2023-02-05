@@ -16,7 +16,7 @@ class StaffWizard extends Component
     use WithFileUploads;
 
     public $currentStep = 1;
-    public $name, $email, $phone, $file, $is_active;
+    public $name, $email, $phone, $file, $is_active, $id_count;
     public $successMessage = '';
     public $url;
     public $imageData;
@@ -32,75 +32,48 @@ class StaffWizard extends Component
         $this->currentStep = 2;
         $this->successMessage = '';
     }
+
     public function sendBase64Image($data)
     {
         $this->imageData = $data;
         $this->currentStep = 3;
     }
 
-    public function submitForm()
+    private function saveStaffData()
     {
-
-        // Convert the base64 data to a TemporaryUploadedFile object
-        $file = Image::make($this->imageData)->encode('jpg');
-        $temp_path = public_path('tmp/' . time() . '.jpg'); 
-        $file->save($temp_path);
-        $file = new TemporaryUploadedFile($temp_path, 'public', 'image/jpeg', null, true);
-
-        $staff_prints = new staff_prints;
-        $staff_prints->is_active = '0';
-        $staff_prints->addMedia($temp_path)->toMediaCollection('staff_print');
-
-        staff::firstOrCreate([
+        $staff = staff::firstOrCreate(['email' => $this->email], [
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
             'is_active' => '1',
-        ])->staff_prints()->save($staff_prints);
+        ]);
+    
+        $staff->refresh();
+        $staff->id_count = $staff->id_count + 1;
+        $staff->save();
 
-
-
+        $staff_prints = new staff_prints;
+        $staff_prints->is_active = '0';
+        $staff_prints->addMediaFromBase64($this->imageData)->toMediaCollection('staff_print');
+        $staff->staff_prints()->save($staff_prints);
+    
         $this->successMessage = 'ID Created Successfully.';
-
         $this->clearForm();
-
         $this->currentStep = 1;
+    
+        return $staff_prints;
     }
+    
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function back($step)
+
+    public function submitForm()
     {
-        $this->currentStep = $step;
+        $staff_prints = $this->saveStaffData();
     }
 
     public function is_loggedin()
     {
-         // Convert the base64 data to a TemporaryUploadedFile object
-         $file = Image::make($this->imageData)->encode('jpg');
-         $temp_path = public_path('tmp/' . time() . '.jpg'); 
-         $file->save($temp_path);
-         $file = new TemporaryUploadedFile($temp_path, 'public', 'image/jpeg', null, true);
- 
-         $staff_prints = new staff_prints;
-         $staff_prints->is_active = '1';
-         $staff_prints->addMedia($temp_path)->toMediaCollection('staff_print');
-
-        staff::firstOrCreate([
-            'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'is_active' => '1',
-        ])->staff_prints()->save($staff_prints);
-
-        $this->successMessage = 'ID Created Successfully and Printed.';
-
-        $this->clearForm();
-
-        $this->currentStep = 1;
+        $staff_prints = $this->saveStaffData(1);
 
         // Open the new DB entry in a new tab
         $this->url = route('svg', $staff_prints->staff->id);
@@ -110,6 +83,14 @@ class StaffWizard extends Component
 
         // Open the URL in a new tab
         $this->dispatchBrowserEvent('open-new-tab', $url);
+    }
+
+
+
+
+    public function back($step)
+    {
+        $this->currentStep = $step;
     }
 
     /**

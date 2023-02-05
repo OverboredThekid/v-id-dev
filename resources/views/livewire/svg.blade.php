@@ -4,9 +4,14 @@
         <div id="svg-card">
             <style class="table">
                 @media print {
+                    
+                }
+                @media print {
                     #svg-card {
                         display: block !important;
                     }
+                    
+                    
 
                 }
 
@@ -30,8 +35,12 @@
                     /* this affects the margin in the printer settings */
                 }
             </style>
+            <div id="svg_front">
             {!! $svg_front !!}
+            </div>
+            <div id="svg_back">
             {!! $svg_back !!}
+            </div>
         </div>
         <script>
             function printpart() {

@@ -13,6 +13,7 @@
             {{ $successMessage }}
         </div>
         @endif
+
         <div class="stepwizard">
             <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
@@ -111,7 +112,6 @@
             </div>
         </div>
     </div>
-</div>
 <script>
     window.livewire.on('sendBase64Image', (data) => {
         // Call the 'sendBase64Image' method on the component with the image data as an argument

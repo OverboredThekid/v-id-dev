@@ -22,6 +22,7 @@ class staff extends Model implements HasMedia
         'email',
         'phone',
         'is_active',
+        'id_count',
     ];
 
     public function staff_prints()

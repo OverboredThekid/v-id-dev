@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name'); //1
             $table->string('email'); //1
             $table->string('phone'); //1
-            $table->string('is_active'); //2
+            $table->boolean('is_active'); //2
+            $table->integer('id_count')->nullable(); //2
             $table->timestamps();
         });
     }
