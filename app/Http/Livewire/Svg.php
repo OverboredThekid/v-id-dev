@@ -16,7 +16,7 @@ use Tidy;
 
 class Svg extends Component
 {
-    public $staff, $staff_img, $staff_last, $staff_first, $qrCode, $exp_date, $qr_logo, $svg_front, $svg_back, $month;
+    public $staff, $staff_img, $staff_last, $staff_first, $qrCode, $exp_date, $qr_logo, $svg_front, $svg_back, $month, $position;
     public function svgfront(): string
     {
         return app(BadgeSettings::class)->svg_front;
@@ -34,6 +34,7 @@ class Svg extends Component
         $this->getStaffInfo($id);
         $this->getStaffImage();
         $this->splitName();
+        $this->position();
         $this->generateQrCode();
         $this->updateStaffStatus();
         $this->generateExpDate();
@@ -45,11 +46,39 @@ class Svg extends Component
         Auth::check() ?: abort(403);
     }
     
+    
+    
     private function getStaffInfo($id) {
-        $staff_info = staff_prints::findOrFail($id);
+        if (!$id) {
+            throw new \Exception("Missing required field id.");
+        }
+    
+        $staff_info = Staff_prints::findOrFail($id);
         $this->staff = $staff_info;
     }
     
+    /**
+     * The `position` method sets the value of `$this->position` based on the value of `$this->staff->position`.
+     * 
+     * @throws \Exception when `$this->staff` is null or not set.
+     */
+    public function position()
+    {
+        if (!$this->staff || !$this->staff->staff || !$this->staff->staff->position) {
+            throw new \Exception("Staff info not found.");
+        }
+    
+        $position = $this->staff->staff->position;
+       
+        if ($position == 1) {
+            $this->position = 'Staff';
+        } elseif ($position == 2) {
+            $this->position = 'Admin';
+        } elseif ($position == 3) {
+            $this->position = 'Owner'; 
+        }
+    }
+
     private function getStaffImage() {
         $staff_img = $this->staff->getFirstMedia('staff_print')->getUrl();
         $this->staff_img = $staff_img;
@@ -100,9 +129,6 @@ class Svg extends Component
        }
     
    private function generateFrontCard() {
-   
-   
-
        //Front Of Card
        $dom_front = new DOMDocument();
        $dom_front->loadXML(file_get_contents(url('/storage/' . $this->svgfront())));
@@ -112,6 +138,7 @@ class Svg extends Component
        $elements_front2 = $xpath_front->query("//*[@id='staff_last']");
        $elements_front3 = $xpath_front->query("//*[@id='exp_date']");
        $elements_front4 = $xpath_front->query("//*[@id='staff_img']");
+       $elements_front5 = $xpath_front->query("//*[@id='staff_position']");
        foreach ($elements_front1 as $element_front) {
            $element_front->setAttribute('style', "fill: #231f20; font-family: MyriadPro-Regular, 'Myriad Pro'; font-size: 15px; font-size: min(13px, calc(12px + 0.5vw));;");
            $element_front->nodeValue = $this->staff_first;
@@ -126,6 +153,9 @@ class Svg extends Component
        foreach ($elements_front4 as $element_back) {
            $element_back->setAttribute('xlink:href', $this->staff_img);
        }
+       foreach ($elements_front5 as $element_front) {
+        $element_front->nodeValue = $this->position;
+    }
        $svg_front =  $dom_front->saveXML();
        $this->svg_front = $svg_front;
    }    

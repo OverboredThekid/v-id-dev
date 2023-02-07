@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone'); //1
             $table->boolean('is_active'); //2
             $table->integer('id_count')->nullable(); //2
+            $table->integer('position')->nullable(); //2
             $table->timestamps();
         });
     }

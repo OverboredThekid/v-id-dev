@@ -16,7 +16,7 @@ class StaffWizard extends Component
     use WithFileUploads;
 
     public $currentStep = 1;
-    public $name, $email, $phone, $file, $is_active, $id_count;
+    public $name, $email, $phone, $file, $is_active, $id_count, $position;
     public $successMessage = '';
     public $url;
     public $imageData;
@@ -41,29 +41,32 @@ class StaffWizard extends Component
 
     private function saveStaffData()
     {
-        $staff = staff::firstOrCreate(['email' => $this->email], [
+        $staff = Staff::firstOrCreate(['email' => $this->email], [
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
             'is_active' => '1',
+            'position' => 1,
         ]);
-    
+
         $staff->refresh();
+        $staff->position = 1;
         $staff->id_count = $staff->id_count + 1;
         $staff->save();
 
-        $staff_prints = new staff_prints;
+
+        $staff_prints = new Staff_prints;
         $staff_prints->is_active = '0';
         $staff_prints->addMediaFromBase64($this->imageData)->toMediaCollection('staff_print');
         $staff->staff_prints()->save($staff_prints);
-    
+
         $this->successMessage = 'ID Created Successfully.';
         $this->clearForm();
         $this->currentStep = 1;
-    
+
         return $staff_prints;
     }
-    
+
 
 
     public function submitForm()

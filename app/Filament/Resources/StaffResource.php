@@ -25,6 +25,8 @@ use Filament\Tables\Actions\Action;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\SelectColumn;
 
 
 class StaffResource extends Resource
@@ -45,6 +47,12 @@ class StaffResource extends Resource
                         TextInput::make('name'),
                         TextInput::make('email')->email(),
                         TextInput::make('phone')->tel(),
+                        Select::make('position')
+                            ->options([
+                                '1' => 'Staff',
+                                '2' => 'Admin',
+                                '3' => 'Owner',
+                            ])->default('1'),
                         Toggle::make('is_active')
                             ->onColor('success')
                             ->offColor('danger')
@@ -59,6 +67,12 @@ class StaffResource extends Resource
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('phone')->searchable(),
+                SelectColumn::make('position')
+                    ->options([
+                        '1' => 'Staff',
+                        '2' => 'Admin',
+                        '3' => 'Owner',
+                    ])->default('1')->rules(['required']),
                 ToggleColumn::make('is_active'),
                 TextColumn::make('id_count')
             ])
@@ -66,7 +80,7 @@ class StaffResource extends Resource
                 Filter::make('is_active')->label('Active')->toggle()
             ])
             ->actions([
-                Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'), 
+                Action::make('Visit')->label('Visit')->url(fn (staff $record): string => route('staff', $record->id))->openUrlInNewTab()->icon('heroicon-o-link')->color('warning'),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
@@ -78,8 +92,8 @@ class StaffResource extends Resource
                     ]),
                 ])
             ])
-            
-            ->headerActions([ 
+
+            ->headerActions([
                 ExportAction::make('export')->exports([
                     ExcelExport::make()->fromModel()->except([
                         'created_at', 'updated_at', 'deleted_at',

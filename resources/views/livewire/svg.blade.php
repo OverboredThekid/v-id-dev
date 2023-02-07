@@ -4,15 +4,21 @@
         <div id="svg-card">
             <style class="table">
                 @media print {
-                    
-                }
-                @media print {
                     #svg-card {
                         display: block !important;
                     }
-                    
-                    
-
+                    #svg_front{
+                        height: 100%;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        overflow: hidden;
+                    }
+                    #svg_back {
+                        height: 100%;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        overflow: hidden;
+\                    }
                 }
 
                 html,
@@ -23,11 +29,13 @@
                     min-font-size: 10px;
                     max-font-size: 14px;
                 }
+
                 .cls-1 {
-            font-size: 12px;
-            min-font-size: 10px;
-            max-font-size: 14px;
-        }
+                    font-size: 12px;
+                    min-font-size: 10px;
+                    max-font-size: 14px;
+                }
+
                 @page {
                     size: auto;
                     /* auto is the initial value */
@@ -36,16 +44,16 @@
                 }
             </style>
             <div id="svg_front">
-            {!! $svg_front !!}
+                {!! $svg_front !!}
             </div>
             <div id="svg_back">
-            {!! $svg_back !!}
+                {!! $svg_back !!}
             </div>
         </div>
         <script>
             function printpart() {
                 window.print();
-                setTimeout(window.close, 0);
+                //setTimeout(window.close, 0);
             }
         </script>
 </div>
