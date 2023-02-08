@@ -1,12 +1,17 @@
 <?php
+
 namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class SvgUpload extends Component
 {
+
+    use WithFileUploads;
+    public $svgContent;
     public $svgIds = [];
 
     public function render()
@@ -14,36 +19,35 @@ class SvgUpload extends Component
         return view('livewire.svg-upload')->layout('layouts.svg-upload');
     }
 
-    public function storeSvg(Request $request, $file)
+
+    public function refreshComponent()
     {
-        try {
+        Log::debug('Refresh component method called');
+        $this->svgIds = $this->svgIds;
+        $this->emit('refreshComponent');
+    }
     
-            // Read the contents of the uploaded file
-            $fileContents = file_get_contents($file->getPathname());
-    
-            Log::debug('File Contents: ' . $fileContents);
-    
-            // Extract all the id's from the contents of the file
-            preg_match_all('/id="([^"]+)"/', $fileContents, $matches);
-    
-            // Store the extracted ids
-            $this->svgIds = $matches[1];
-    
-            Log::debug('Stored IDs: ' . implode(',', $this->svgIds));
 
-            Log::debug('Component State: ' . json_encode($this->getPublicPropertiesDefinedBySubClass()));
+    public function upload()
+    {
+        $this->validate([
+            'svgContent' => 'required|file|mimetypes:image/svg+xml',
+        ]);
 
-            $this->emit('refreshComponent');
-            dd($this->svgIds);
-        } catch (\Exception $e) {
-            Log::error('Error while processing uploaded SVG file: ' . $e->getMessage());
+        $file = $this->svgContent;
+
+        if(empty($file)) {
+            return redirect()->back()->withErrors(['svgContent' => 'File could not be uploaded.']);
         }
+
+        $tempUrl = $this->svgContent->temporaryUrl();
+        $svgContent = file_get_contents($tempUrl);
+
+        preg_match_all("/<(\w+)\sid=\"(\w+)\"/", $svgContent, $matches);
+
+        $this->svgIds = $matches[2];
+
+        $this->emit('svgIdsLoaded');
     }
 
-    public function fileUploaded(Request $request)
-    {
-        $uploadedFile = $request->file('file');
-        $this->storeSvg($request, $uploadedFile);
-    }
 }
-

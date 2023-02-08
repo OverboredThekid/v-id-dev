@@ -13,7 +13,11 @@ Route::get('staff/wizard', StaffWizard::class)->name('wizard');
 Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
 Route::get('svg/test', SvgUpload::class)->name('svg.view');
-Route::post('/upload-svg', [SvgUpload::class, 'fileUploaded'])->name('upload.svg');
+Route::post('/upload-svg', [SvgUpload::class, 'storeSvg'])->name('upload.svg');
+
+Route::get('/view-svg-ids', function () {
+    return view('svg-upload');
+});
 
 
 //Staff Custom Link Route ~Livewire
