@@ -1,6 +1,7 @@
 <?php
 
 use app\Settings\BadgeSettings;
+use app\Settings\svgIdsSave;
 
 return [
 
@@ -10,6 +11,7 @@ return [
      */
     'settings' => [
         BadgeSettings::class,
+        svgIdsSave::class,
     ],
 
     /*

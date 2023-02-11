@@ -8,8 +8,9 @@ class BadgeSettings extends Settings
 {
     public string $qr_link;
     public string $svg_front;
-    public string $qr_logo;
     public string $svg_back;
+    public string $site_logo;
+    public string $site_logo_big;
     public bool $is_redirect;
 
     public static function group(): string
