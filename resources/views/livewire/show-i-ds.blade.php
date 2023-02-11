@@ -27,11 +27,11 @@
                         <div>
                             @foreach($side as $key => $value)
                             <li>
-                                <label class="text-black" for="{{$key}}">{{$value}}</label></br>
+                                <label class="text-black" for="{{$key}}" style="color: black;">{{$value}}</label></br>
                                 <select id="{{$key}}" wire:model="{{$key}}" wire:key="idKey-{{$key}}" data-selected-value="{{$selectedOptions[$key] ?? ''}}">
-                                    <option value="" disabled>Select ID</option>
+                                    <option value="" disabled style="color:black;">Select ID</option>
                                     @foreach($svgIds as $svgId)
-                                    <option value="{{$svgId}}">{{ $svgId }}</option>
+                                    <option value="{{$svgId}}" style="color: black;">{{ $svgId }}</option>
                                     @endforeach
                                 </select>
                             </li>

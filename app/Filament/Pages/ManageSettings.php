@@ -10,6 +10,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Contracts\View\View;
+use Filament\Forms\Components\ViewField;
 
 
 class ManageSettings extends SettingsPage
@@ -37,7 +38,7 @@ class ManageSettings extends SettingsPage
                     FileUpload::make('svg_front')->required()->label('Card Front')->directory('svg'),
                     FileUpload::make('svg_back')->required()->label('Card Back')->directory('svg'),
                 ]),
-              svgIdsSave::make('svgIdsSave')->label("Save SVG ID's")
+              svgIdsSave::make('svgIdsSave')->label("Save SVG ID's"),
         ];
     }
 
