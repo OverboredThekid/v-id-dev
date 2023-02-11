@@ -95,7 +95,6 @@ class Svg extends Component
     }
     
     private function generateQrCode() {
-        $this->qr_logo = $this->qrlogo();
         $qrCode = base64_encode(QrCode::size(250)->eyeColor(0, 237, 28, 36, 0, 0, 0)->eyeColor(1, 237, 28, 36, 0, 0, 0)->eyeColor(2, 237, 28, 36, 0, 0, 0)->eye('circle')->style('square')->format('svg')->generate("Https://$_SERVER[HTTP_HOST]/staff/" . $this->staff->staff->id));
         $this->qrCode = $qrCode;
     }
