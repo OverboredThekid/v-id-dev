@@ -25,10 +25,6 @@ class Svg extends Component
     {
         return app(BadgeSettings::class)->svg_back;
     }
-    public function qrlogo(): string
-    {
-        return app(BadgeSettings::class)->qr_logo;
-    }
     public function mount($id) {
         $this->checkAuthorization();
         $this->getStaffInfo($id);
