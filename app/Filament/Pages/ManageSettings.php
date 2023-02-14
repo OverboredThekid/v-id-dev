@@ -38,7 +38,7 @@ class ManageSettings extends SettingsPage
                     FileUpload::make('svg_front')->required()->label('Card Front')->directory('svg'),
                     FileUpload::make('svg_back')->required()->label('Card Back')->directory('svg'),
                 ]),
-              svgIdsSave::make('svgIdsSave')->label("Save SVG ID's (Coming Soon!)")->disabled(),
+              svgIdsSave::make('svgIdsSave')->label("Save SVG ID's")->disabled(),
         ];
     }
 

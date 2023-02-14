@@ -6,6 +6,7 @@ use App\Filament\Resources\StaffResource\Pages;
 use App\Filament\Resources\StaffResource\RelationManagers;
 use App\Models\staff;
 use Filament\Forms;
+use Filament\Tables\Actions\Action;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -21,7 +22,6 @@ use Filament\Tables\Filters\Filter;
 use Filament\Navigation\NavigationItem;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\Action;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
@@ -98,7 +98,8 @@ class StaffResource extends Resource
                     ExcelExport::make()->fromModel()->except([
                         'created_at', 'updated_at', 'deleted_at',
                     ]),
-                ])
+                ]),
+
             ]);
     }
 

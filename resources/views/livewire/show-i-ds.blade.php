@@ -28,7 +28,7 @@
                             @foreach($side as $key => $value)
                             <li>
                                 <label class="text-black" for="{{$key}}" style="color: black;">{{$value}}</label></br>
-                                <select id="{{$key}}" wire:model="{{$key}}" wire:key="idKey-{{$key}}" data-selected-value="{{$selectedOptions[$key] ?? ''}}">
+                                <select id="{{$key}}" wire:model="{{$key}}" wire:key="idKey-{{$key}}" class="mt-1 block w-full rounded-md border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" data-selected-value="{{$selectedOptions[$key] ?? ''}}">
                                     <option value="" disabled style="color:black;">Select ID</option>
                                     @foreach($svgIds as $svgId)
                                     <option value="{{$svgId}}" style="color: black;">{{ $svgId }}</option>
@@ -55,7 +55,9 @@
 
                     </ul>
                 </div>
-                <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save Selections</button>
+                <div class="mt-15">
+                <button type="submit" class="filament-button filament-button-size-md inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset dark:focus:ring-offset-0 min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 filament-page-button-action">Save Selections</button>
+                </div>
             </form>
         </div>
     </div>

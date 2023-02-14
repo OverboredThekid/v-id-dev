@@ -18,7 +18,7 @@
                         margin: 0 !important;
                         padding: 0 !important;
                         overflow: hidden;
-\                    }
+                    }
                 }
 
                 html,
@@ -26,13 +26,7 @@
                     margin: 0;
                     padding: 0;
                     font-size: 12px;
-                    min-font-size: 10px;
-                    max-font-size: 14px;
-                }
-
-                .cls-1 {
-                    font-size: 12px;
-                    min-font-size: 10px;
+                    min-font-size: 5px;
                     max-font-size: 14px;
                 }
 
@@ -53,7 +47,7 @@
         <script>
             function printpart() {
                 window.print();
-                //setTimeout(window.close, 0);
+                setTimeout(window.close, 0);
             }
         </script>
 </div>
