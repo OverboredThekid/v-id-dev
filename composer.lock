@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22cd5390ca9f333b14f3858244fe07e6",
+    "content-hash": "4c04ec9d546c09d370b5c75a9f2f1ab3",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1670,71 +1670,6 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
-        },
-        {
-            "name": "ekremogul/filament-grapesjs",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ekremogul/filament-grapesjs.git",
-                "reference": "54722907ea7308961d0239f84232cd5663be5373"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ekremogul/filament-grapesjs/zipball/54722907ea7308961d0239f84232cd5663be5373",
-                "reference": "54722907ea7308961d0239f84232cd5663be5373",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^9.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.13.0"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.0",
-                "nunomaduro/collision": "^6.0",
-                "orchestra/testbench": "^7.0",
-                "pestphp/pest": "^1.21",
-                "pestphp/pest-plugin-laravel": "^1.1",
-                "phpunit/phpunit": "^9.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ekremogul\\FilamentGrapesjs\\FilamentGrapesjsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ekremogul\\FilamentGrapesjs\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ekrem OĞUL",
-                    "email": "ekremogul@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "GrapesJS for FilamentPHP",
-            "homepage": "https://github.com/ekremogul/filament-grapesjs",
-            "keywords": [
-                "ekremogul",
-                "filament-grapesjs",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/ekremogul/filament-grapesjs/issues",
-                "source": "https://github.com/ekremogul/filament-grapesjs/tree/main"
-            },
-            "time": "2022-10-29T19:37:06+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -12353,7 +12288,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ekremogul/filament-grapesjs": 20,
         "filament/filament": 20
     },
     "prefer-stable": true,

@@ -3,16 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\BooleanColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Hash;
@@ -33,20 +29,20 @@ class UserResource extends Resource
             Forms\Components\TextInput::make('password')->label('Password')
                 ->password()
                 ->maxLength(255)
-                ->dehydrateStateUsing(static function ($state) use ($form){
-                    if(!empty($state)){
+                ->dehydrateStateUsing(static function ($state) use ($form) {
+                    if (!empty($state)) {
                         return Hash::make($state);
                     }
 
                     $user = User::find($form->getColumns());
-                    if($user){
+                    if ($user) {
                         return $user->password;
                     }
                 }),
-                Forms\Components\Select::make('roles')->multiple()->relationship('roles', 'name')->label('Roles'),
+            Forms\Components\Select::make('roles')->multiple()->relationship('roles', 'name')->label('Roles'),
         ];
 
-        if(config('filament-user.shield')){
+        if (config('filament-user.shield')) {
             $rows[] = Forms\Components\Select::make('roles')->multiple()->relationship('roles', 'name')->label('Roles');
         }
 
@@ -77,11 +73,11 @@ class UserResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListUsers::route('/'),
         ];
-    }    
+    }
 }
