@@ -1,6 +1,5 @@
 *
-!svg/FRONT.svg
-!svg/BACK.svg
-!site_logo/site_logo.png
-!site_logo_big/site_logo_big.png
 !.gitignore
+!site_logo
+!site_logo_big
+!svg
