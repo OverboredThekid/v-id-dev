@@ -14,6 +14,10 @@ Route::get('staff/svg/{id}', Svg::class)->name('svg');
 
 Route::get('svg/test', SvgUpload::class)->name('svg.view');
 
+//Login Page ~Filament login
+Route::get('/login', function () {
+    return redirect('/admin/login');
+})->name('login');
 
 //Staff Custom Link Route ~Livewire
 Route::get('staff/{id}', LinkTree::class)->name('staff')->middleware(['is.active']);
