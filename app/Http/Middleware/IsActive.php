@@ -14,12 +14,6 @@ class IsActive
         return staff::where('id', $request->id)->first();
     }
     
-    function isredirect(): string{
-        return app(BadgeSettings::class)->is_redirect;
-    }
-    public function qrlink(): string{
-        return app(BadgeSettings::class)->qr_link;
-    }
     /**
      * Handle an incoming request.
      *
@@ -29,37 +23,6 @@ class IsActive
      */
     public function handle(Request $request, Closure $next)
     {
-        // Retrieve the employee record using the slug passed in the route
-        $staff = $this->getStaff($request);
-    if(!$this->isredirect()){
-        // Check if the employee record was found
-        if ($staff) {
-            // If the employee record was found, check if the employee is active
-            if ($staff->is_active) {
-                // If the employee is active, allow the request to proceed
-                return $next($request);
-            } else {
-                // If the employee is not active, redirect the user to a 404 error page
-                return abort(403, 'This Staff Member Is Not Active.');
-            }
-        } else {
-            // If the employee record was not found, redirect the user to a 404 error page
-            return abort(403, 'This Staff Member Was Not Found');
-        }
-    }elseif($this->isredirect()){
-        if ($staff) {
-            // If the employee record was found, check if the employee is active
-            if ($staff->is_active) {
-                // If the employee is active, allow the request to proceed
-                return redirect($this->qrlink());
-            } else {
-                // If the employee is not active, redirect the user to a 404 error page
-                return abort(403, 'This Staff Member Is Not Active.');
-            }
-        } else {
-            // If the employee record was not found, redirect the user to a 404 error page
-            return abort(403, 'This Staff Member Was Not Found');
-        }
-    }
+     return redirect("Https://generationsav.com/stafflinks");
     }
 }
